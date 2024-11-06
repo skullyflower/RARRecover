@@ -1,0 +1,7 @@
+@import url("//fonts.googleapis.com/css?family=Creepster");
+.ql-editor{
+  font-size: 16px;
+}
+.ql-editor.ql-blank::before{
+  color: rgba(255,215,255,.5)
+}
