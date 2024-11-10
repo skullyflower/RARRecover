@@ -1,0 +1,12 @@
+Options -MultiViews
+RewriteEngine On
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]  
+RewriteCond expr "! %{REQUEST_FILENAME} -strmatch '*.json'"
+RewriteCond expr "! %{REQUEST_FILENAME} -strmatch '*.js'"
+RewriteCond expr "! %{REQUEST_FILENAME} -strmatch '*.css'"
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QSA,L]
+
+<Files index.html>
+Header merge Cache-Control "max-age=700, must-revalidate"
+</Files>

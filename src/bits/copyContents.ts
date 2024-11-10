@@ -1,4 +1,5 @@
 export const copyContents = () => () => {
+  const browser = navigator ?? new Navigator()
   const contentsDiv = document.getElementById("ToCopy");
   if (contentsDiv) {
     let stringtocopy = "";
@@ -20,7 +21,7 @@ export const copyContents = () => () => {
       }
     });
     if (stringtocopy) {
-      navigator.clipboard.writeText(stringtocopy);
+      browser.clipboard?.writeText(stringtocopy);
       return true
     }
   }

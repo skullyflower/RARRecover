@@ -2,8 +2,9 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
 import HomePage from "../pages/home";
 import AAInventoryForm from "../pages/spotchecks/aa_inventory";
-import SpotCheckForm from "../pages/spotchecks/tempurature";
+import SpotCheckForm from "../pages/spotchecks/principles";
 import ACAInventoryForm from "../pages/spotchecks/aca_inventory";
+import Stories from "@/pages/literature/stories";
 
 export default function SiteRoutes() {
   return (
@@ -26,6 +27,10 @@ export default function SiteRoutes() {
         <Route
           path="/temperature"
           element={<SpotCheckForm />}
+        />
+        <Route
+          path="/Literature"
+          element={<Stories />}
         />
       </Route>
     </Routes>

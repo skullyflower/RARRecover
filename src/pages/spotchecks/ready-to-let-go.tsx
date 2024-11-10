@@ -17,11 +17,11 @@ const ReadyToLetGo = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
       <ModalOverlay>
         <ModalContent
           bgColor="green.900"
-          color="blue.300">
+          color="blue.300"
+          border="1px solid">
           <ModalHeader
             fontSize="lg"
-            fontWeight="bold"
-            border="1px solid">
+            fontWeight="bold">
             Congratulations! Nice work.
           </ModalHeader>
           <ModalBody>

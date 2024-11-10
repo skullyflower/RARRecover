@@ -35,10 +35,10 @@ const NavBar = () => {
           to="temperature"
           text="principles"
         />
-        {/* <NavItem
+        <NavItem
           to="literature"
           text="literature"
-        /> */}
+        />
       </HStack>
     </Box>
   );

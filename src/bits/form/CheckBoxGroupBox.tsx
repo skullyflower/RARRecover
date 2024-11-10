@@ -26,10 +26,11 @@ const CheckboxGroupBox = ({ valuesList, options, setter }: CheckboxGroupBoxProps
         colorScheme="pink"
         value={valuesList}>
         <SimpleGrid
-          columns={2}
+          columns={{ sm: 1, md: 2 }}
           gap={4}>
           {Object.entries(options).map((part) => (
             <Checkbox
+              //alignItems="start"
               border="1px solid"
               borderColor="purple.700"
               borderRadius={7}
