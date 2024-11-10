@@ -26,8 +26,8 @@ function HomePage() {
             padding={4}
             textAlign="center"
             variant="outline">
-            Tired of the angry crowds, pitchforks and torches? mothers clutching their children when
-            you walk by.
+            <Text>Tired of the angry crowds with pitchforks and torches?</Text>
+            <Text>Do mothers clutch their children when you walk by?</Text>
             <Text>WE KNOW HOW YOU FEEL.</Text>
           </Card>
 

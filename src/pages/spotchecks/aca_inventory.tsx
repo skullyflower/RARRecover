@@ -40,6 +40,7 @@ enum sucesses {
   PRAYED = "I prayed to my Higher Power for help in dealing with the situation.",
   BOUNDARY = "I spoke up and set limits or walked away from the bad situation.",
   SELF_VALIDATION = "I listed to and validated my own needs feelings and thoughts.",
+  AMENDS = "I realized I'd make a mistake, forgave myself,  and admitted it",
   SELF_CARE = "I took care of myself instead of trying to make someone else do it.",
 }
 

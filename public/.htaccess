@@ -1,5 +1,8 @@
 Options -MultiViews
 RewriteEngine On
+RewriteCond %{HTTP_HOST} ^skullyflower\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.skullyflower\.com$
+RewriteCond %{env:HTTPS} !=on
 RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]  
 RewriteCond expr "! %{REQUEST_FILENAME} -strmatch '*.json'"
 RewriteCond expr "! %{REQUEST_FILENAME} -strmatch '*.js'"

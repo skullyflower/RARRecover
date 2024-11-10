@@ -27,6 +27,7 @@ enum sucesses {
   PAUSED = "I realized I was too upset to respond without sabotaging myself and/or being overly cruel to the other person, so I waiting until I could think more rationally.",
   PRAYED = "I prayed to my Higher Power for help in dealing with the situation.",
   BOUNDARY = "I spoke up and set limits or walked away from the bad situation.",
+  AMENDS = "I realized I'd make a mistake and admitted it",
   SERVICE = "I sought out someone else who needed help, or did service for my group.",
 }
 

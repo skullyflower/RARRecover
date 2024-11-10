@@ -33,7 +33,7 @@ const Stories = () => {
                 )}
                 <Image
                   key={key}
-                  width="750px"
+                  width="1000px"
                   src={`/comics/${story.imgfile}`}
                   alt={story.imgtitle}
                   fallbackSrc="/images/rain.svg"

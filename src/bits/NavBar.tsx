@@ -1,4 +1,4 @@
-import { Box, HStack } from "@chakra-ui/react";
+import { Box, HStack, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { Link, useMatch } from "react-router-dom";
 
 const NavItem = ({ text, to }: { text: string; to: string }) => {
@@ -23,18 +23,28 @@ const NavBar = () => {
         wrap="wrap"
         gap={4}
         justifyContent={"center"}>
-        <NavItem
-          to="/inventory"
-          text="angry"
-        />
-        <NavItem
-          to="aca-inventory"
-          text="hurting"
-        />
-        <NavItem
-          to="temperature"
-          text="principles"
-        />
+        <Menu>
+          <MenuButton
+            marginTop={2}
+            paddingBlock={1}
+            paddingInline={4}
+            borderRadius={5}
+            border="2px solid"
+            textTransform="uppercase">
+            spot-check inventories
+          </MenuButton>
+          <MenuList>
+            <MenuItem textTransform="uppercase">
+              <Link to="/inventory">angry?</Link>
+            </MenuItem>
+            <MenuItem textTransform="uppercase">
+              <Link to="/aca-inventory">hurting?</Link>
+            </MenuItem>
+            <MenuItem textTransform="uppercase">
+              <Link to="/temperature">principles</Link>
+            </MenuItem>
+          </MenuList>
+        </Menu>
         <NavItem
           to="literature"
           text="literature"
