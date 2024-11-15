@@ -33,6 +33,7 @@ const CheckboxGroupBox = ({ valuesList, options, setter }: CheckboxGroupBoxProps
               //alignItems="start"
               border="1px solid"
               borderColor="purple.700"
+              gap={4}
               borderRadius={7}
               _hover={{ backgroundColor: "pink.800", borderColor: "purple.300" }}
               p={2}

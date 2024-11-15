@@ -15,12 +15,13 @@ const Layout = () => {
             w="90%"
             justifyContent="space-between">
             <LinkBox
+              width="100px"
               as={ReactRouterLink}
               to="/"
               p={2}>
               <Image
                 src="/images/RARRLogo2.png"
-                width={20}
+                alt="Ragers and Rampagers, Recovering"
               />
             </LinkBox>
             <NavBar />

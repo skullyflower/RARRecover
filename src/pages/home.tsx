@@ -23,12 +23,13 @@ function HomePage() {
             color="purple.200"
             border="1px solid"
             fontWeight={700}
+            fontSize="xl"
             padding={4}
             textAlign="center"
             variant="outline">
             <Text>Tired of the angry crowds with pitchforks and torches?</Text>
             <Text>Do mothers clutch their children when you walk by?</Text>
-            <Text>WE KNOW HOW YOU FEEL.</Text>
+            <Text>WE KNOW HOW YOU FEEL!</Text>
           </Card>
 
           <Center>

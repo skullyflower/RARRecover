@@ -117,6 +117,10 @@ const theme = extendTheme({ config }, {
       "900": "#240F0F"
     }
   },
+  fonts: {
+    heading: `'Creepster', sans-serif`,
+    body: `'Voltaire', sans-serif`,
+  },
   styles: {
     global: {
       // styles for the `body`

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heading, Stack } from "@chakra-ui/react";
+import { Box, Heading, Stack, Text } from "@chakra-ui/react";
 import InventoryForm from "@/pages/spotchecks/InventoryForm";
 
 //const page_title = "Write about it";
@@ -58,8 +58,18 @@ const ACAInventoryForm = () => {
         textAlign="center"
         as="h1"
         size="xl">
-        ACA Style Spot Check Inventory
+        Is someone getting you down?
       </Heading>
+      <Box
+        paddingInline={4}
+        fontSize="xl">
+        <Text>Are you obsessing about something you did or said, or didn't do or didn't say?</Text>
+        <Text>Feel taken advantage of or disappointed?</Text>
+        <Text>
+          There are so many ways that people let us down. It's easy to feel like you have no control
+          of your life.
+        </Text>
+      </Box>
       <InventoryForm
         Iresent={Iresent}
         setIresent={setIresent}

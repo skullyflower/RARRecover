@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Heading, Stack, Text } from "@chakra-ui/react";
 import InventoryForm from "@/pages/spotchecks/InventoryForm";
 
 enum affects {
@@ -47,11 +47,15 @@ const AAInventoryForm = () => {
         size="xl">
         Anger is a weird thing.
       </Heading>
-      <Text fontSize="xl">
-        We feel that someone/thing has wronged us. We feel they should be punished or stopped. And
-        yet, most of the time, we do nothing but punish ourselves with our angry thoughts. It is we
-        who suffer from our anger, not the wrong doer.
-      </Text>
+      <Box
+        paddingInline={4}
+        fontSize="xl">
+        <Text>
+          We feel that someone/thing has wronged us. We feel they should be punished or stopped. And
+          yet, most of the time, we do nothing but punish ourselves with our angry thoughts.
+        </Text>
+        <Text>It is we who suffer from our anger, not the wrong doer.</Text>
+      </Box>
 
       <InventoryForm
         Iresent={Iresent}

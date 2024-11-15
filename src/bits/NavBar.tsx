@@ -17,6 +17,10 @@ const NavItem = ({ text, to }: { text: string; to: string }) => {
 };
 
 const NavBar = () => {
+  const one = useMatch("/inventory");
+  const two = useMatch("/aca-inventory");
+  const three = useMatch("/temperature");
+
   return (
     <Box p={4}>
       <HStack
@@ -30,18 +34,30 @@ const NavBar = () => {
             paddingInline={4}
             borderRadius={5}
             border="2px solid"
+            backgroundColor={one || two || three ? "purple.800" : ""}
             textTransform="uppercase">
             spot-check inventories
           </MenuButton>
-          <MenuList>
-            <MenuItem textTransform="uppercase">
-              <Link to="/inventory">angry?</Link>
+          <MenuList
+            bgColor="pink.900"
+            color="purple.200">
+            <MenuItem
+              textTransform="uppercase"
+              as={Link}
+              to="/inventory">
+              angry?
             </MenuItem>
-            <MenuItem textTransform="uppercase">
-              <Link to="/aca-inventory">hurting?</Link>
+            <MenuItem
+              as={Link}
+              to="/aca-inventory"
+              textTransform="uppercase">
+              hurting?
             </MenuItem>
-            <MenuItem textTransform="uppercase">
-              <Link to="/temperature">principles</Link>
+            <MenuItem
+              as={Link}
+              textTransform="uppercase"
+              to="/temperature">
+              principles
             </MenuItem>
           </MenuList>
         </Menu>
