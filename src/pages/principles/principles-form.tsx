@@ -11,19 +11,15 @@ import {
   Box,
   Textarea,
   Button,
-  SimpleGrid,
   Card,
   CardHeader,
   CardBody,
   CardFooter,
 } from "@chakra-ui/react";
 import { copyContents } from "@/bits/copyContents";
-
-interface OneStep {
-  step: number;
-  principle: string;
-  opposite: string;
-}
+import { OneStep, StepCheckList } from "./principles-constants";
+import { steps } from "../steps/steps-constants";
+import useProgramDropDown from "@/bits/form/useProgramDropDown";
 
 interface stepValue {
   percent: number;
@@ -31,72 +27,12 @@ interface stepValue {
 }
 
 interface StepBoxProps extends OneStep {
+  stepString?: string;
   onChange: (newValue: { percent: number; more: string }) => () => void;
   value: stepValue;
 }
-// Instead of opposite ego driven paralell.
-const StepCheckList: OneStep[] = [
-  {
-    step: 1,
-    principle: "Honesty",
-    opposite: "Denial",
-  },
-  {
-    step: 2,
-    principle: "Hope",
-    opposite: "Resignation",
-  },
-  {
-    step: 3,
-    principle: "Faith",
-    opposite: "Self-Will",
-  },
-  {
-    step: 4,
-    principle: "Courage",
-    opposite: "Cowardice",
-  },
-  {
-    step: 5,
-    principle: "Integrity",
-    opposite: "Dishonesty",
-  },
-  {
-    step: 6,
-    principle: "Willingness",
-    opposite: "Willfullness",
-  },
-  {
-    step: 7,
-    principle: "Humility",
-    opposite: "Arrogance",
-  },
-  {
-    step: 8,
-    principle: "Love",
-    opposite: "Codependence",
-  },
-  {
-    step: 9,
-    principle: "Justice",
-    opposite: "Blame",
-  },
-  {
-    step: 10,
-    principle: "Perseverance",
-    opposite: "Discontinuation",
-  },
-  {
-    step: 11,
-    principle: "Spirituality",
-    opposite: "Self Centeredness",
-  },
-  {
-    step: 12,
-    principle: "Service",
-    opposite: "Bossiness or Laziness",
-  },
-];
+
+const programOptions = Object.keys(StepCheckList);
 
 const initialState: Record<string, stepValue> = {
   "1": { percent: 50, more: "" },
@@ -113,20 +49,34 @@ const initialState: Record<string, stepValue> = {
   "12": { percent: 50, more: "" },
 };
 
-const StepBox = ({ step, principle, opposite, value, onChange }: StepBoxProps) => {
+const StepBox = ({ step, stepString, principle, opposite, value, onChange }: StepBoxProps) => {
   const { percent, more } = value;
 
   return (
     <Box
       bgColor={"blackAlpha.100"}
       borderRadius={6}
-      p={2}
-      h="600px">
-      <Heading size={"md"}>Step {step} :</Heading>
-      <Stack gap={4}>
-        <Box>
+      p={2}>
+      <HStack
+        maxW={"70%"}
+        marginInline={"auto"}
+        justifyItems={"start"}
+        alignItems={"flex-start"}
+        gap={4}>
+        <Heading
+          minW="fit-content"
+          size={"md"}>
+          Step {step} :
+        </Heading>{" "}
+        <Box flexShrink={2}>{stepString}</Box>
+      </HStack>
+      <HStack gap={4}>
+        <Stack
+          gap={2}
+          textAlign={"center"}>
           <Button
             w="90%"
+            marginInline={"auto"}
             padding={2}
             m={2}
             fontSize={20}
@@ -137,26 +87,28 @@ const StepBox = ({ step, principle, opposite, value, onChange }: StepBoxProps) =
             {principle}
           </Button>
           <Text textAlign="center">{percent}%</Text>
-        </Box>
+        </Stack>
         <Slider
-          h="250px"
-          orientation="vertical"
           aria-label="slider-ex-5"
           step={5}
           value={percent}
           onChange={(val) => onChange({ ...value, percent: val })()}>
-          <SliderTrack w={3}>
-            <SliderFilledTrack backgroundColor={percent > 50 ? "green.400" : "red.400"} />
+          <SliderTrack
+            backgroundColor="red.400"
+            w={3}>
+            <SliderFilledTrack backgroundColor="green.400" />
           </SliderTrack>
           <SliderThumb
             w={6}
             h={6}
           />
         </Slider>
-        <Box>
-          <Text textAlign="center">{100 - percent}%</Text>
+        <Stack
+          gap={2}
+          textAlign={"center"}>
           <Button
             w="90%"
+            marginInline={"auto"}
             padding={2}
             m={2}
             fontSize={14}
@@ -166,8 +118,9 @@ const StepBox = ({ step, principle, opposite, value, onChange }: StepBoxProps) =
             textAlign="center">
             {opposite}
           </Button>
-        </Box>
-      </Stack>
+          <Text>{100 - percent}%</Text>
+        </Stack>
+      </HStack>
       <Textarea
         colorScheme="purple"
         value={more}
@@ -182,7 +135,8 @@ const SpotCheckForm = () => {
   const [values, setValues] = useState(initialState);
   const [done, setDone] = useState(false);
   const [copied, setCopied] = useState(false);
-
+  const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions);
+  const stepText = steps[selectedProgram];
   const updateOneStep = (step: number) => (newValue: { percent: number; more: string }) => () => {
     setValues({ ...values, [`${step}`]: newValue });
   };
@@ -208,7 +162,9 @@ const SpotCheckForm = () => {
             gap={4}
             id="ToCopy">
             {Object.entries(values).map((value) => {
-              const step = StepCheckList.find((step) => String(step.step) === value[0]);
+              const step = StepCheckList[selectedProgram].find(
+                (step) => String(step.step) === value[0],
+              );
               return (
                 <Box key={step?.principle}>
                   <Text>{`Step ${step?.step}: ${value[1].percent}% ${step?.principle}`}</Text>
@@ -233,32 +189,36 @@ const SpotCheckForm = () => {
         size="xl">
         So, how'd we do today?
       </Heading>
-      <Heading
-        size="sm"
-        as="span"
-        flex="1"
-        textAlign="left">
-        The principles
-      </Heading>
+      <HStack
+        justify="space-between"
+        gap={4}>
+        <Heading
+          size="md"
+          as="span"
+          flex="1"
+          textAlign="left">
+          The principles of the Steps
+        </Heading>
+        <ProgramDropDown />
+      </HStack>
       <Box
         backgroundColor="blue.900"
         border={["none", "1px solid"]}
         borderRadius={15}
         p={4}>
-        <SimpleGrid
-          columns={[2, 2, 3, 4]}
-          gap={4}>
-          {StepCheckList.map((step) => (
+        <Stack gap={4}>
+          {StepCheckList[selectedProgram].map((step) => (
             <StepBox
               key={step.step}
               step={step.step}
+              stepString={stepText[step.step - 1]}
               principle={step.principle}
               opposite={step.opposite}
               value={values[String(step.step)]}
               onChange={updateOneStep(step.step)}
             />
           ))}
-        </SimpleGrid>
+        </Stack>
         <HStack
           width="100%"
           gap={4}

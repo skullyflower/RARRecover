@@ -19,46 +19,22 @@ import {
 import StyledTextInput from "../../bits/form/StyledTextImput";
 import CheckboxGroupBox from "../../bits/form/CheckBoxGroupBox";
 import { useState } from "react";
-import NeverLetGo from "./never-let-go";
-import ReadyToLetGo from "./ready-to-let-go";
+import NeverLetGo from "@/bits/form/never-let-go";
+import ReadyToLetGo from "@/bits/form/ready-to-let-go";
 import SemiSafeContent from "@/bits/SemiSafeContent";
 import { copyContents } from "@/bits/copyContents";
+import { affects, myParts, sucesses } from "@/pages/resentments/resentment-constants";
+import useProgramDropDown from "@/bits/form/useProgramDropDown";
+const programOptions = Object.keys(affects);
 
-interface InventoryFormProps {
-  affects: Record<string, string>;
-  affectsMy: string[];
-  setAffectsMy: (newvalue: string[]) => void;
-  because: string;
-  setBecause: (value: string) => void;
-  Iresent: string;
-  setIresent: (value: string) => void;
-  myPart: string[];
-  myParts: Record<string, string>;
-  setMyPart: (newvalue: string[]) => void;
-  didWell: string[];
-  setDidWell: (newvalue: string[]) => void;
-  sucesses: Record<string, string>;
-  learned: string;
-  setLearned: (value: string) => void;
-}
+const ResentmentsForm = () => {
+  const [Iresent, setIresent] = useState("");
+  const [because, setBecause] = useState("");
+  const [affectsMy, setAffectsMy] = useState<string[]>([]);
+  const [myPart, setMyPart] = useState<string[]>([]);
+  const [didWell, setDidWell] = useState<string[]>([]);
+  const [learned, setLearned] = useState("");
 
-const InventoryForm = ({
-  affects,
-  affectsMy,
-  setAffectsMy,
-  because,
-  setBecause,
-  Iresent,
-  setIresent,
-  myPart,
-  myParts,
-  setMyPart,
-  didWell,
-  setDidWell,
-  sucesses,
-  learned,
-  setLearned,
-}: InventoryFormProps) => {
   const incomplete =
     !Iresent || !because || !affectsMy.length || !myPart.length || !didWell.length || !learned;
   const [copied, setCopied] = useState(false);
@@ -66,6 +42,8 @@ const InventoryForm = ({
 
   const { isOpen: isLettingGo, onOpen: onLettingGo, onClose: onCloseLetGo } = useDisclosure();
   const { isOpen: isNever, onOpen: onNever, onClose: onNeverMind } = useDisclosure();
+
+  const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions);
 
   const letItGo = () => {
     setLetGo(true);
@@ -106,19 +84,19 @@ const InventoryForm = ({
             <Text fontWeight={700}>It affects my:</Text>
             <UnorderedList>
               {affectsMy.map((effect, indx) => (
-                <ListItem key={`affects${indx}`}>{effect}</ListItem>
+                <ListItem key={`affects${indx}`}>{effect.replace("_", " ")}</ListItem>
               ))}
             </UnorderedList>
             <Text fontWeight={700}>I contributed to the problem in these ways:</Text>
             <UnorderedList>
               {myPart.map((part, indx) => (
-                <ListItem key={`part${indx}`}>{part}</ListItem>
+                <ListItem key={`part${indx}`}>{part.replace("_", " ")}</ListItem>
               ))}
             </UnorderedList>
             <Text fontWeight={700}>I did these things well:</Text>
             <UnorderedList>
               {didWell.map((part, indx) => (
-                <ListItem key={`part${indx}`}>{part}</ListItem>
+                <ListItem key={`part${indx}`}>{part.replace("_", " ")}</ListItem>
               ))}
             </UnorderedList>
             <Text fontWeight={700}>And after looking at it this way, I now see ...</Text>
@@ -145,11 +123,16 @@ const InventoryForm = ({
         color="purple.200"
         border={["none", "1px solid"]}>
         <CardHeader>
-          <Heading
-            as="h2"
-            size="lg">
-            So, why don't you write about it?
-          </Heading>
+          <HStack
+            justify="space-between"
+            gap={4}>
+            <Heading
+              as="h2"
+              size="lg">
+              So, why don't you write about it?
+            </Heading>
+            <ProgramDropDown />
+          </HStack>
         </CardHeader>
         <CardBody>
           <Stack gap={4}>
@@ -177,7 +160,7 @@ const InventoryForm = ({
               <FormLabel fontWeight={700}>How did it affect you? What did it threaten.</FormLabel>
               <CheckboxGroupBox
                 valuesList={affectsMy}
-                options={affects}
+                options={affects[selectedProgram as keyof typeof affects]}
                 setter={setAffectsMy}
               />
             </FormControl>
@@ -187,7 +170,7 @@ const InventoryForm = ({
               </FormLabel>
               <CheckboxGroupBox
                 valuesList={myPart}
-                options={myParts}
+                options={myParts[selectedProgram as keyof typeof myParts]}
                 setter={setMyPart}
               />
             </FormControl>
@@ -195,7 +178,7 @@ const InventoryForm = ({
               <FormLabel fontWeight={700}>What did you do well?</FormLabel>
               <CheckboxGroupBox
                 valuesList={didWell}
-                options={sucesses}
+                options={sucesses[selectedProgram as keyof typeof sucesses]}
                 setter={setDidWell}
               />
             </FormControl>
@@ -253,4 +236,4 @@ const InventoryForm = ({
     </Box>
   );
 };
-export default InventoryForm;
+export default ResentmentsForm;

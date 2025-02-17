@@ -38,6 +38,7 @@ function HomePage() {
               alt="Welcome Home"
             />
           </Center>
+          <Text>Real recovery for ficticious creatures.</Text>
         </Stack>
       </CardBody>
     </Card>

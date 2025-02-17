@@ -1,4 +1,5 @@
-import { Checkbox, CheckboxGroup, Box, SimpleGrid } from "@chakra-ui/react";
+import { Checkbox, CheckboxGroup, Box, SimpleGrid, HStack, Badge } from "@chakra-ui/react";
+import { useEffect } from "react";
 
 interface CheckboxGroupBoxProps {
   valuesList: string[];
@@ -13,6 +14,9 @@ const CheckboxGroupBox = ({ valuesList, options, setter }: CheckboxGroupBoxProps
   const updateValueList = (oldValue: string[], newValue: string) => () => {
     setter(handleCBChange(oldValue, newValue));
   };
+  useEffect(() => {
+    setter([]);
+  }, [options]);
 
   return (
     <Box
@@ -22,6 +26,18 @@ const CheckboxGroupBox = ({ valuesList, options, setter }: CheckboxGroupBoxProps
       p={15}
       gap={2}
       className="content">
+      <HStack
+        gap={2}
+        padding={2}>
+        {valuesList.map((value) => (
+          <Badge
+            variant="outline"
+            borderRadius={2}
+            key={value}>
+            {value.replace("_", " ")}
+          </Badge>
+        ))}
+      </HStack>
       <CheckboxGroup
         colorScheme="pink"
         value={valuesList}>
@@ -38,9 +54,9 @@ const CheckboxGroupBox = ({ valuesList, options, setter }: CheckboxGroupBoxProps
               _hover={{ backgroundColor: "pink.800", borderColor: "purple.300" }}
               p={2}
               key={part[0]}
-              value={`(${part[0]}) ${part[1]}`}
-              onChange={updateValueList(valuesList, `(${part[0]}) ${part[1]}`)}>
-              <b>({part[0]})</b> {part[1]}
+              value={part[0]}
+              onChange={updateValueList(valuesList, part[0])}>
+              <b>( {part[0].replace("_", " ")} )</b> {part[1]}
             </Checkbox>
           ))}
         </SimpleGrid>
