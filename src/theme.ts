@@ -1,6 +1,5 @@
-import { extendTheme, filter, type ThemeConfig } from '@chakra-ui/react'
+import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
 import type { StyleFunctionProps } from '@chakra-ui/styled-system'
-import { b } from 'framer-motion/client'
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -126,13 +125,12 @@ const theme = extendTheme({ config }, {
     global: {
       // styles for the `body`
       body: {
+        bgImage: 'url("/images/RARR_Splash_BG.gif")',
         bg: 'gray.900',
         color: 'gray.400',
-        bgImage: 'url("/images/RARR_Splash.png")',
         bgSize: '100%',
-        backgroundBlendMode: 'multiply',
       }
-    }
+    },
   },
   components: {
     Heading: {
