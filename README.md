@@ -1,4 +1,4 @@
-# RARRecover:  React + TypeScript + Vite
+# RARRecover:  React + TypeScript + Chakra + Vite
 <img width="1215" alt="Screenshot 2025-02-17 at 3 41 32 PM" src="https://github.com/user-attachments/assets/ff9a389e-7d8a-433d-bc27-37416a89eb47" />
 
 ### Fictional 12 recovery program for monsters, with real tools for real recovery.
