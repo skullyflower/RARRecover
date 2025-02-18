@@ -127,7 +127,7 @@ const theme = extendTheme({ config }, {
       body: {
         bgImage: 'url("/images/RARR_Splash_BG.gif")',
         bg: 'gray.900',
-        color: 'gray.400',
+        color: 'gray.100',
         bgSize: '100%',
       }
     },
@@ -135,7 +135,7 @@ const theme = extendTheme({ config }, {
   components: {
     Heading: {
       baseStyle: {
-        color: 'purple.300'
+        color: 'purple.400'
       }
     },
     Button: {

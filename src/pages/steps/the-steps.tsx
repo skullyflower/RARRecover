@@ -19,7 +19,7 @@ const TheSteps = () => {
       </HStack>
       <Card
         bg="pink.900"
-        color="purple.200"
+        //color="purple.200"
         border={["none", "1px solid"]}
         p={8}>
         <OrderedList>

@@ -15,6 +15,7 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
+  SliderMark,
 } from "@chakra-ui/react";
 import { copyContents } from "@/bits/copyContents";
 import { OneStep, StepCheckList } from "./principles-constants";
@@ -57,76 +58,89 @@ const StepBox = ({ step, stepString, principle, opposite, value, onChange }: Ste
       bgColor={"blackAlpha.100"}
       borderRadius={6}
       p={2}>
-      <HStack
-        maxW={"70%"}
-        marginInline={"auto"}
-        justifyItems={"start"}
-        alignItems={"flex-start"}
-        gap={4}>
-        <Heading
-          minW="fit-content"
-          size={"md"}>
-          Step {step} :
-        </Heading>{" "}
-        <Box flexShrink={2}>{stepString}</Box>
-      </HStack>
-      <HStack gap={4}>
-        <Stack
-          gap={2}
-          textAlign={"center"}>
-          <Button
-            w="90%"
-            marginInline={"auto"}
-            padding={2}
-            m={2}
-            fontSize={20}
-            borderRadius={10}
-            colorScheme="green"
-            onClick={onChange({ ...value, percent: percent + 5 })}
-            textAlign="center">
-            {principle}
-          </Button>
-          <Text textAlign="center">{percent}%</Text>
-        </Stack>
-        <Slider
-          aria-label="slider-ex-5"
-          step={5}
-          value={percent}
-          onChange={(val) => onChange({ ...value, percent: val })()}>
-          <SliderTrack
-            backgroundColor="red.400"
-            w={3}>
-            <SliderFilledTrack backgroundColor="green.400" />
-          </SliderTrack>
-          <SliderThumb
-            w={6}
-            h={6}
-          />
-        </Slider>
-        <Stack
-          gap={2}
-          textAlign={"center"}>
-          <Button
-            w="90%"
-            marginInline={"auto"}
-            padding={2}
-            m={2}
-            fontSize={14}
-            borderRadius={10}
-            colorScheme="red"
-            onClick={onChange({ ...value, percent: percent - 5 })}
-            textAlign="center">
-            {opposite}
-          </Button>
-          <Text>{100 - percent}%</Text>
-        </Stack>
-      </HStack>
-      <Textarea
-        colorScheme="purple"
-        value={more}
-        onChange={({ target }) => onChange({ ...value, more: target.value })()}
-        placeholder="Tell me more..."
-      />
+      <Stack gap={4}>
+        <HStack
+          maxW={"70%"}
+          marginInline={"auto"}
+          justifyItems={"start"}
+          alignItems={"flex-start"}
+          gap={4}>
+          <Heading
+            minW="fit-content"
+            size={"md"}>
+            Step {step} :
+          </Heading>{" "}
+          <Box flexShrink={2}>{stepString}</Box>
+        </HStack>
+        <HStack gap={4}>
+          <Stack
+            gap={2}
+            textAlign={"center"}>
+            <Button
+              w="90%"
+              marginInline={"auto"}
+              padding={2}
+              m={2}
+              fontSize={20}
+              borderRadius={10}
+              colorScheme="green"
+              onClick={onChange({ ...value, percent: percent + 5 })}
+              textAlign="center">
+              {principle}
+            </Button>
+            <Text textAlign="center">{percent}%</Text>
+          </Stack>
+          <Slider
+            aria-label="slider-ex-5"
+            step={5}
+            value={percent}
+            onChange={(val) => onChange({ ...value, percent: val })()}>
+            <SliderMark
+              value={percent}
+              textAlign="center"
+              bg="purple.500"
+              color="white"
+              mt="-10"
+              ml="-3"
+              w="12">
+              {percent}%
+            </SliderMark>
+
+            <SliderTrack
+              backgroundColor="red.400"
+              w={3}>
+              <SliderFilledTrack backgroundColor="green.400" />
+            </SliderTrack>
+            <SliderThumb
+              w={6}
+              h={6}
+            />
+          </Slider>
+          <Stack
+            gap={2}
+            textAlign={"center"}>
+            <Button
+              w="90%"
+              marginInline={"auto"}
+              padding={2}
+              m={2}
+              fontSize={14}
+              borderRadius={10}
+              colorScheme="red"
+              onClick={onChange({ ...value, percent: percent - 5 })}
+              textAlign="center">
+              {opposite}
+            </Button>
+            <Text>{100 - percent}%</Text>
+          </Stack>
+        </HStack>
+        <Textarea
+          colorScheme="purple"
+          value={more}
+          onChange={({ target }) => onChange({ ...value, more: target.value })()}
+          placeholder="Tell me more..."
+        />
+      </Stack>
     </Box>
   );
 };

@@ -120,7 +120,7 @@ const ResentmentsForm = () => {
     <Box>
       <Card
         bg="pink.900"
-        color="purple.200"
+        //color="purple.200"
         border={["none", "1px solid"]}>
         <CardHeader>
           <HStack
