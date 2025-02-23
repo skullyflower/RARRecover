@@ -197,23 +197,17 @@ const SpotCheckForm = () => {
 
   return (
     <Stack gap={4}>
-      <Heading
-        textAlign="center"
-        as="h1"
-        size="xl">
-        So, how'd we do today?
-      </Heading>
       <HStack
-        justify="space-between"
+        align="center"
+        justify={"center"}
         gap={4}>
         <Heading
-          size="md"
-          as="span"
-          flex="1"
-          textAlign="left">
+          as="h2"
+          size="lg">
           The principles of the Steps
         </Heading>
         <ProgramDropDown />
+        <Text>So, how'd we do today?</Text>
       </HStack>
       <Box
         backgroundColor="blue.900"

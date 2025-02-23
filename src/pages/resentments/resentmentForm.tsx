@@ -117,23 +117,22 @@ const ResentmentsForm = () => {
   }
 
   return (
-    <Box>
+    <Stack gap={4}>
+      <HStack
+        align="center"
+        justify={"center"}
+        gap={4}>
+        <Heading
+          as="h2"
+          size="lg">
+          So, why don't you write about it?
+        </Heading>
+        <ProgramDropDown />
+      </HStack>
       <Card
         bg="pink.900"
         //color="purple.200"
         border={["none", "1px solid"]}>
-        <CardHeader>
-          <HStack
-            justify="space-between"
-            gap={4}>
-            <Heading
-              as="h2"
-              size="lg">
-              So, why don't you write about it?
-            </Heading>
-            <ProgramDropDown />
-          </HStack>
-        </CardHeader>
         <CardBody>
           <Stack gap={4}>
             <FormControl isRequired>
@@ -233,7 +232,7 @@ const ResentmentsForm = () => {
         isOpen={isNever}
         onClose={onNeverMind}
       />
-    </Box>
+    </Stack>
   );
 };
 export default ResentmentsForm;

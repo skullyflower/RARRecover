@@ -9,7 +9,7 @@ const Layout = () => {
       alignItems={"center"}>
       <Box
         w={["100%", "95%"]}
-        maxW={"1000px"}>
+        maxW={"900px"}>
         <header>
           <HStack
             w="90%"

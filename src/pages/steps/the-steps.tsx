@@ -7,8 +7,13 @@ const TheSteps = () => {
   const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions);
 
   return (
-    <Stack gap={4}>
-      <HStack gap={4}>
+    <Stack
+      gap={4}
+      width="100%">
+      <HStack
+        align={"center"}
+        justify={"center"}
+        gap={4}>
         <Heading
           textAlign="center"
           as="h1"
