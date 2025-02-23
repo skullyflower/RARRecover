@@ -29,7 +29,7 @@ function HomePage() {
             <Text>Real recovery for ficticious creatures.</Text>
           </Stack>
         </CardBody>
-      </Card>{" "}
+      </Card>
     </Stack>
   );
 }
