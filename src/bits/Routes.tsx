@@ -5,6 +5,7 @@ import ResentmentsForm from "../pages/resentments/resentmentForm";
 import SpotCheckForm from "../pages/principles/principles-form";
 import Stories from "@/pages/literature/stories";
 import TheSteps from "@/pages/steps/the-steps";
+import AcaTenthStep from "@/pages/acaTenthStep/aca-tenth-step";
 
 export default function SiteRoutes() {
   return (
@@ -19,6 +20,10 @@ export default function SiteRoutes() {
         <Route
           path="/inventory"
           element={<ResentmentsForm />}
+        />
+        <Route
+          path="/aca-tenth-step"
+          element={<AcaTenthStep />}
         />
         <Route
           path="/principles"

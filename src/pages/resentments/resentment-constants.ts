@@ -6,13 +6,14 @@ export enum affectsAA {
   GUILTY = "It's making me feel guilty.",
   PERSONAL_RELATIONSHIPS = "It's damaging my relationships, with friends, family, or coworkers.",
   SEXUAL_RELATIONSHIP = "It's threatening my romantic or sexual relationships.",
+  EGO = "It's threatening my ego, my sense of self.",
   AMBITION = "It's threatening my getting what I want, big like a career, or small like the last chocolate doughnut",
 }
 
 export enum myPartsAA {
   SELFISH = "Well, I was being a bit SELFISH. Thinking only about myself.",
   SELF_SEEKING = "I was SELF SEEKING. I tried to manipulate the situation to make it come out the way I wanted.",
-  DISHONEST_SELF = "I wasn't being totally honest, with myself.",
+  DENIAL = "I wasn't being totally honest, with myself.",
   DISHONEST_OTHERS = "I lied to get my way.",
   DISHONEST_WITHHOLDING = "I lied by omission, withholding the truth.",
   FRIEGHTENED = 'I reacted badly because I was afraid, or triggered. \nMaybe you yelled something like, "I hate you!!"',
@@ -38,12 +39,14 @@ enum affectsACA {
   SECURITY_PHYSICALLY = "It's making me feel unsafe emotionally physically.",
   SECURITY_FINANCIALLY = "It's making me feel unsafe financially.",
   SELF_ESTEEM = "It's making me feel bad about myself.",
+  EGO = "It's threatening my ego, my sense of self.",
   PERSONAL_RELATIONSHIPS = "It's damaging my relationships, with friends, family, or coworkers.",
   SEXUAL_RELATIONSHIP = "It's threatening my romantic or sexual relationships.",
   AMBITION = "It's threatening my getting what I want, big like a career, or small like the last chocolate doughnut",
 }
 
 enum myPartsACA {
+  DENIAL = "I wasn't being totally honest, with myself.",
   DONT_TRUST = "I didn't trust myself or that my Hight Power would take care of me, or I expected to be hurt, diregarded or betrayed by the other person.",
   DONT_TALK = "I didn't say what I needed to say. I didn't set a boundary, or I didn't ask for something I needed.",
   DONT_FEEL = "I stuffed or denied my feelings.",

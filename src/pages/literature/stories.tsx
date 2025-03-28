@@ -1,4 +1,4 @@
-import { Card, Heading, Image, Stack } from "@chakra-ui/react";
+import { Box, Card, Heading, Image, Stack } from "@chakra-ui/react";
 import images from "./list_file.json";
 
 const Stories = () => {
@@ -13,7 +13,7 @@ const Stories = () => {
         RARR Stories
       </Heading>
       <Card
-        bg="pink.900"
+        bg="whiteAlpha.300"
         color="purple.200"
         border={["none", "1px solid"]}>
         <Stack
@@ -21,24 +21,27 @@ const Stories = () => {
           p={4}>
           {stories.map(([key, story]) => {
             return (
-              <>
+              <Box
+                bg={"pink.900"}
+                key={key}
+                p={6}
+                borderRadius={6}>
                 {!seenTitles.includes(story.imgtitle) && seenTitles.push(story.imgtitle) && (
                   <Heading
                     textAlign="center"
                     as="h3"
                     size="lg"
-                    marginTop={4}>
+                    marginBlock={4}>
                     {story.imgtitle}
                   </Heading>
                 )}
                 <Image
-                  key={key}
                   width="1000px"
                   src={`/comics/${story.imgfile}`}
                   alt={story.imgtitle}
                   fallbackSrc="/images/rain.svg"
                 />
-              </>
+              </Box>
             );
           })}
         </Stack>

@@ -2,11 +2,14 @@ import { Checkbox, CheckboxGroup, Box, SimpleGrid, HStack, Badge } from "@chakra
 import { useEffect } from "react";
 
 interface CheckboxGroupBoxProps {
+  columns?: number;
   valuesList: string[];
-  options: Record<string, string>;
+  options: Record<string, string> | string[];
   setter: (newvalue: string[]) => void;
 }
-const CheckboxGroupBox = ({ valuesList, options, setter }: CheckboxGroupBoxProps) => {
+const CheckboxGroupBox = ({ columns, valuesList, options, setter }: CheckboxGroupBoxProps) => {
+  const optionsList = Array.isArray(options) ? options : Object.entries(options);
+
   const handleCBChange = (list: string[], value: string) => {
     return list.includes(value) ? list.filter((a) => a !== value) : [...list, value];
   };
@@ -28,7 +31,8 @@ const CheckboxGroupBox = ({ valuesList, options, setter }: CheckboxGroupBoxProps
       className="content">
       <HStack
         gap={2}
-        padding={2}>
+        padding={2}
+        wrap={"wrap"}>
         {valuesList.map((value) => (
           <Badge
             variant="outline"
@@ -42,9 +46,9 @@ const CheckboxGroupBox = ({ valuesList, options, setter }: CheckboxGroupBoxProps
         colorScheme="pink"
         value={valuesList}>
         <SimpleGrid
-          columns={{ sm: 1, md: 2 }}
+          columns={{ sm: 1, md: columns ?? 2 }}
           gap={4}>
-          {Object.entries(options).map((part) => (
+          {optionsList.map((part) => (
             <Checkbox
               //alignItems="start"
               border="1px solid"
@@ -53,10 +57,16 @@ const CheckboxGroupBox = ({ valuesList, options, setter }: CheckboxGroupBoxProps
               borderRadius={7}
               _hover={{ backgroundColor: "pink.800", borderColor: "purple.300" }}
               p={2}
-              key={part[0]}
-              value={part[0]}
-              onChange={updateValueList(valuesList, part[0])}>
-              <b>( {part[0].replace("_", " ")} )</b> {part[1]}
+              key={typeof part === "string" ? part : part[0]}
+              value={typeof part === "string" ? part : part[0]}
+              onChange={updateValueList(valuesList, typeof part === "string" ? part : part[0])}>
+              {typeof part === "string" ? (
+                part
+              ) : (
+                <>
+                  <b>( {part[0].replace("_", " ")} )</b> {part[1]}
+                </>
+              )}
             </Checkbox>
           ))}
         </SimpleGrid>

@@ -34,8 +34,8 @@ const NavBar = () => {
           text="resentments"
         />
         <NavItem
-          to="/principles"
-          text="principles"
+          to="/aca-tenth-step"
+          text="ACA 10th Step"
         />
         <NavItem
           to="literature"

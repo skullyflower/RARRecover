@@ -1,4 +1,4 @@
-import { Card, Heading, HStack, ListItem, OrderedList, Stack } from "@chakra-ui/react";
+import { Box, Card, Heading, HStack, ListItem, OrderedList, Stack } from "@chakra-ui/react";
 import { steps } from "./steps-constants";
 import useProgramDropDown from "@/bits/form/useProgramDropDown";
 
@@ -23,22 +23,27 @@ const TheSteps = () => {
         <ProgramDropDown />
       </HStack>
       <Card
-        bg="pink.900"
+        bg="whiteAlpha.300"
         //color="purple.200"
         border={["none", "1px solid"]}
         p={8}>
-        <OrderedList>
-          <Stack>
-            {steps[selectedProgram].map((step, idx) => (
-              <ListItem
-                key={idx}
-                maxW={700}
-                fontSize="xl">
-                {step}
-              </ListItem>
-            ))}
-          </Stack>
-        </OrderedList>
+        <Box
+          p={6}
+          borderRadius={6}
+          bg={"pink.900"}>
+          <OrderedList p={4}>
+            <Stack>
+              {steps[selectedProgram].map((step, idx) => (
+                <ListItem
+                  key={idx}
+                  maxW={700}
+                  fontSize="xl">
+                  {step}
+                </ListItem>
+              ))}
+            </Stack>
+          </OrderedList>
+        </Box>
       </Card>
     </Stack>
   );
