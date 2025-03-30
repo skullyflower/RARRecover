@@ -139,11 +139,8 @@ const theme = extendTheme({ config }, {
       }
     },
     Button: {
-      // 1. We can update the base styles
       baseStyle: {
-        fontWeight: 'bold', // Normally, it is "semibold"
-        bg: 'gray.600',
-        color: 'white'
+        color: 'purple.100',
       },
       // 3. We can add a new visual variant
       variants: {
@@ -152,16 +149,12 @@ const theme = extendTheme({ config }, {
           boxShadow: '0 0 2px 2px #efdfde',
         },
         solid: (props: StyleFunctionProps) => ({
+          color: props.colorMode === 'dark' ? 'purple.100' : 'purple.900',
           bg: props.colorMode === 'dark' ? 'purple.600' : 'purple.500',
         }),
-        sm: {
-          bg: 'purple.600',
-          fontSize: 'md',
-        },
       },
       defaultProps: {
         size: 'md', // default is md
-        variant: 'sm', // default is solid
         colorScheme: 'purple', // default is gray
       },
     },
