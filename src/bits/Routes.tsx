@@ -5,7 +5,7 @@ import ResentmentsForm from "../pages/resentments/resentmentForm";
 import SpotCheckForm from "../pages/principles/principles-form";
 import Stories from "@/pages/literature/stories";
 import TheSteps from "@/pages/steps/the-steps";
-import AcaTenthStep from "@/pages/acaTenthStep/aca-tenth-step";
+import AcaTenthStep from "@/pages/acaTenthStep/aca-tenth-step-page";
 
 export default function SiteRoutes() {
   return (

@@ -1,12 +1,13 @@
 import { Card, CardBody, HStack, Input, Select, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { feelings } from "./aca-tenth-constants";
+import CopyButton from "@/bits/form/copy-button";
 
 const FeelingsStatement = () => {
   const [when, setWhen] = useState<string>();
   const [feeling, setFeeling] = useState<string>("");
   const [because, setBecause] = useState<string>("");
-
+  const toCopy = `Today's Feeling Statement:\nI feel ${feeling} when ${when} because ${because}`;
   return (
     <Card
       bg="pink.900"
@@ -14,10 +15,20 @@ const FeelingsStatement = () => {
       border={["none", "1px solid"]}>
       <CardBody>
         <Stack gap={4}>
-          <Text>Practice a feeling statement.</Text>
+          <HStack justifyContent={"space-between"}>
+            <Text>Practice a feeling statement.</Text>
+            <CopyButton
+              text={toCopy}
+              disabled={!feeling || !when || !because}
+            />
+          </HStack>
+
           <Stack gap={4}>
-            <Text>I feel</Text>
-            <HStack gap={4}>
+            <HStack
+              gap={4}
+              wrap={"wrap"}>
+              <Text>I feel</Text>
+
               <Select
                 placeholder="Select a feeling"
                 transform={"capitalize"}

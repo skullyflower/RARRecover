@@ -1,10 +1,12 @@
 import CheckboxGroupBox from "@/bits/form/CheckBoxGroupBox";
-import { Card, CardBody, Stack, Text } from "@chakra-ui/react";
+import { Card, CardBody, HStack, Stack, Text } from "@chakra-ui/react";
 import { assets } from "./aca-tenth-constants";
 import { useState } from "react";
+import CopyButton from "@/bits/form/copy-button";
 
 const AssetsSection = () => {
   const [praise, setSetPraise] = useState<string[]>([]);
+  const toCopy = `Praise:\nToday I was: ${praise.join(", ")}`;
 
   return (
     <Card
@@ -13,8 +15,20 @@ const AssetsSection = () => {
       border={["none", "1px solid"]}>
       <CardBody>
         <Stack gap={4}>
-          <Text>
-            Select Your Assets, include those you are not sure about or would like to have.{" "}
+          <HStack justifyContent={"space-between"}>
+            <Text>
+              Select Your Assets, include those you are not sure about or would like to have.
+            </Text>
+            <CopyButton
+              text={toCopy}
+              disabled={praise.length === 0}
+            />
+          </HStack>
+          <Text
+            textAlign={"center"}
+            color={"red.200"}
+            size={"lg"}
+            fontWeight={"bold"}>
             {praise.length < 10 && "Select at least 10."}
           </Text>
           <CheckboxGroupBox

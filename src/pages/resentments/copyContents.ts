@@ -1,5 +1,6 @@
+import copyText from "@/bits/copyText";
+
 export const copyContents = () => () => {
-  const browser = navigator ?? new Navigator()
   const contentsDiv = document.getElementById("ToCopy");
   if (contentsDiv) {
     let stringtocopy = "";
@@ -20,11 +21,8 @@ export const copyContents = () => () => {
         stringtocopy = `${stringtocopy} ${node.textContent} \n\n`;
       }
     });
-    if (stringtocopy) {
-      browser.clipboard?.writeText(stringtocopy);
-      return true
-    }
+    copyText(stringtocopy);
+    return true
   }
-  return false
-
+  return false;
 };

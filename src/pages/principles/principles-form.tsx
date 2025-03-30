@@ -17,7 +17,7 @@ import {
   CardFooter,
   SliderMark,
 } from "@chakra-ui/react";
-import { copyContents } from "@/bits/copyContents";
+import { copyContents } from "@/pages/resentments/copyContents";
 import { OneStep, StepCheckList } from "./principles-constants";
 import { steps } from "../steps/steps-constants";
 import useProgramDropDown from "@/bits/form/useProgramDropDown";

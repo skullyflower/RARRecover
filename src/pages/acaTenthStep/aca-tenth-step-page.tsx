@@ -4,11 +4,13 @@ import ChoiceSection from "./choice-section";
 import ToolsUsedToday from "./tools-today";
 import FeelingsStatement from "./feelings-statement";
 import AssetsSection from "./assets-section";
-import AccordionSection from "@/bits/form/accordion-section";
+import AccordionSection from "@/bits/layout/accordion-section";
 
 const AcaTenthStep = () => {
   return (
-    <Stack gap={4}>
+    <Stack
+      gap={4}
+      width="100%">
       <Heading
         textAlign="center"
         as="h1"
@@ -17,14 +19,11 @@ const AcaTenthStep = () => {
       </Heading>
       <Card
         background={"whiteAlpha.300"}
-        width={"900px"}
         border={["none", "1px solid"]}>
         <CardBody>
           <Stack gap={4}>
-            <Text>Spiritual Principles: Honesty and Discernment</Text>
-            <Accordion
-              allowToggle={true}
-              defaultIndex={[0]}>
+            <Text textAlign={"center"}>Spiritual Principles: Honesty and Discernment</Text>
+            <Accordion allowToggle={true}>
               <Stack gap={2}>
                 <AccordionSection title="Exercise 1: Traits">
                   <TraitsSection />

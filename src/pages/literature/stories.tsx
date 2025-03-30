@@ -22,6 +22,7 @@ const Stories = () => {
           {stories.map(([key, story]) => {
             return (
               <Box
+                border={["none", "1px solid"]}
                 bg={"pink.900"}
                 key={key}
                 p={6}

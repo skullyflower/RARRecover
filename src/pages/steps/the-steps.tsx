@@ -28,6 +28,7 @@ const TheSteps = () => {
         border={["none", "1px solid"]}
         p={8}>
         <Box
+          border={["none", "1px solid"]}
           p={6}
           borderRadius={6}
           bg={"pink.900"}>

@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import ReactQuill from "react-quill";
-import { modules } from "./quillbits";
-import "./StyledTextImput.css";
+import { modules } from "@/bits/form/quillbits.ts";
+import "./StyledTextInput.css";
 
 interface StyledTextInputProps {
   value: string;

@@ -1,10 +1,10 @@
+import CopyButton from "@/bits/form/copy-button";
 import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   Card,
   CardBody,
-  Heading,
   HStack,
   Input,
   InputGroup,
@@ -15,12 +15,14 @@ import {
 import { useState } from "react";
 
 const ToolsUsedToday = () => {
-  const [partThreeValues, setPartThreeValues] = useState<string[]>([]);
-  const [oneThree, setOneThree] = useState<string>();
-  const addAthree = () => {
-    if (oneThree) {
-      setPartThreeValues([...partThreeValues, oneThree]);
-      setOneThree("");
+  const [listOfTools, setListOfTools] = useState<string[]>([]);
+  const [oneTool, setOneTool] = useState<string>();
+  const tocopy = `Recovery Tools just for today:\n${listOfTools.join(", ")}`;
+
+  const addTool = () => {
+    if (oneTool) {
+      setListOfTools([...listOfTools, oneTool]);
+      setOneTool("");
     }
   };
 
@@ -31,19 +33,20 @@ const ToolsUsedToday = () => {
       border={["none", "1px solid"]}>
       <CardBody>
         <Stack gap={4}>
-          <Heading
-            as="h3"
-            size="md">
-            Exercise 3: One Day at a Time Exercise
-          </Heading>
-          <Text>
-            What are the tools of recovery you are using to help you live life in the moment?
-          </Text>
+          <HStack justifyContent={"space-between"}>
+            <Text>
+              What are the tools of recovery you are using to help you live life in the moment?
+            </Text>
+            <CopyButton
+              text={tocopy}
+              disabled={listOfTools.length === 0}
+            />
+          </HStack>
           <Box
             borderRadius={6}
             p={4}>
             <Stack gap={2}>
-              {partThreeValues.map((value, index) => (
+              {listOfTools.map((value, index) => (
                 <HStack
                   key={index}
                   padding={2}
@@ -55,9 +58,7 @@ const ToolsUsedToday = () => {
                   <Text key={index}>{value}</Text>
                   <Button
                     size="xs"
-                    onClick={() =>
-                      setPartThreeValues(partThreeValues.filter((_, i) => i !== index))
-                    }>
+                    onClick={() => setListOfTools(listOfTools.filter((_, i) => i !== index))}>
                     <DeleteIcon />
                   </Button>
                 </HStack>
@@ -69,14 +70,14 @@ const ToolsUsedToday = () => {
               pr="4.5rem"
               type="text"
               placeholder="Describe a tool you used today"
-              onChange={(e) => setOneThree(e.target.value)}
-              value={oneThree}
+              onChange={(e) => setOneTool(e.target.value)}
+              value={oneTool}
             />
             <InputRightElement width="4.5rem">
               <Button
                 h="1.75rem"
                 size="sm"
-                onClick={addAthree}>
+                onClick={addTool}>
                 Add
               </Button>
             </InputRightElement>

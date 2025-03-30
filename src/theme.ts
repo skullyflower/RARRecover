@@ -135,7 +135,7 @@ const theme = extendTheme({ config }, {
   components: {
     Heading: {
       baseStyle: {
-        color: 'purple.400'
+        color: 'purple.300'
       }
     },
     Button: {

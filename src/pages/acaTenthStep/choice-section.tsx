@@ -2,6 +2,7 @@ import {
   Box,
   Card,
   CardBody,
+  HStack,
   Slider,
   SliderFilledTrack,
   SliderMark,
@@ -12,33 +13,35 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { choiceLevels } from "./aca-tenth-constants";
+import CopyButton from "@/bits/form/copy-button";
 
 const ChoiceSection = () => {
   const [freedomValue, setFreedomValue] = useState<number>(50);
-  const [freedomLevel, setFreedomLevel] = useState<string>("");
+  const [freedomText, setFreedomText] = useState<string>("");
+  const toCopy = `Choice:\nToday I was capable of: ${freedomText}`;
 
   const handleSelected = (value: number) => {
     setFreedomValue(value);
-    const stringValue =
-      value < choiceLevels["Some Choice"]
-        ? "Denial"
-        : value < choiceLevels["Greater Choice"]
-        ? "Some Choice"
-        : value < choiceLevels["Decernment"]
-        ? "Greater Choice"
-        : "Decernment";
-    setFreedomLevel(stringValue);
+    const combos = Object.entries(choiceLevels);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const stringValue = combos.find(([k, val]) => val === value)?.[0] || "";
+    setFreedomText(stringValue);
   };
   return (
     <Card
       bg="pink.900"
-      //color="purple.200"
       border={["none", "1px solid"]}>
       <CardBody>
         <Stack gap={4}>
-          <Text>
-            Where are you on the scale today, control wise? <b>{freedomLevel}</b>
-          </Text>
+          <HStack justifyContent={"space-between"}>
+            <Text>
+              Where are you on the scale today, control wise? <b>{freedomText}</b>
+            </Text>
+            <CopyButton
+              text={toCopy}
+              disabled={!freedomText}
+            />
+          </HStack>
           <Box
             bgColor={"blackAlpha.100"}
             borderRadius={6}

@@ -6,7 +6,7 @@ export enum affectsAA {
   GUILTY = "It's making me feel guilty.",
   PERSONAL_RELATIONSHIPS = "It's damaging my relationships, with friends, family, or coworkers.",
   SEXUAL_RELATIONSHIP = "It's threatening my romantic or sexual relationships.",
-  EGO = "It's threatening my ego, my sense of self.",
+  EGO = "It's threatening my ego, my sense of myself.",
   AMBITION = "It's threatening my getting what I want, big like a career, or small like the last chocolate doughnut",
 }
 
