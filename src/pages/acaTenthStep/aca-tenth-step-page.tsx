@@ -22,7 +22,17 @@ const AcaTenthStep = () => {
         border={["none", "1px solid"]}>
         <CardBody>
           <Stack gap={4}>
-            <Text textAlign={"center"}>Spiritual Principles: Honesty and Discernment</Text>
+            <Text
+              textAlign={"center"}
+              fontWeight={"bold"}>
+              Spiritual Principles: Honesty and Discernment
+            </Text>
+            <Text>
+              This is a tool for doing daily inventory. You can fill out all the sections, or just
+              the ones that speak to you. <br />
+              You can copy your answers, for each section, to send to your fellow traveller, sponsor
+              or for your journal.
+            </Text>
             <Accordion allowToggle={true}>
               <Stack gap={2}>
                 <AccordionSection title="Exercise 1: Traits">

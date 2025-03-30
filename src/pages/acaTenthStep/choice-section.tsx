@@ -23,8 +23,7 @@ const ChoiceSection = () => {
   const handleSelected = (value: number) => {
     setFreedomValue(value);
     const combos = Object.entries(choiceLevels);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const stringValue = combos.find(([k, val]) => val === value)?.[0] || "";
+    const stringValue = combos.find(([, val]) => val === value)?.[0] || "";
     setFreedomText(stringValue);
   };
   return (
