@@ -37,9 +37,9 @@ export enum choiceLevels {
 
 export const feelings = [
   "Abandoned", "Accepted", "Ambivalent", "Angry", "Ashamed", "Betrayed", "Confident", "Confused", "Content", "Disappointed", "Embarrassed", "Enthralled", "Excited", "Frustrated", "Fascinated", "Grateful", "Guilty", "Grief", "Humiliated", "Humorous",
-  "Hopeful", "Inspired", "Irritated", "Joyful", "Loving", "Loved", "Playfull", "Pleased", "Pleasure", "Rested", "Safe", "Satisfied", "Shame", "Serene", "Tenatious", "Trusted", "Thoughtful"
+  "Hopeful", "Inspired", "Irritated", "Joyful", "Loving", "Loved", "Playfull", "Pleased", "Pleasure", "Rested", "Safe", "Satisfied", "Shame", "Serene", "Tenacious", "Trusted", "Thoughtful"
 ];
 
 export const assets = [
-  'A Friend', 'A Listener', 'An ACA Member', 'Accepting', 'Compassionate', 'Courteous', 'Creative', 'Hard Working', 'Honest', 'Humorous', 'Intelligent', 'Judicious', 'Kind', 'Loving', 'Modest', 'Organized', 'Prompt', 'Sensitive', 'Spiritual', 'Strong', 'Talented', 'Tenatious', 'Trustworthy', 'Willing'
+  'A Friend', 'A Listener', 'An ACA Member', 'Accepting', 'Compassionate', 'Courteous', 'Creative', 'Hard Working', 'Honest', 'Humorous', 'Intelligent', 'Judicious', 'Kind', 'Loving', 'Modest', 'Organized', 'Prompt', 'Sensitive', 'Spiritual', 'Strong', 'Talented', 'Tenacious', 'Trustworthy', 'Willing'
 ];

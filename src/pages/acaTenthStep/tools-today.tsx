@@ -17,7 +17,7 @@ import { useState } from "react";
 const ToolsUsedToday = () => {
   const [listOfTools, setListOfTools] = useState<string[]>([]);
   const [oneTool, setOneTool] = useState<string>();
-  const tocopy = `Recovery Tools just for today:\n${listOfTools.join(", ")}`;
+  const tocopy = `Recovery Tools just for today:\n- ${listOfTools.join(", \n- ")}`;
 
   const addTool = () => {
     if (oneTool) {

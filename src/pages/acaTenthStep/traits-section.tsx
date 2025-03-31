@@ -14,10 +14,11 @@ const TraitsSection = () => {
       const answer = trait ? trait.A : "";
       TraitAs.push(answer);
     });
-    return TraitAs.join("\n ");
+    return TraitAs.join("\n- ");
   };
 
-  const tocopy = `Traits I had today:\n ${setAfromQ(traitQs)}`;
+  const tocopy = `Traits I had today:\n - ${setAfromQ(traitQs)}`;
+
   return (
     <Card
       bg="pink.900"

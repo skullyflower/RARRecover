@@ -6,7 +6,7 @@ import CopyButton from "@/bits/form/copy-button";
 
 const AssetsSection = () => {
   const [praise, setSetPraise] = useState<string[]>([]);
-  const toCopy = `Praise:\nToday I was: ${praise.join(", ")}`;
+  const toCopy = `Praise Today: \n I am ${praise.join(",\n I am ")}`;
 
   return (
     <Card
