@@ -12,19 +12,22 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import useKeyCapture from "@/bits/hooks/useKeyCapture";
 
 const ToolsUsedToday = () => {
   const [listOfTools, setListOfTools] = useState<string[]>([]);
   const [oneTool, setOneTool] = useState<string>();
   const tocopy = `Recovery Tools just for today:\n- ${listOfTools.join(", \n- ")}`;
 
-  const addTool = () => {
+  const addTool = useCallback(() => {
     if (oneTool) {
       setListOfTools([...listOfTools, oneTool]);
       setOneTool("");
     }
-  };
+  }, [oneTool, listOfTools]);
+
+  useKeyCapture("Enter", addTool);
 
   return (
     <Card
