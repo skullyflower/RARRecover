@@ -31,8 +31,8 @@ export enum choiceLevels {
   "Some Choice" = 33,
   "Between Some Choice and Greater Choice" = 49.5,
   "Greater Choice" = 66,
-  "Between Greater Choice and Decernment" = 82.5,
-  "Decernment" = 99
+  "Between Greater Choice and Discernment" = 82.5,
+  "Discernment" = 99
 }
 
 export const feelings = [

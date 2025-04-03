@@ -76,7 +76,7 @@ const ChoiceSection = () => {
                   mt="3"
                   ml="-3em"
                   fontSize="sm">
-                  Decernment
+                  Discernment
                 </SliderMark>{" "}
                 <SliderTrack
                   backgroundColor="red.400"
