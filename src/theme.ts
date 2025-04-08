@@ -119,7 +119,7 @@ const theme = extendTheme({ config }, {
   },
   fonts: {
     heading: `'Creepster', sans-serif`,
-    body: `'Voltaire', sans-serif`,
+    body: `'Underdog', sans-serif`,
   },
   styles: {
     global: {

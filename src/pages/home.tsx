@@ -1,4 +1,4 @@
-import { Card, CardBody, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Card, CardBody, Heading, HStack, Image, Stack, Text } from "@chakra-ui/react";
 
 function HomePage() {
   return (
@@ -17,15 +17,34 @@ function HomePage() {
         marginBlock={4}>
         <CardBody>
           <Stack
-            gap={2}
-            align={"center"}>
-            <Text>Tired of the angry crowds with pitchforks and torches?</Text>
-            <Text>Do mothers clutch their children when you walk by?</Text>
-            <Text>WE KNOW HOW YOU FEEL!</Text>
-            <Image
-              src="/images/RARR_Splash.png"
-              alt="Welcome Home"
-            />
+            spacing={4}
+            align="center">
+            <HStack
+              gap={2}
+              position={"relative"}
+              justifyContent="center"
+              width="100%">
+              <Box
+                backgroundColor="purple.300"
+                color={"pink.900"}
+                borderRadius="md"
+                padding={8}
+                width="400px"
+                textAlign="left"
+                position={"relative"}
+                left="50px"
+                top="100px"
+                fontSize={["lg", "xl"]}>
+                <Text>Tired of the angry crowds with pitchforks and torches?</Text>
+                <Text>Do mothers clutch their children when you walk by?</Text>
+                <Text>WE KNOW HOW YOU FEEL!</Text>
+              </Box>
+              <Image
+                src="/images/RARR_Splash.png"
+                alt="Welcome Home"
+                width={"65%"}
+              />
+            </HStack>
             <Text>Real recovery for ficticious creatures.</Text>
           </Stack>
         </CardBody>
