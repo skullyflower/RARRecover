@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Box, Center, Image, HStack, VStack, LinkBox } from "@chakra-ui/react";
+import { Box, Center, Image, VStack, LinkBox, Stack } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import NavBar from "../NavBar";
 const Layout = () => {
@@ -11,11 +11,13 @@ const Layout = () => {
         w={["100%", "95%"]}
         maxW={"900px"}>
         <header>
-          <HStack
-            w="90%"
-            justifyContent="space-between">
+          <Stack
+            direction={["column", "row"]}
+            paddingInline={4}
+            justifyContent="space-between"
+            alignItems={["center", "flex-start"]}>
             <LinkBox
-              width="100px"
+              width="120px"
               as={ReactRouterLink}
               to="/"
               p={2}>
@@ -25,7 +27,7 @@ const Layout = () => {
               />
             </LinkBox>
             <NavBar />
-          </HStack>
+          </Stack>
         </header>
         <Center>
           <Outlet />

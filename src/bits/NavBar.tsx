@@ -5,13 +5,15 @@ const NavItem = ({ text, to }: { text: string; to: string }) => {
   return (
     <LinkBox
       as={Link}
+      width={["100%", "auto"]}
       marginTop={2}
       paddingBlock={1}
       paddingInline={4}
       borderRadius={5}
       border="2px solid"
-      backgroundColor={useMatch(to) ? "purple.800" : ""}
+      backgroundColor={useMatch(to) ? "whiteAlpha.300" : ""}
       textTransform="uppercase"
+      _hover={{ cursor: "pointer", backgroundColor: "whiteAlpha.300" }}
       to={to}>
       {text}
     </LinkBox>
@@ -23,7 +25,7 @@ const NavBar = () => {
     <Box p={4}>
       <HStack
         wrap="wrap"
-        gap={4}
+        gap={2}
         justifyContent={"center"}>
         <NavItem
           to="steps"
