@@ -3,6 +3,8 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  Card,
+  CardBody,
   Heading,
   HStack,
 } from "@chakra-ui/react";
@@ -33,7 +35,14 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
           <AccordionIcon />
         </HStack>
       </AccordionButton>
-      <AccordionPanel>{children}</AccordionPanel>
+      <AccordionPanel>
+        <Card
+          bg="pink.900"
+          //color="purple.200"
+          border={["none", "1px solid"]}>
+          <CardBody>{children}</CardBody>
+        </Card>
+      </AccordionPanel>
     </AccordionItem>
   );
 };

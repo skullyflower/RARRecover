@@ -1,5 +1,5 @@
 import CheckboxGroupBox from "@/bits/form/CheckBoxGroupBox";
-import { Card, CardBody, HStack, Stack, Text } from "@chakra-ui/react";
+import { HStack, Stack, Text } from "@chakra-ui/react";
 import { useMemo, useState } from "react";
 import { traitList } from "./aca-tenth-constants";
 import CopyButton from "@/bits/form/copy-button";
@@ -20,27 +20,21 @@ const TraitsSection = () => {
   const tocopy = `Traits I had today:\n - ${setAfromQ(traitQs)}`;
 
   return (
-    <Card
-      bg="pink.900"
-      border={["none", "1px solid"]}>
-      <CardBody>
-        <Stack gap={4}>
-          <HStack justifyContent={"space-between"}>
-            <Text>Select the ones that apply today.</Text>
-            <CopyButton
-              text={tocopy}
-              disabled={traitQs.length === 0}
-            />
-          </HStack>
-          <CheckboxGroupBox
-            columns={1}
-            valuesList={traitQs}
-            options={allquestions}
-            setter={setTraitQs}
-          />
-        </Stack>
-      </CardBody>
-    </Card>
+    <Stack gap={4}>
+      <HStack justifyContent={"space-between"}>
+        <Text>Select the ones that apply today.</Text>
+        <CopyButton
+          text={tocopy}
+          disabled={traitQs.length === 0}
+        />
+      </HStack>
+      <CheckboxGroupBox
+        columns={1}
+        valuesList={traitQs}
+        options={allquestions}
+        setter={setTraitQs}
+      />
+    </Stack>
   );
 };
 export default TraitsSection;

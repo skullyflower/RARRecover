@@ -1,11 +1,9 @@
 import {
+  Accordion,
   Box,
   Button,
   Card,
-  CardBody,
-  CardFooter,
   FormControl,
-  FormLabel,
   Heading,
   HStack,
   Input,
@@ -20,6 +18,7 @@ import NeverLetGo from "@/bits/form/never-let-go";
 import { affects, myParts, sucesses } from "@/pages/resentments/resentment-constants";
 import useProgramDropDown from "@/bits/form/useProgramDropDown";
 import ResentBeGone from "./resentment-be-gone";
+import AccordionSection from "@/bits/layout/accordion-section";
 const programOptions = Object.keys(affects);
 
 const ResentmentsForm = () => {
@@ -73,148 +72,115 @@ const ResentmentsForm = () => {
         <Heading
           as="h2"
           size="lg">
-          So, why don't you write about it?
+          Anger is a wierd thing.
         </Heading>
         <ProgramDropDown />
       </HStack>
       <Card
         bg="whiteAlpha.300"
         border={["none", "1px solid"]}>
-        <CardBody>
-          <Stack gap={4}>
-            <Card
-              bg="pink.900"
-              border={["none", "1px solid"]}>
-              <CardBody>
-                <Stack gap={4}>
-                  <FormControl isRequired>
-                    <FormLabel fontWeight={700}>Who or what is bothering you?</FormLabel>
-                    <Input
-                      _focus={{ borderColor: "purple.200" }}
-                      name="Iresent"
-                      type="text"
-                      value={Iresent}
-                      placeholder="I resent..."
-                      onChange={(e) => setIresent(e.target.value)}
-                      maxLength={30}
-                    />
-                  </FormControl>
-                </Stack>
-              </CardBody>
-            </Card>
-            <Card
-              bg="pink.900"
-              border={["none", "1px solid"]}>
-              <CardBody>
-                <Stack gap={4}>
-                  <FormControl isRequired>
-                    <FormLabel fontWeight={700}>And why? What did they do? Not do?:</FormLabel>
-                    <StyledTextInput
-                      value={because}
-                      setter={setBecause}
-                    />
-                  </FormControl>
-                </Stack>
-              </CardBody>
-            </Card>
-            <Card
-              bg="pink.900"
-              border={["none", "1px solid"]}>
-              <CardBody>
-                <Stack gap={4}>
-                  <FormControl isRequired>
-                    <FormLabel fontWeight={700}>
-                      How did it affect you? What did it threaten.
-                    </FormLabel>
-                    <CheckboxGroupBox
-                      valuesList={affectsMy}
-                      options={affects[selectedProgram as keyof typeof affects]}
-                      setter={setAffectsMy}
-                    />
-                  </FormControl>
-                </Stack>
-              </CardBody>
-            </Card>
-            <Card
-              bg="pink.900"
-              border={["none", "1px solid"]}>
-              <CardBody>
-                <Stack gap={4}>
-                  <FormControl isRequired>
-                    <FormLabel fontWeight={700}>
-                      Now really, what part did you play in all of this?
-                    </FormLabel>
-                    <CheckboxGroupBox
-                      valuesList={myPart}
-                      options={myParts[selectedProgram as keyof typeof myParts]}
-                      setter={setMyPart}
-                    />
-                  </FormControl>
-                </Stack>
-              </CardBody>
-            </Card>
-            <Card
-              bg="pink.900"
-              border={["none", "1px solid"]}>
-              <CardBody>
-                <Stack gap={4}>
-                  <FormControl isRequired>
-                    <FormLabel fontWeight={700}>What did you do well?</FormLabel>
-                    <CheckboxGroupBox
-                      valuesList={didWell}
-                      options={sucesses[selectedProgram as keyof typeof sucesses]}
-                      setter={setDidWell}
-                    />
-                  </FormControl>
-                </Stack>
-              </CardBody>
-            </Card>
-            <Card
-              bg="pink.900"
-              border={["none", "1px solid"]}>
-              <CardBody>
-                <Stack gap={4}>
-                  <Heading
-                    as="h3"
-                    size="md">
-                    Do you see the situation differently now?
-                  </Heading>
-                  <FormControl isRequired>
-                    <FormLabel fontWeight={700}>
-                      What might you have done differently? What might make things better? What did
-                      you do right?
-                    </FormLabel>
-                    <StyledTextInput
-                      value={learned}
-                      setter={setLearned}
-                    />
-                  </FormControl>
-                  <Heading textAlign="center">Are you ready to let it go?</Heading>
-                </Stack>
-              </CardBody>
-              <CardFooter>
-                <Stack
-                  width="100%"
-                  direction="row"
-                  gap={4}
-                  justifyContent="center">
-                  <Button
-                    isDisabled={incomplete}
-                    colorScheme="purple"
-                    name="letGo"
-                    onClick={letItGo}>
-                    Be Free!
-                  </Button>{" "}
-                  <Button
-                    colorScheme="purple"
-                    onClick={neverLetItGo}>
-                    NEVER!!
-                  </Button>
-                </Stack>
-              </CardFooter>
-            </Card>
+        <Box padding={4}>
+          <Text
+            textAlign={"center"}
+            fontWeight={"bold"}
+            fontSize="lg"
+            marginBlock={4}>
+            {`So, why don't you write about it?`}
+          </Text>
+
+          <Text>
+            We feel that someone or something has wronged us. We feel they should be punished or
+            stopped.
+          </Text>
+          <Text>
+            And yet, most of the time, we do nothing but punish ourselves with our angry thoughts.
+          </Text>
+          <Text>
+            It is <i>we</i> who suffer, not the wrong doer, from our anger.
+          </Text>
+        </Box>
+        <Accordion allowToggle={true}>
+          <Stack
+            gap={2}
+            padding={4}>
+            <AccordionSection title="Who or what is bothering you?">
+              <Stack gap={4}>
+                <FormControl isRequired>
+                  <Input
+                    _focus={{ borderColor: "purple.200" }}
+                    name="Iresent"
+                    type="text"
+                    value={Iresent}
+                    placeholder="I resent..."
+                    onChange={(e) => setIresent(e.target.value)}
+                    maxLength={30}
+                  />
+                </FormControl>
+              </Stack>
+            </AccordionSection>
+            <AccordionSection title="And why? What did they do? Not do?">
+              <FormControl isRequired>
+                <StyledTextInput
+                  value={because}
+                  setter={setBecause}
+                />
+              </FormControl>
+            </AccordionSection>
+            <AccordionSection title="How did it affect you? What did it threaten?">
+              <FormControl isRequired>
+                <CheckboxGroupBox
+                  valuesList={affectsMy}
+                  options={affects[selectedProgram as keyof typeof affects]}
+                  setter={setAffectsMy}
+                />
+              </FormControl>
+            </AccordionSection>
+            <AccordionSection title="What part did you play in this?">
+              <FormControl isRequired>
+                <CheckboxGroupBox
+                  valuesList={myPart}
+                  options={myParts[selectedProgram as keyof typeof myParts]}
+                  setter={setMyPart}
+                />
+              </FormControl>
+            </AccordionSection>
+            <AccordionSection title="What did you do well?">
+              <FormControl isRequired>
+                <CheckboxGroupBox
+                  valuesList={didWell}
+                  options={sucesses[selectedProgram as keyof typeof sucesses]}
+                  setter={setDidWell}
+                />
+              </FormControl>
+            </AccordionSection>
+            <AccordionSection title="Do you see the situation differently now?">
+              <FormControl isRequired>
+                <StyledTextInput
+                  value={learned}
+                  setter={setLearned}
+                />
+              </FormControl>
+            </AccordionSection>
+            <Stack
+              width="100%"
+              direction="row"
+              gap={4}
+              justifyContent="center">
+              <Button
+                isDisabled={incomplete}
+                colorScheme="purple"
+                name="letGo"
+                onClick={letItGo}>
+                Be Free!
+              </Button>{" "}
+              <Button
+                colorScheme="purple"
+                onClick={neverLetItGo}>
+                NEVER!!
+              </Button>
+            </Stack>
           </Stack>
-        </CardBody>
+        </Accordion>
       </Card>
       <Box p={4}>
         <Text>
