@@ -135,7 +135,8 @@ const theme = extendTheme({ config }, {
   components: {
     Heading: {
       baseStyle: {
-        color: 'purple.300'
+        color: 'purple.300',
+        weight: 'normal',
       }
     },
     Button: {
@@ -158,7 +159,74 @@ const theme = extendTheme({ config }, {
         colorScheme: 'purple', // default is gray
       },
     },
-  },
+    InputGroup: {
+      defaultProps: {
+        colorScheme: 'purple', // default is gray
+        _focus: {
+          outline: 'none',
+          boxShadow: 'none',
+          borderColor: 'purple.200'
+        },
+        _focusVisible: {
+          outline: 'none',
+          boxShadow: 'none',
+          borderColor: 'purple.200'
+        }
+      },
+      baseStyle: {
+        field: {
+          color: 'purple.200',
+        }
+      }
+    },
+    Input: {
+      baseStyle: {
+        field: {
+          color: 'purple.200',
+          _placeholder: {
+            color: 'pink.700'
+          },
+          _focus: {
+            outline: 'none',
+            borderColor: 'purple.300',
+            backgroundColor: 'pink.800'
+          },
+          _focusVisible: {
+            outline: 'none',
+            borderColor: 'purple.300',
+            boxShadow: 'none'
+          },
+          _hover: {
+            borderColor: 'purple.300'
+          }
+        },
+        defaultProps: {
+          colorScheme: 'purple',
+        }
+      }
+    },
+    Select: {
+      defaultProps: {
+        colorScheme: 'purple'
+      },
+      baseStyle: {
+        field: {
+          _focus: {
+            outline: 'none',
+            borderColor: 'purple.200',
+            backgroundColor: 'pink.800'
+          },
+          _forcusVisible: {
+            backgroundColor: 'pink.800',
+            borderColor: 'purple.200',
+            outline: 'none',
+            boxShadow: 'none'
+          }
+        }
+      }
+    }
+
+  }
 })
 
 export default theme

@@ -6,9 +6,11 @@ const NavItem = ({ text, to }: { text: string; to: string }) => {
     <LinkBox
       as={Link}
       width={["100%", "auto"]}
-      marginTop={2}
+      fontSize={"sm"}
+      fontWeight={"bold"}
+      lineHeight={1}
       paddingBlock={1}
-      paddingInline={4}
+      paddingInline={2}
       borderRadius={5}
       border="2px solid"
       backgroundColor={useMatch(to) ? "whiteAlpha.300" : ""}
@@ -38,6 +40,10 @@ const NavBar = () => {
         <NavItem
           to="/aca-tenth-step"
           text="ACA 10th Step"
+        />
+        <NavItem
+          to="serenity"
+          text="serenity check-in"
         />
         <NavItem
           to="literature"

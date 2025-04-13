@@ -20,7 +20,14 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
       <AccordionButton
         color={"purple.300"}
         backgroundColor={"pink.900"}
-        _hover={{ backgroundColor: "pink.600", color: "orange.900", borderColor: "white" }}
+        _expanded={{
+          backgroundColor: "pink.800",
+          borderColor: "purple.300",
+        }}
+        _hover={{
+          backgroundColor: "pink.800",
+          borderColor: "purple.300",
+        }}
         borderRadius={6}
         border={"1px solid"}>
         <HStack
@@ -29,6 +36,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
           <Heading
             color="inherit"
             as="h3"
+            fontWeight={"normal"}
             size="md">
             {title}
           </Heading>
@@ -38,8 +46,9 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
       <AccordionPanel>
         <Card
           bg="pink.900"
-          //color="purple.200"
-          border={["none", "1px solid"]}>
+          borderStyle={"solid"}
+          borderWidth={1}
+          borderColor="purple.300">
           <CardBody>{children}</CardBody>
         </Card>
       </AccordionPanel>

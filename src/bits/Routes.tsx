@@ -6,6 +6,7 @@ import SpotCheckForm from "../pages/principles/principles-form";
 import Stories from "@/pages/literature/stories";
 import TheSteps from "@/pages/steps/the-steps";
 import AcaTenthStep from "@/pages/acaTenthStep/aca-tenth-step-page";
+import SerenityCheckIn from "@/pages/serenityCheckIn/serenityCheckInPage";
 
 export default function SiteRoutes() {
   return (
@@ -28,6 +29,10 @@ export default function SiteRoutes() {
         <Route
           path="/principles"
           element={<SpotCheckForm />}
+        />
+        <Route
+          path="/serenity"
+          element={<SerenityCheckIn />}
         />
         <Route
           path="/Literature"

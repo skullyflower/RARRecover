@@ -107,7 +107,6 @@ const ResentmentsForm = () => {
               <Stack gap={4}>
                 <FormControl isRequired>
                   <Input
-                    _focus={{ borderColor: "purple.200" }}
                     name="Iresent"
                     type="text"
                     value={Iresent}

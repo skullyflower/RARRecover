@@ -16,7 +16,11 @@ const StyledTextInput = ({ value, setter }: StyledTextInputProps) => {
       borderWidth={1}
       borderStyle="solid"
       borderRadius={5}
-      _focusWithin={{ outline: "2px solid" }}
+      _focusWithin={{
+        outline: "1px solid",
+        outlineColor: "purple.300",
+        backgroundColor: "pink.800",
+      }}
       className="content">
       <ReactQuill
         theme="snow"

@@ -27,18 +27,21 @@ const ChoiceSection = () => {
   return (
     <Stack gap={4}>
       <HStack justifyContent={"space-between"}>
-        <Text>
-          Where are you on the scale today, control wise? <b>{freedomText}</b>
-        </Text>
+        <Text>Where are you on the scale today, control wise?</Text>
         <CopyButton
           text={toCopy}
           disabled={!freedomText}
         />
       </HStack>
+      <Text
+        fontWeight={"bold"}
+        textAlign={"center"}>
+        {freedomText}
+      </Text>
       <Box
         bgColor={"blackAlpha.100"}
         borderRadius={6}
-        padding={4}>
+        padding={8}>
         <Stack gap={4}>
           <Slider
             aria-label="slider-ex-5"
@@ -52,6 +55,7 @@ const ChoiceSection = () => {
               Denial
             </SliderMark>
             <SliderMark
+              display={{ base: "none", md: "block" }}
               value={33}
               mt="3"
               ml="-1em"
@@ -59,6 +63,7 @@ const ChoiceSection = () => {
               Some Choice
             </SliderMark>
             <SliderMark
+              display={{ base: "none", md: "block" }}
               value={66}
               mt="3"
               ml="-1.5em"
