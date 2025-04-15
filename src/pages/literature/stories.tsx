@@ -18,6 +18,7 @@ const Stories = () => {
         border={["none", "1px solid"]}>
         <Stack
           gap={4}
+          align={"center"}
           p={4}>
           {stories.map(([key, story]) => {
             return (
@@ -36,8 +37,9 @@ const Stories = () => {
                     {story.imgtitle}
                   </Heading>
                 )}
+
                 <Image
-                  width="1000px"
+                  width={story.wide ? "1000px" : "500px"}
                   src={`/comics/${story.imgfile}`}
                   alt={story.imgtitle}
                   fallbackSrc="/images/rain.svg"

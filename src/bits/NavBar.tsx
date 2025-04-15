@@ -1,4 +1,5 @@
-import { Box, HStack, LinkBox } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
+import { Box, Button, HStack, LinkBox, Menu, MenuButton, MenuList, Stack } from "@chakra-ui/react";
 import { Link, useMatch } from "react-router-dom";
 
 const NavItem = ({ text, to }: { text: string; to: string }) => {
@@ -22,6 +23,55 @@ const NavItem = ({ text, to }: { text: string; to: string }) => {
   );
 };
 
+const MenuDDropDown = () => {
+  return (
+    <Menu>
+      {({ isOpen }) => (
+        <>
+          <MenuButton
+            as={Button}
+            variant={"outline"}
+            width={["100%", "auto"]}
+            fontSize={"sm"}
+            fontWeight={"bold"}
+            lineHeight={1}
+            paddingBlock={1}
+            paddingInline={2}
+            backgroundColor={isOpen ? "whiteAlpha.300" : "whiteAlpha.100"}
+            textTransform="uppercase"
+            borderRadius={5}
+            border="2px solid"
+            rightIcon={<ChevronDownIcon />}>
+            Daily Inventories
+          </MenuButton>
+          <MenuList
+            background={"gray.900"}
+            padding={2}
+            border={0}>
+            <Stack
+              direction={["column", "row"]}
+              gap={2}
+              justifyContent={"center"}>
+              <NavItem
+                to="/inventory"
+                text="People troubles"
+              />
+              <NavItem
+                to="/aca-tenth-step"
+                text="Self Care"
+              />
+              <NavItem
+                to="serenity"
+                text="Serenity"
+              />
+            </Stack>
+          </MenuList>
+        </>
+      )}
+    </Menu>
+  );
+};
+
 const NavBar = () => {
   return (
     <Box p={4}>
@@ -29,21 +79,10 @@ const NavBar = () => {
         wrap="wrap"
         gap={2}
         justifyContent={"center"}>
+        <MenuDDropDown />
         <NavItem
           to="steps"
           text="The Steps"
-        />
-        <NavItem
-          to="/inventory"
-          text="resentments"
-        />
-        <NavItem
-          to="/aca-tenth-step"
-          text="ACA 10th Step"
-        />
-        <NavItem
-          to="serenity"
-          text="serenity check-in"
         />
         <NavItem
           to="literature"

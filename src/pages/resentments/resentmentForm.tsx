@@ -15,7 +15,7 @@ import StyledTextInput from "../../bits/form/styledTextInput/StyledTextInput";
 import CheckboxGroupBox from "../../bits/form/CheckBoxGroupBox";
 import { useState } from "react";
 import NeverLetGo from "@/bits/form/never-let-go";
-import { affects, myParts, sucesses } from "@/pages/resentments/resentment-constants";
+import { affects, myParts, successes, strings } from "@/pages/resentments/resentment-constants";
 import useProgramDropDown from "@/bits/form/useProgramDropDown";
 import ResentBeGone from "./resentment-be-gone";
 import AccordionSection from "@/bits/layout/accordion-section";
@@ -72,7 +72,7 @@ const ResentmentsForm = () => {
         <Heading
           as="h2"
           size="lg">
-          Anger is a wierd thing.
+          {strings[selectedProgram as keyof typeof strings].title}
         </Heading>
         <ProgramDropDown />
       </HStack>
@@ -80,23 +80,15 @@ const ResentmentsForm = () => {
         bg="whiteAlpha.300"
         border={["none", "1px solid"]}>
         <Box padding={4}>
+          {strings[selectedProgram as keyof typeof strings].intro.map((line, index) => (
+            <Text key={index}>{line}</Text>
+          ))}
           <Text
             textAlign={"center"}
             fontWeight={"bold"}
             fontSize="lg"
             marginBlock={4}>
             {`So, why don't you write about it?`}
-          </Text>
-
-          <Text>
-            We feel that someone or something has wronged us. We feel they should be punished or
-            stopped.
-          </Text>
-          <Text>
-            And yet, most of the time, we do nothing but punish ourselves with our angry thoughts.
-          </Text>
-          <Text>
-            It is <i>we</i> who suffer, not the wrong doer, from our anger.
           </Text>
         </Box>
         <Accordion allowToggle={true}>
@@ -110,7 +102,7 @@ const ResentmentsForm = () => {
                     name="Iresent"
                     type="text"
                     value={Iresent}
-                    placeholder="I resent..."
+                    placeholder=""
                     onChange={(e) => setIresent(e.target.value)}
                     maxLength={30}
                   />
@@ -147,7 +139,7 @@ const ResentmentsForm = () => {
               <FormControl isRequired>
                 <CheckboxGroupBox
                   valuesList={didWell}
-                  options={sucesses[selectedProgram as keyof typeof sucesses]}
+                  options={successes[selectedProgram as keyof typeof successes]}
                   setter={setDidWell}
                 />
               </FormControl>

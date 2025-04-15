@@ -4,7 +4,7 @@ import useProgramDropDown from "@/bits/form/useProgramDropDown";
 
 const programOptions = Object.keys(steps);
 const TheSteps = () => {
-  const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions);
+  const { selectedProgram } = useProgramDropDown(programOptions);
 
   return (
     <Stack
@@ -18,9 +18,8 @@ const TheSteps = () => {
           textAlign="center"
           as="h1"
           size="xl">
-          The 12 Steps of
+          The 12 Steps of RARR
         </Heading>
-        <ProgramDropDown />
       </HStack>
       <Card
         bg="whiteAlpha.300"
