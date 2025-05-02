@@ -1,4 +1,4 @@
-import { copyContents } from "@/pages/resentments/copyContents";
+import { getContents } from "@/pages/resentments/copyContents";
 import ReadyToLetGo from "@/bits/form/ready-to-let-go";
 import SemiSafeContent from "@/bits/SemiSafeContent";
 import {
@@ -14,7 +14,7 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import CopyButton from "@/bits/form/copy-button";
 
 interface ResentBeGoneProps {
   Iresent: string;
@@ -38,9 +38,11 @@ const ResentBeGone = ({
   isLettingGo,
   onCloseLetGo,
 }: ResentBeGoneProps) => {
-  const [copied, setCopied] = useState(false);
+  const stringToWrite = getContents();
+
   return (
     <Card
+      width={"100%"}
       bg="whiteAlpha.300"
       border={["none", "1px solid"]}>
       <CardBody>
@@ -54,9 +56,17 @@ const ResentBeGone = ({
           <CardHeader>
             <HStack justifyContent="space-between">
               <Text>Here is what you wrote.</Text>
-              <Button onClick={() => setCopied(copyContents())}>
-                {copied ? "copied" : "copy"}
-              </Button>
+              <CopyButton
+                text={stringToWrite}
+                disabled={
+                  !Iresent ||
+                  !because ||
+                  !affectsMy.length ||
+                  !myPart.length ||
+                  !didWell.length ||
+                  !learned
+                }
+              />
             </HStack>
           </CardHeader>
           <CardBody border="1px solid">

@@ -1,7 +1,4 @@
-import { Box } from "@chakra-ui/react";
-import ReactQuill from "react-quill";
-import { modules } from "@/bits/form/quillbits.ts";
-import "./StyledTextInput.css";
+import { Box, Textarea } from "@chakra-ui/react";
 
 interface StyledTextInputProps {
   value: string;
@@ -16,17 +13,10 @@ const StyledTextInput = ({ value, setter }: StyledTextInputProps) => {
       borderWidth={1}
       borderStyle="solid"
       borderRadius={5}
-      _focusWithin={{
-        outline: "1px solid",
-        outlineColor: "purple.300",
-        backgroundColor: "pink.800",
-      }}
       className="content">
-      <ReactQuill
-        theme="snow"
-        modules={modules}
+      <Textarea
         value={value}
-        onChange={(value) => setter(value)}
+        onChange={(ev) => setter(ev.target.value)}
       />
     </Box>
   );

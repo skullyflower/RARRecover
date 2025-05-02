@@ -1,28 +1,38 @@
 import copyText from "@/bits/copyText";
 
-export const copyContents = () => () => {
-  const contentsDiv = document.getElementById("ToCopy");
+export function getContents(): string {
+  const contentsDiv = document.getElementById('ToCopy')
+  let stringtocopy = ''
+
   if (contentsDiv) {
-    let stringtocopy = "";
     contentsDiv.childNodes.forEach((node) => {
       if (node.childNodes.length) {
         node.childNodes.forEach((n) => {
           if (n.childNodes.length) {
             n.childNodes.forEach(
               (n2) =>
-              (stringtocopy = `${stringtocopy} ${n2.nodeName === "LI" ? "- " : ""}  ${n2.textContent
-                } \n`),
-            );
+              (stringtocopy = `${stringtocopy} ${n2.nodeName === 'LI' ? '- ' : ''}  ${n2.textContent
+                } \n`)
+            )
           } else {
-            stringtocopy = `${stringtocopy} ${n.textContent} \n`;
+            stringtocopy = `${stringtocopy} ${n.textContent} \n`
           }
-        });
+        })
       } else {
-        stringtocopy = `${stringtocopy} ${node.textContent} \n\n`;
+        stringtocopy = `${stringtocopy} ${node.textContent} \n\n`
       }
-    });
-    copyText(stringtocopy);
-    return true
+    })
   }
-  return false;
-};
+  return stringtocopy
+}
+
+export function copyContents(): () => boolean {
+  return () => {
+    const stringtocopy = getContents()
+    if (stringtocopy.length > 0) {
+      copyText(stringtocopy)
+      return true
+    }
+    return false
+  }
+}

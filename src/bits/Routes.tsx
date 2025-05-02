@@ -7,6 +7,7 @@ import Stories from "@/pages/literature/stories";
 import TheSteps from "@/pages/steps/the-steps";
 import AcaTenthStep from "@/pages/acaTenthStep/aca-tenth-step-page";
 import SerenityCheckIn from "@/pages/serenityCheckIn/serenityCheckInPage";
+import Fears from "@/pages/fears/fears";
 
 export default function SiteRoutes() {
   return (
@@ -33,6 +34,10 @@ export default function SiteRoutes() {
         <Route
           path="/serenity"
           element={<SerenityCheckIn />}
+        />
+        <Route
+          path="/fears"
+          element={<Fears />}
         />
         <Route
           path="/Literature"

@@ -54,7 +54,7 @@ const MenuDDropDown = () => {
               justifyContent={"center"}>
               <NavItem
                 to="/inventory"
-                text="People troubles"
+                text="Troubles"
               />
               <NavItem
                 to="/aca-tenth-step"
@@ -63,6 +63,10 @@ const MenuDDropDown = () => {
               <NavItem
                 to="serenity"
                 text="Serenity"
+              />
+              <NavItem
+                to="fears"
+                text="Fears"
               />
             </Stack>
           </MenuList>

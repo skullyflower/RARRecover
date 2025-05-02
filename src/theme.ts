@@ -184,7 +184,7 @@ const theme = extendTheme({ config }, {
         field: {
           color: 'purple.200',
           _placeholder: {
-            color: 'pink.700'
+            color: 'pink.500'
           },
           _focus: {
             outline: 'none',
@@ -204,6 +204,31 @@ const theme = extendTheme({ config }, {
           colorScheme: 'purple',
         }
       }
+    },
+    Textarea: {
+      baseStyle: {
+        color: 'purple.200',
+        _placeholder: {
+          color: 'pink.700'
+        },
+        _focus: {
+          outline: 'none',
+          borderColor: 'purple.300',
+          backgroundColor: 'pink.800'
+        },
+        _focusVisible: {
+          outline: 'none',
+          borderColor: 'purple.300',
+          boxShadow: 'none'
+        },
+        _hover: {
+          borderColor: 'purple.300'
+        }
+      },
+      defaultProps: {
+        colorScheme: 'purple',
+      }
+
     },
     Select: {
       defaultProps: {

@@ -1,5 +1,5 @@
 import { CheckIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import { Button, HStack, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Box, Button, HStack, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 
 import { useState } from "react";
 
@@ -20,7 +20,7 @@ const useProgramDropDown = (programOptions: string[]) => {
           <MenuList bgColor={"purple.600"}>
             {programOptions.map((program) => (
               <MenuItem
-                icon={selectedProgram === program ? <CheckIcon /> : undefined}
+                icon={selectedProgram === program ? <CheckIcon /> : <Box padding={2} />}
                 bgColor={"purple.600"}
                 _hover={{ bg: "purple.800" }}
                 onClick={() => setSelectedProgram(program)}>

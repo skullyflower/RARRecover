@@ -4,43 +4,45 @@ import { useState } from "react";
 import AccordionSection from "@/bits/layout/accordion-section";
 import DoubleListerInput, { doubleListItem } from "@/bits/form/DoubleListerInput";
 
-function SerenityCheckIn(): JSX.Element {
-  const [canCannotControl, setCanCannotControl] = useState<doubleListItem[]>([]);
+function Fears(): JSX.Element {
+  const [fearsList, setFearsList] = useState<doubleListItem[]>([]);
 
-  const tocopy = `Serenity Check-In:
-${canCannotControl
-  .map((pair) => {
-    return `• Today I want to control, but cannot control:\n\t ${pair[0]}\n   While I could and probably should be: \n\t ${pair[1]}`;
-  })
-  .join("\n\n")}`;
+  const tocopy = `Today I fear, but am grateful for:
+  \t ${fearsList.map((pair) => `Fear: ${pair[0]} - Gratitude: ${pair[1]} \n\t `).join("\n\n")}`;
 
   return (
     <Stack
-      gap={4}
-      width="100%">
+      width={"100%"}
+      gap={4}>
       <Heading
         as="h2"
         size="lg"
         textAlign={"center"}
         paddingInline={4}>
-        Let the Serentiy Prayer lead the way.
+        Fear and Gratitude, List?
       </Heading>
       <Card
         background={"whiteAlpha.300"}
-        border={["none", "1px solid"]}>
+        maxH={"74vh"}
+        overflowY="auto">
         <CardBody>
           <Stack gap={4}>
             <HStack
               align="start"
               justifyContent={"space-between"}>
               <Box padding={2}>
-                <Text>Grant me the serenity to accept the things I cannot change.</Text>
-                <Text> Courage to change the things I can.</Text>
-                <Text> And wisdom to know the difference.</Text>
+                <Text>
+                  Fear was &apos;and evil and corrosive thread&apos; weaving through our lives.
+                </Text>
+                <Text>
+                  Often, if you think it through, you will find that you have much to be grateful
+                  for.
+                </Text>
               </Box>
+
               <CopyButton
                 text={tocopy}
-                disabled={!canCannotControl.length}
+                disabled={!fearsList.length || !fearsList.length}
               />
             </HStack>
             <Accordion
@@ -48,11 +50,11 @@ ${canCannotControl
               allowMultiple={true}
               defaultIndex={[0]}>
               <Stack gap={2}>
-                <AccordionSection title="What are you trying to control that you cannot control?">
+                <AccordionSection title="I'm afraid of..., but grateful that...">
                   <DoubleListerInput
-                    list={canCannotControl}
-                    setList={setCanCannotControl}
-                    labels={["I cannot control", "But I could "]}
+                    list={fearsList}
+                    labels={["fear", "gratitude"]}
+                    setList={setFearsList}
                   />
                 </AccordionSection>
               </Stack>
@@ -63,4 +65,4 @@ ${canCannotControl
     </Stack>
   );
 }
-export default SerenityCheckIn;
+export default Fears;
