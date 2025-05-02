@@ -10,7 +10,7 @@ function SerenityCheckIn(): JSX.Element {
   const tocopy = `Serenity Check-In:
 ${canCannotControl
   .map((pair) => {
-    return `• Today I want to control, but cannot control:\n\t ${pair[0]}\n   While I could and probably should be: \n\t ${pair[1]}`;
+    return `• Today I want to control, but cannot control:\n\t ${pair[0]}\n   While I could and probably should: \n\t ${pair[1]}`;
   })
   .join("\n\n")}`;
 
