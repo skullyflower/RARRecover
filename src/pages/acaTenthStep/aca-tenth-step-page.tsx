@@ -58,11 +58,15 @@ const AcaTenthStep = () => {
               fontWeight={"bold"}>
               Spiritual Principles: Honesty and Discernment
             </Text>
+            <Text fontSize={"lg"}>
+              &quot;Many of us found that we had several characteristics in common as a result of
+              being brought up in an alcoholic or dysfunctional household. &quot;
+            </Text>
+
             <Text>
-              This is a tool for doing daily inventory. You can fill out all the sections, or just
-              the ones that speak to you. <br />
-              You can copy your answers, for each section, to send to your fellow traveller, sponsor
-              or for your journal.
+              This is a tool for doing daily inventory to keep current with our recovery from the
+              affects of growing up with disfunction. You can fill out all the sections, or just the
+              ones that speak to you.
             </Text>
             <Accordion allowToggle={true}>
               <Stack gap={2}>

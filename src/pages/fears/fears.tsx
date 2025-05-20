@@ -1,15 +1,4 @@
-import CopyButton from "@/bits/form/copy-button";
-import {
-  Accordion,
-  Box,
-  Button,
-  Card,
-  CardBody,
-  Heading,
-  HStack,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Accordion, Box, Button, Card, CardBody, Heading, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import AccordionSection from "@/bits/layout/accordion-section";
 import DoubleListerInput, { doubleListItem } from "@/bits/form/DoubleListerInput";
@@ -18,9 +7,6 @@ import WhatYouWrote from "@/bits/WhatYouWrote";
 function Fears(): JSX.Element {
   const [letGo, setLetGo] = useState(false);
   const [fearsList, setFearsList] = useState<doubleListItem[]>([]);
-
-  const tocopy = `Today I fear, but am grateful for:
-  \t ${fearsList.map((pair) => `Fear: ${pair[0]} - Gratitude: ${pair[1]} \n\t `).join("\n\n")}`;
 
   const reset = (): void => {
     setLetGo(false);
@@ -53,32 +39,27 @@ function Fears(): JSX.Element {
         overflowY="auto">
         <CardBody>
           <Stack gap={4}>
-            <HStack
-              align="start"
-              justifyContent={"space-between"}>
-              <Box padding={2}>
-                <Text>
-                  Fear was &apos;an evil and corrosive thread&apos; weaving through our lives.
+            <Box padding={4}>
+              <Stack gap={4}>
+                <Text
+                  fontWeight={700}
+                  fontSize={"lg"}>
+                  Fear was &quot;an evil and corrosive thread&quot; weaving through our lives.
                 </Text>
                 <Text>
                   Fears can grow in the dark corners of our minds, coloring our lives and limiting
                   our options.
                 </Text>
                 <Text>
-                  It can help to put things into perspective to pull your fears out and pair them
-                  with a related gratitude.
+                  It can help to put things into perspective and get you back in the present if
+                  admit your fears out and pair them with a related gratitude.
                 </Text>
                 <Text>
                   Example: I&apos;m afraid of dying alone. I&apos;m grateful for my full healthy
                   life.
                 </Text>
-              </Box>
-
-              <CopyButton
-                text={tocopy}
-                disabled={!fearsList.length || !fearsList.length}
-              />
-            </HStack>
+              </Stack>
+            </Box>
             <Accordion
               allowToggle={true}
               allowMultiple={true}
