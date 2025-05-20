@@ -13,9 +13,15 @@ import { useState } from "react";
 import { choiceLevels } from "./aca-tenth-constants";
 import CopyButton from "@/bits/form/copy-button";
 
-const ChoiceSection = () => {
+const ChoiceSection = ({
+  freedomText,
+  setFreedomText,
+}: {
+  freedomText: string;
+  setFreedomText: (value: string) => void;
+}) => {
   const [freedomValue, setFreedomValue] = useState<number>(50);
-  const [freedomText, setFreedomText] = useState<string>("");
+
   const toCopy = `Choice:\nToday I was capable of: ${freedomText}`;
 
   const handleSelected = (value: number) => {

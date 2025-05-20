@@ -33,6 +33,16 @@ const ResentmentsForm = () => {
     !Iresent || !because || !affectsMy.length || !myPart.length || !didWell.length || !learned;
   const [letGo, setLetGo] = useState(false);
 
+  const reset = (): void => {
+    setLetGo(false);
+    setIresent("");
+    setBecause("");
+    setAffectsMy([]);
+    setMyPart([]);
+    setDidWell([]);
+    setLearned("");
+  };
+
   const { isOpen: isLettingGo, onOpen: onLettingGo, onClose: onCloseLetGo } = useDisclosure();
   const { isOpen: isNever, onOpen: onNever, onClose: onNeverMind } = useDisclosure();
 
@@ -59,6 +69,7 @@ const ResentmentsForm = () => {
         isLettingGo={isLettingGo}
         onLettingGo={onLettingGo}
         onCloseLetGo={onCloseLetGo}
+        reset={reset}
       />
     );
   }
@@ -102,18 +113,19 @@ const ResentmentsForm = () => {
                     name="Iresent"
                     type="text"
                     value={Iresent}
-                    placeholder=""
+                    placeholder="Person, institution, concept, or situation"
                     onChange={(e) => setIresent(e.target.value)}
                     maxLength={30}
                   />
                 </FormControl>
               </Stack>
             </AccordionSection>
-            <AccordionSection title="And why? What did they do? Not do?">
+            <AccordionSection title="And why?">
               <FormControl isRequired>
                 <StyledTextInput
                   value={because}
                   setter={setBecause}
+                  placeholder="Let it all out..."
                 />
               </FormControl>
             </AccordionSection>

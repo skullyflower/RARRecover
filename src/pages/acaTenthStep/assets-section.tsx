@@ -1,11 +1,15 @@
 import CheckboxGroupBox from "@/bits/form/CheckBoxGroupBox";
 import { HStack, Stack, Text } from "@chakra-ui/react";
 import { assets } from "./aca-tenth-constants";
-import { useState } from "react";
 import CopyButton from "@/bits/form/copy-button";
 
-const AssetsSection = () => {
-  const [praise, setSetPraise] = useState<string[]>([]);
+const AssetsSection = ({
+  praise,
+  setSetPraise,
+}: {
+  praise: string[];
+  setSetPraise: (value: string[]) => void;
+}) => {
   const toCopy = `Praise Today: \n I am ${praise.join(",\n I am ")}`;
 
   return (

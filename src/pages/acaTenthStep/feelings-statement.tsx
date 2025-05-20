@@ -1,13 +1,24 @@
 import { HStack, Input, Select, Stack, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { feelings } from "./aca-tenth-constants";
 import CopyButton from "@/bits/form/copy-button";
 
-const FeelingsStatement = () => {
+const FeelingsStatement = ({
+  setFeelingSentence,
+}: {
+  setFeelingSentence: (value: string) => void;
+}) => {
   const [when, setWhen] = useState<string>();
   const [feeling, setFeeling] = useState<string>("");
   const [because, setBecause] = useState<string>("");
   const toCopy = `Today's Feeling Statement:\nI feel ${feeling} when ${when} because ${because}`;
+
+  useEffect(() => {
+    if (feeling && when && because) {
+      setFeelingSentence(`I feel ${feeling} when ${when} because ${because}.`);
+    }
+  }, [feeling, when, because, setFeelingSentence]);
+
   return (
     <Stack gap={4}>
       <HStack justifyContent={"space-between"}>

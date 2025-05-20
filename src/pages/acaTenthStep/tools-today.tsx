@@ -1,10 +1,14 @@
 import CopyButton from "@/bits/form/copy-button";
 import { HStack, Stack, Text } from "@chakra-ui/react";
-import { useState } from "react";
 import ListerInput from "@/bits/form/ListerInput";
 
-const ToolsUsedToday = () => {
-  const [listOfTools, setListOfTools] = useState<string[]>([]);
+const ToolsUsedToday = ({
+  listOfTools,
+  setListOfTools,
+}: {
+  listOfTools: string[];
+  setListOfTools: (value: string[]) => void;
+}) => {
   const tocopy = `Recovery Tools just for today:\n- ${listOfTools.join(", \n- ")}`;
 
   return (

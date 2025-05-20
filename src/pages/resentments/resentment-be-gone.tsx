@@ -26,6 +26,7 @@ interface ResentBeGoneProps {
   isLettingGo: boolean;
   onLettingGo: () => void;
   onCloseLetGo: () => void;
+  reset: () => void;
 }
 
 const ResentBeGone = ({
@@ -37,6 +38,7 @@ const ResentBeGone = ({
   learned,
   isLettingGo,
   onCloseLetGo,
+  reset,
 }: ResentBeGoneProps) => {
   const stringToWrite = getContents();
 
@@ -106,7 +108,7 @@ const ResentBeGone = ({
             </Stack>
           </CardBody>
           <CardFooter textAlign="center">
-            <Button onClick={() => window.location.reload()}>Start Over</Button>
+            <Button onClick={reset}>Start Over</Button>
           </CardFooter>
           <ReadyToLetGo
             isOpen={isLettingGo}
