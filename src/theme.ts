@@ -7,6 +7,11 @@ const config: ThemeConfig = {
 }
 
 const theme = extendTheme({ config }, {
+  fontSizes: {
+    sm: '16px',
+    md: '18px',
+    lg: '20px'
+  },
   colors: {
     "gray": {
       "50": "#EFF3F5",

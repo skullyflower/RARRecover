@@ -38,7 +38,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
             as="h3"
             fontWeight={"normal"}
             textAlign={"left"}
-            size="md">
+            size="lg">
             {title}
           </Heading>
           <AccordionIcon />
