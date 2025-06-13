@@ -1,4 +1,4 @@
-import { Accordion, Heading, Stack, Text, CardBody, Card, Button } from "@chakra-ui/react";
+import { Accordion, Heading, Stack, Text, CardBody, Card, Button, Link } from "@chakra-ui/react";
 import TraitsSection from "./traits-section";
 import ChoiceSection from "./choice-section";
 import ToolsUsedToday from "./tools-today";
@@ -7,6 +7,8 @@ import AssetsSection from "./assets-section";
 import AccordionSection from "@/bits/layout/accordion-section";
 import { useState } from "react";
 import WhatYouWrote from "@/bits/WhatYouWrote";
+import LaundryListSection from "./laundry-list-section";
+import CollapsingText from "@/bits/layout/CollapsingText";
 
 const AcaTenthStep = () => {
   const [letGo, setLetGo] = useState(false);
@@ -15,8 +17,15 @@ const AcaTenthStep = () => {
   const [feelingsSentence, setFeelingSentence] = useState<string>("");
   const [listOfTools, setListOfTools] = useState<string[]>([]);
   const [traitQs, setTraitQs] = useState<string[]>([]);
+  const [llTraits, setLLTraits] = useState<string[]>([]);
+
   const incomplete =
-    !praise.length && !freedomText && !feelingsSentence && !listOfTools.length && !traitQs.length;
+    !praise.length &&
+    !freedomText &&
+    !feelingsSentence &&
+    !listOfTools.length &&
+    !traitQs.length &&
+    !llTraits.length;
   const reset = (): void => {
     setLetGo(false);
     setPraise([]);
@@ -24,6 +33,7 @@ const AcaTenthStep = () => {
     setFeelingSentence("");
     setListOfTools([]);
     setTraitQs([]);
+    setLLTraits([]);
   };
   if (letGo) {
     return (
@@ -34,6 +44,7 @@ const AcaTenthStep = () => {
         feelingsSentence={feelingsSentence}
         listOfTools={listOfTools}
         traitQs={traitQs}
+        llTraits={llTraits}
       />
     );
   }
@@ -46,7 +57,7 @@ const AcaTenthStep = () => {
         textAlign="center"
         as="h1"
         size="xl">
-        ACA Step 10
+        Emotional Sobriety Step 10{" "}
       </Heading>
       <Card
         background={"whiteAlpha.300"}
@@ -58,19 +69,37 @@ const AcaTenthStep = () => {
               fontWeight={"bold"}>
               Spiritual Principles: Honesty and Discernment
             </Text>
-            <Text fontSize={"lg"}>
-              &quot;Many of us found that we had several characteristics in common as a result of
-              being brought up in an alcoholic or dysfunctional household. &quot;
-            </Text>
-
-            <Text>
-              This is a tool for doing daily inventory to keep current with our recovery from the
-              affects of growing up with disfunction. You can fill out all the sections, or just the
-              ones that speak to you.
-            </Text>
+            <CollapsingText>
+              <Stack gap={4}>
+                <Text fontSize={"lg"}>
+                  &quot;Many of us found that we had several characteristics in common as a result
+                  of being brought up in an alcoholic or dysfunctional household. &quot;
+                </Text>
+                <Text>
+                  This is a tool for doing daily inventory to keep current with our recovery from
+                  the affects of growing up with disfunction or trauma. You can fill out all the
+                  sections, or just the ones that speak to you.
+                </Text>
+                <Text>
+                  For more information visit:{" "}
+                  <Link
+                    href="https://adultchildren.org/comline/tips-for-step-10/"
+                    rel="no-follow"
+                    target="literature">
+                    Adult Children.org
+                  </Link>
+                </Text>
+              </Stack>
+            </CollapsingText>
             <Accordion allowToggle={true}>
               <Stack gap={2}>
-                <AccordionSection title="Exercise 1: Traits">
+                <AccordionSection title="Exercise 1: Laundry List / Other Laundry List">
+                  <LaundryListSection
+                    llTraits={llTraits}
+                    setLLTraits={setLLTraits}
+                  />
+                </AccordionSection>
+                <AccordionSection title="Exercise 1.5: Traits">
                   <TraitsSection
                     traitQs={traitQs}
                     setTraitQs={setTraitQs}

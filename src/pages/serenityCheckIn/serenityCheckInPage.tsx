@@ -14,6 +14,7 @@ import { useState } from "react";
 import AccordionSection from "@/bits/layout/accordion-section";
 import DoubleListerInput, { doubleListItem } from "@/bits/form/DoubleListerInput";
 import WhatYouWrote from "@/bits/WhatYouWrote";
+import CollapsingText from "@/bits/layout/CollapsingText";
 
 function SerenityCheckIn(): JSX.Element {
   const [letGo, setLetGo] = useState(false);
@@ -61,24 +62,29 @@ ${canCannotControl
               justifyContent={"space-between"}>
               <Stack
                 gap={4}
-                padding={4}>
+                padding={4}
+                width={"100%"}>
                 <Text paddingInlineStart={2}>
-                  All too often our efforts are directed in the wrong direction.
+                  All too often, our efforts are directed in the wrong direction.
                 </Text>
-                <Text paddingInlineStart={2}>
-                  We want other people to think act a certain way. We want bright futures and
-                  specific successes. We try to stear away from trouble by tensing our bodies. We
-                  get poorer while praying to win the lotto.
-                </Text>
-                <Text paddingInlineStart={2}>
-                  We can become so focussed on willing certain outcomes that we don&apos;t do our
-                  own part to make them so. Alternately our efforts can be so focussed and limited,
-                  we block out to other, possibly better opportunities.
-                </Text>
-                <Text paddingInlineStart={2}>
-                  Example: You want to do well at an interview so badly that you haven&apos;t
-                  bathed, studied or slept.
-                </Text>
+                <CollapsingText>
+                  <Stack gap={4}>
+                    <Text paddingInlineStart={2}>
+                      We want other people to think or act a certain way. We want bright futures and
+                      specific outcomes. We want trouble to never find us.
+                    </Text>
+                    <Text paddingInlineStart={2}>
+                      Our extreme willfulness actually works against us. We think so intensely about
+                      how things must go, that we neglect to act. Conversely, we sometimes will work
+                      very hard towards a specific goal, but our vision is so limited and inflexible
+                      that we reject better opportunities.
+                    </Text>
+                    <Text paddingInlineStart={2}>
+                      Example: You want to do well at an interview so badly that you haven&apos;t
+                      bathed, studied or slept.
+                    </Text>
+                  </Stack>
+                </CollapsingText>
               </Stack>
               <CopyButton
                 text={tocopy}

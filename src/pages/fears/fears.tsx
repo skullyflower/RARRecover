@@ -3,6 +3,7 @@ import { useState } from "react";
 import AccordionSection from "@/bits/layout/accordion-section";
 import DoubleListerInput, { doubleListItem } from "@/bits/form/DoubleListerInput";
 import WhatYouWrote from "@/bits/WhatYouWrote";
+import CollapsingText from "@/bits/layout/CollapsingText";
 
 function Fears(): JSX.Element {
   const [letGo, setLetGo] = useState(false);
@@ -46,18 +47,22 @@ function Fears(): JSX.Element {
                   fontSize={"lg"}>
                   Fear was &quot;an evil and corrosive thread&quot; weaving through our lives.
                 </Text>
-                <Text>
-                  Fears can grow in the dark corners of our minds, coloring our lives and limiting
-                  our options.
-                </Text>
-                <Text>
-                  It can help to put things into perspective and get you back in the present if
-                  admit your fears out and pair them with a related gratitude.
-                </Text>
-                <Text>
-                  Example: I&apos;m afraid of dying alone. I&apos;m grateful for my full healthy
-                  life.
-                </Text>
+                <CollapsingText>
+                  <Stack gap={4}>
+                    <Text>
+                      Fears can grow in the dark corners of our minds, coloring our lives and
+                      limiting our options.
+                    </Text>
+                    <Text>
+                      It can help to put things into perspective and get you back in the present if
+                      admit your fears out and pair them with a related gratitude.
+                    </Text>
+                    <Text>
+                      Example: I&apos;m afraid of dying alone. I&apos;m grateful for my full healthy
+                      life.
+                    </Text>
+                  </Stack>
+                </CollapsingText>
               </Stack>
             </Box>
             <Accordion

@@ -55,7 +55,11 @@ const ListerInput = ({ list, setList, placeholder }: ListerInputProps) => {
           borderRadius={6}
           justifyContent={"space-between"}
           _hover={{ backgroundColor: "pink.800", borderColor: "purple.300" }}>
-          <Text key={index}>{value}</Text>
+          <Text
+            key={index}
+            overflowX={"auto"}>
+            {value}
+          </Text>
           <Button
             size="xs"
             onClick={() => setList(list.filter((_, i) => i !== index))}>

@@ -19,6 +19,7 @@ import { affects, myParts, successes, strings } from "@/pages/resentments/resent
 import useProgramDropDown from "@/bits/form/useProgramDropDown";
 import ResentBeGone from "./resentment-be-gone";
 import AccordionSection from "@/bits/layout/accordion-section";
+import CollapsingText from "@/bits/layout/CollapsingText";
 const programOptions = Object.keys(affects);
 
 const ResentmentsForm = () => {
@@ -91,9 +92,13 @@ const ResentmentsForm = () => {
         bg="whiteAlpha.300"
         border={["none", "1px solid"]}>
         <Box padding={4}>
-          {strings[selectedProgram as keyof typeof strings].intro.map((line, index) => (
-            <Text key={index}>{line}</Text>
-          ))}
+          <CollapsingText>
+            <Stack gap={4}>
+              {strings[selectedProgram as keyof typeof strings].intro.map((line, index) => (
+                <Text key={index}>{line}</Text>
+              ))}
+            </Stack>
+          </CollapsingText>
           <Text
             textAlign={"center"}
             fontWeight={"bold"}
@@ -110,12 +115,13 @@ const ResentmentsForm = () => {
               <Stack gap={4}>
                 <FormControl isRequired>
                   <Input
+                    _focus={{ borderColor: "purple.200" }}
                     name="Iresent"
                     type="text"
                     value={Iresent}
                     placeholder="Person, institution, concept, or situation"
                     onChange={(e) => setIresent(e.target.value)}
-                    maxLength={30}
+                    maxLength={100}
                   />
                 </FormControl>
               </Stack>
@@ -129,7 +135,7 @@ const ResentmentsForm = () => {
                 />
               </FormControl>
             </AccordionSection>
-            <AccordionSection title="How did it affect you? What did it threaten?">
+            <AccordionSection title="How does it affect you? What does it threaten?">
               <FormControl isRequired>
                 <CheckboxGroupBox
                   valuesList={affectsMy}

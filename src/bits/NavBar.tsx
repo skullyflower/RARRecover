@@ -25,7 +25,7 @@ const NavItem = ({ text, to }: { text: string; to: string }) => {
 
 const MenuDDropDown = () => {
   return (
-    <Menu>
+    <Menu defaultIsOpen>
       {({ isOpen }) => (
         <>
           <MenuButton
@@ -58,7 +58,7 @@ const MenuDDropDown = () => {
               />
               <NavItem
                 to="/aca-tenth-step"
-                text="Self Care"
+                text="Emotional Sobriety"
               />
               <NavItem
                 to="serenity"

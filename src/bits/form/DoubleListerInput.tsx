@@ -22,7 +22,7 @@ const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps) =>
       setTwoItem("");
       focusInput();
     }
-  }, [oneItem, twoItem, list]);
+  }, [oneItem, twoItem, setList, list]);
   const focusInput = () => {
     if (inputRef?.current) inputRef.current.focus();
   };
