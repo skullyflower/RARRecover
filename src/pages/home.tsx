@@ -47,7 +47,7 @@ function HomePage() {
                 width={{ base: "100%", md: "65%" }}
               />
             </Stack>
-            <Text>Real recovery for ficticious creatures.</Text>
+            <Text>Real recovery for fictitious creatures.</Text>
           </Stack>
         </CardBody>
       </Card>
