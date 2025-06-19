@@ -37,7 +37,7 @@ export enum choiceLevels {
 
 export const feelings = [
   "Abandoned", "Accepted", "Ambivalent", "Angry", "Ashamed", "Betrayed", "Confident", "Confused", "Content", "Disappointed", "Embarrassed", "Enthralled", "Excited", "Frustrated", "Fascinated", "Grateful", "Guilty", "Grief", "Humiliated", "Humorous",
-  "Hopeful", "Inspired", "Irritated", "Joyful", "Loving", "Loved", "Playfull", "Pleased", "Pleasure", "Rested", "Safe", "Satisfied", "Shame", "Serene", "Tenacious", "Trusted", "Thoughtful"
+  "Hopeful", "Inspired", "Irritated", "Joyful", "Loving", "Loved", "Playful", "Pleased", "Pleasure", "Rested", "Safe", "Satisfied", "Shame", "Serene", "Tenacious", "Trusted", "Thoughtful"
 ];
 
 export const assets = [
