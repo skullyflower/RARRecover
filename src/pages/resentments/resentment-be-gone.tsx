@@ -4,7 +4,6 @@ import SemiSafeContent from "@/bits/SemiSafeContent";
 import {
   Box,
   Button,
-  Card,
   CardBody,
   CardFooter,
   CardHeader,
@@ -15,6 +14,8 @@ import {
   UnorderedList,
 } from "@chakra-ui/react";
 import CopyButton from "@/bits/form/copy-button";
+import PageCard from "@/bits/layout/page-card";
+import ColorBox from "@/bits/layout/color-box";
 
 interface ResentBeGoneProps {
   Iresent: string;
@@ -43,35 +44,28 @@ const ResentBeGone = ({
   const stringToWrite = getContents();
 
   return (
-    <Card
-      width={"100%"}
-      bg="whiteAlpha.300"
-      border={["none", "1px solid"]}>
-      <CardBody>
-        <Card
-          bg="pink.900"
-          color="purple.300"
-          border="1px solid"
-          maxW={800}
-          marginInline="auto"
-          marginBlock={4}>
-          <CardHeader>
-            <HStack justifyContent="space-between">
-              <Text>Here is what you wrote.</Text>
-              <CopyButton
-                text={stringToWrite}
-                disabled={
-                  !Iresent ||
-                  !because ||
-                  !affectsMy.length ||
-                  !myPart.length ||
-                  !didWell.length ||
-                  !learned
-                }
-              />
-            </HStack>
-          </CardHeader>
-          <CardBody border="1px solid">
+    <Stack
+      gap={4}
+      width="100%">
+      <PageCard>
+        <CardHeader>
+          <HStack justifyContent="space-between">
+            <Text>Here is what you wrote.</Text>
+            <CopyButton
+              text={stringToWrite}
+              disabled={
+                !Iresent ||
+                !because ||
+                !affectsMy.length ||
+                !myPart.length ||
+                !didWell.length ||
+                !learned
+              }
+            />
+          </HStack>
+        </CardHeader>
+        <CardBody>
+          <ColorBox>
             <Stack
               gap={4}
               id="ToCopy">
@@ -106,17 +100,17 @@ const ResentBeGone = ({
                 <SemiSafeContent rawContent={learned} />
               </Box>
             </Stack>
-          </CardBody>
-          <CardFooter textAlign="center">
-            <Button onClick={reset}>Start Over</Button>
-          </CardFooter>
-          <ReadyToLetGo
-            isOpen={isLettingGo}
-            onClose={onCloseLetGo}
-          />
-        </Card>
-      </CardBody>
-    </Card>
+          </ColorBox>
+        </CardBody>
+        <CardFooter textAlign="center">
+          <Button onClick={reset}>Start Over</Button>
+        </CardFooter>
+        <ReadyToLetGo
+          isOpen={isLettingGo}
+          onClose={onCloseLetGo}
+        />
+      </PageCard>
+    </Stack>
   );
 };
 export default ResentBeGone;

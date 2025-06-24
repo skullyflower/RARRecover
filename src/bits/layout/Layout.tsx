@@ -1,14 +1,22 @@
 import { Outlet } from "react-router-dom";
-import { Box, Center, Image, VStack, LinkBox, Stack } from "@chakra-ui/react";
+import { Box, Center, Image, LinkBox, Stack, useColorMode } from "@chakra-ui/react";
 import { Link as ReactRouterLink } from "react-router-dom";
 import NavBar from "../NavBar";
 const Layout = () => {
+  const { colorMode } = useColorMode();
+
   return (
-    <VStack
-      justifyContent="center"
-      alignItems={"center"}>
-      <Box
-        w={["100%", "95%"]}
+    <Box
+      bg={colorMode === "light" ? "whiteAlpha.800" : undefined}
+      width="100%"
+      height="100vh"
+      position={"fixed"}
+      overflow={"auto"}>
+      <Stack
+        justifyContent="center"
+        alignItems={"stretch"}
+        w={{ base: "100%", md: "95%" }}
+        marginInline={["0", "auto"]}
         maxW={"900px"}>
         <header>
           <Stack
@@ -33,8 +41,8 @@ const Layout = () => {
           <Outlet />
         </Center>
         <footer id="pagefoot"></footer>
-      </Box>
-    </VStack>
+      </Stack>
+    </Box>
   );
 };
 export default Layout;

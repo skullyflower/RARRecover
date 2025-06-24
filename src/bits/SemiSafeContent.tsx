@@ -6,6 +6,7 @@ function SemiSafeContent({ rawContent }: SemiSafeContentProps) {
   const lessDangerousContent = rawContent.toString().replace(unsafePatterns, "");
   return (
     <div
+      color={"gray.100"}
       dangerouslySetInnerHTML={{ __html: lessDangerousContent }}
       style={{ whiteSpace: "pre-wrap" }}></div>
   );

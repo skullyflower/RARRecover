@@ -2,7 +2,6 @@ import {
   Accordion,
   Box,
   Button,
-  Card,
   FormControl,
   Heading,
   HStack,
@@ -20,6 +19,7 @@ import useProgramDropDown from "@/bits/form/useProgramDropDown";
 import ResentBeGone from "./resentment-be-gone";
 import AccordionSection from "@/bits/layout/accordion-section";
 import CollapsingText from "@/bits/layout/CollapsingText";
+import PageCard from "@/bits/layout/page-card";
 const programOptions = Object.keys(affects);
 
 const ResentmentsForm = () => {
@@ -88,9 +88,7 @@ const ResentmentsForm = () => {
         </Heading>
         <ProgramDropDown />
       </HStack>
-      <Card
-        bg="whiteAlpha.300"
-        border={["none", "1px solid"]}>
+      <PageCard>
         <Box padding={4}>
           <CollapsingText>
             <Stack gap={4}>
@@ -115,7 +113,6 @@ const ResentmentsForm = () => {
               <Stack gap={4}>
                 <FormControl isRequired>
                   <Input
-                    _focus={{ borderColor: "purple.200" }}
                     name="Iresent"
                     type="text"
                     value={Iresent}
@@ -190,7 +187,7 @@ const ResentmentsForm = () => {
             </Stack>
           </Stack>
         </Accordion>
-      </Card>
+      </PageCard>
       <Box p={4}>
         <Text>
           <b>Your answers can NOT be viewed by anyone but you</b>. When you hit submit, your answers

@@ -1,5 +1,7 @@
-import { Box, Card, Heading, Image, Stack } from "@chakra-ui/react";
+import { Heading, Image, Stack } from "@chakra-ui/react";
 import images from "./list_file.json";
+import PageCard from "@/bits/layout/page-card";
+import ColorBox from "@/bits/layout/color-box";
 
 const Stories = () => {
   const stories = Object.entries(images);
@@ -12,22 +14,14 @@ const Stories = () => {
         size="xl">
         RARR Stories
       </Heading>
-      <Card
-        bg="whiteAlpha.300"
-        color="purple.200"
-        border={["none", "1px solid"]}>
+      <PageCard>
         <Stack
           gap={4}
           align={"center"}
           p={4}>
           {stories.map(([key, story]) => {
             return (
-              <Box
-                border={["none", "1px solid"]}
-                bg={"pink.900"}
-                key={key}
-                p={6}
-                borderRadius={6}>
+              <ColorBox key={key}>
                 {!seenTitles.includes(story.imgtitle) && seenTitles.push(story.imgtitle) && (
                   <Heading
                     textAlign="center"
@@ -44,11 +38,11 @@ const Stories = () => {
                   alt={story.imgtitle}
                   fallbackSrc="/images/rain.svg"
                 />
-              </Box>
+              </ColorBox>
             );
           })}
         </Stack>
-      </Card>
+      </PageCard>
     </Stack>
   );
 };

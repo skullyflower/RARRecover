@@ -1,4 +1,4 @@
-import { Accordion, Heading, Stack, Text, CardBody, Card, Button, Link } from "@chakra-ui/react";
+import { Accordion, Heading, Stack, Text, Button, Link } from "@chakra-ui/react";
 import TraitsSection from "./traits-section";
 import ChoiceSection from "./choice-section";
 import ToolsUsedToday from "./tools-today";
@@ -9,6 +9,7 @@ import { useState } from "react";
 import WhatYouWrote from "@/bits/WhatYouWrote";
 import LaundryListSection from "./laundry-list-section";
 import CollapsingText from "@/bits/layout/CollapsingText";
+import PageCard from "@/bits/layout/page-card";
 
 const AcaTenthStep = () => {
   const [letGo, setLetGo] = useState(false);
@@ -59,93 +60,89 @@ const AcaTenthStep = () => {
         size="xl">
         Emotional Sobriety Step 10{" "}
       </Heading>
-      <Card
-        background={"whiteAlpha.300"}
-        border={["none", "1px solid"]}>
-        <CardBody>
-          <Stack gap={4}>
-            <Text
-              textAlign={"center"}
-              fontWeight={"bold"}>
-              Spiritual Principles: Honesty and Discernment
-            </Text>
-            <CollapsingText>
-              <Stack gap={4}>
-                <Text fontSize={"lg"}>
-                  &quot;Many of us found that we had several characteristics in common as a result
-                  of being brought up in an alcoholic or dysfunctional household. &quot;
-                </Text>
-                <Text>
-                  This is a tool for doing daily inventory to keep current with our recovery from
-                  the affects of growing up with disfunction or trauma. You can fill out all the
-                  sections, or just the ones that speak to you.
-                </Text>
-                <Text>
-                  For more information visit:{" "}
-                  <Link
-                    href="https://adultchildren.org/comline/tips-for-step-10/"
-                    rel="no-follow"
-                    target="literature">
-                    Adult Children.org
-                  </Link>
-                </Text>
-              </Stack>
-            </CollapsingText>
-            <Accordion allowToggle={true}>
-              <Stack gap={2}>
-                <AccordionSection title="Exercise 1: Laundry List / Other Laundry List">
-                  <LaundryListSection
-                    llTraits={llTraits}
-                    setLLTraits={setLLTraits}
-                  />
-                </AccordionSection>
-                <AccordionSection title="Exercise 1.5: Traits">
-                  <TraitsSection
-                    traitQs={traitQs}
-                    setTraitQs={setTraitQs}
-                  />
-                </AccordionSection>
-                <AccordionSection title="Exercise 2: Choice Continuum">
-                  <ChoiceSection
-                    freedomText={freedomText}
-                    setFreedomText={setFreedomText}
-                  />
-                </AccordionSection>
-                <AccordionSection title="Exercise 3: Tools">
-                  <ToolsUsedToday
-                    listOfTools={listOfTools}
-                    setListOfTools={setListOfTools}
-                  />
-                </AccordionSection>
-                <AccordionSection title="Exercise 4: Feelings">
-                  <FeelingsStatement setFeelingSentence={setFeelingSentence} />
-                </AccordionSection>
-                <AccordionSection title="Exercise 5: Affirmation">
-                  <AssetsSection
-                    praise={praise}
-                    setSetPraise={setPraise}
-                  />
-                </AccordionSection>
-              </Stack>
-            </Accordion>
-            <Stack
-              width="100%"
-              direction="row"
-              gap={4}
-              justifyContent="center"
-              position={"sticky"}
-              bottom={2}>
-              <Button
-                isDisabled={incomplete}
-                colorScheme="purple"
-                name="letGo"
-                onClick={() => setLetGo(true)}>
-                Be Free!
-              </Button>
+      <PageCard>
+        <Stack gap={4}>
+          <Text
+            textAlign={"center"}
+            fontWeight={"bold"}>
+            Spiritual Principles: Honesty and Discernment
+          </Text>
+          <CollapsingText>
+            <Stack gap={4}>
+              <Text fontSize={"lg"}>
+                &quot;Many of us found that we had several characteristics in common as a result of
+                being brought up in an alcoholic or dysfunctional household. &quot;
+              </Text>
+              <Text>
+                This is a tool for doing daily inventory to keep current with our recovery from the
+                affects of growing up with disfunction or trauma. You can fill out all the sections,
+                or just the ones that speak to you.
+              </Text>
+              <Text>
+                For more information visit:{" "}
+                <Link
+                  href="https://adultchildren.org/comline/tips-for-step-10/"
+                  rel="no-follow"
+                  target="literature">
+                  Adult Children.org
+                </Link>
+              </Text>
             </Stack>
+          </CollapsingText>
+          <Accordion allowToggle={true}>
+            <Stack gap={2}>
+              <AccordionSection title="Exercise 1: Laundry List / Other Laundry List">
+                <LaundryListSection
+                  llTraits={llTraits}
+                  setLLTraits={setLLTraits}
+                />
+              </AccordionSection>
+              <AccordionSection title="Exercise 1.5: Traits">
+                <TraitsSection
+                  traitQs={traitQs}
+                  setTraitQs={setTraitQs}
+                />
+              </AccordionSection>
+              <AccordionSection title="Exercise 2: Choice Continuum">
+                <ChoiceSection
+                  freedomText={freedomText}
+                  setFreedomText={setFreedomText}
+                />
+              </AccordionSection>
+              <AccordionSection title="Exercise 3: Tools">
+                <ToolsUsedToday
+                  listOfTools={listOfTools}
+                  setListOfTools={setListOfTools}
+                />
+              </AccordionSection>
+              <AccordionSection title="Exercise 4: Feelings">
+                <FeelingsStatement setFeelingSentence={setFeelingSentence} />
+              </AccordionSection>
+              <AccordionSection title="Exercise 5: Affirmation">
+                <AssetsSection
+                  praise={praise}
+                  setSetPraise={setPraise}
+                />
+              </AccordionSection>
+            </Stack>
+          </Accordion>
+          <Stack
+            width="100%"
+            direction="row"
+            gap={4}
+            justifyContent="center"
+            position={"sticky"}
+            bottom={2}>
+            <Button
+              isDisabled={incomplete}
+              colorScheme="purple"
+              name="letGo"
+              onClick={() => setLetGo(true)}>
+              Be Free!
+            </Button>
           </Stack>
-        </CardBody>
-      </Card>
+        </Stack>
+      </PageCard>
     </Stack>
   );
 };

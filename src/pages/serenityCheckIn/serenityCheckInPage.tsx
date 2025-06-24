@@ -1,20 +1,11 @@
 import CopyButton from "@/bits/form/copy-button";
-import {
-  Accordion,
-  Box,
-  Button,
-  Card,
-  CardBody,
-  Heading,
-  HStack,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { Accordion, Box, Button, CardBody, Heading, HStack, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import AccordionSection from "@/bits/layout/accordion-section";
 import DoubleListerInput, { doubleListItem } from "@/bits/form/DoubleListerInput";
 import WhatYouWrote from "@/bits/WhatYouWrote";
 import CollapsingText from "@/bits/layout/CollapsingText";
+import PageCard from "@/bits/layout/page-card";
 
 function SerenityCheckIn(): JSX.Element {
   const [letGo, setLetGo] = useState(false);
@@ -52,9 +43,7 @@ ${canCannotControl
         paddingInline={4}>
         Let the Serentiy Prayer lead the way.
       </Heading>
-      <Card
-        background={"whiteAlpha.300"}
-        border={["none", "1px solid"]}>
+      <PageCard>
         <CardBody>
           <Stack gap={4}>
             <HStack
@@ -127,7 +116,7 @@ ${canCannotControl
             </Stack>
           </Stack>
         </CardBody>
-      </Card>
+      </PageCard>
     </Stack>
   );
 }

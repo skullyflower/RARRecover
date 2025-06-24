@@ -1,8 +1,22 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
-import { Box, Button, HStack, LinkBox, Menu, MenuButton, MenuList, Stack } from "@chakra-ui/react";
+import { ChevronDownIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Button,
+  HStack,
+  LinkBox,
+  Menu,
+  MenuButton,
+  MenuList,
+  Stack,
+  useColorMode,
+} from "@chakra-ui/react";
 import { Link, useMatch } from "react-router-dom";
 
 const NavItem = ({ text, to }: { text: string; to: string }) => {
+  const { colorMode } = useColorMode();
+  const color = colorMode === "dark" ? "gray.100" : "red.900";
+  const bgcolor = colorMode === "dark" ? "" : "gray.100";
+  const activebg = colorMode === "dark" ? "whiteAlpha.300" : "purple.300";
   return (
     <LinkBox
       as={Link}
@@ -14,9 +28,10 @@ const NavItem = ({ text, to }: { text: string; to: string }) => {
       paddingInline={2}
       borderRadius={5}
       border="2px solid"
-      backgroundColor={useMatch(to) ? "whiteAlpha.300" : ""}
+      backgroundColor={useMatch(to) ? activebg : bgcolor}
+      color={color}
       textTransform="uppercase"
-      _hover={{ cursor: "pointer", backgroundColor: "whiteAlpha.300" }}
+      _hover={{ cursor: "pointer", backgroundColor: activebg }}
       to={to}>
       {text}
     </LinkBox>
@@ -24,12 +39,18 @@ const NavItem = ({ text, to }: { text: string; to: string }) => {
 };
 
 const MenuDDropDown = () => {
+  const { colorMode } = useColorMode();
+  const color = colorMode === "dark" ? "gray.100" : "red.900";
+  const bgcolor = colorMode === "dark" ? "" : "gray.100";
+  const activebg = colorMode === "dark" ? "whiteAlpha.300" : "purple.300";
+
   return (
     <Menu defaultIsOpen>
       {({ isOpen }) => (
         <>
           <MenuButton
             as={Button}
+            color={color}
             variant={"outline"}
             width={["100%", "auto"]}
             fontSize={"sm"}
@@ -37,7 +58,8 @@ const MenuDDropDown = () => {
             lineHeight={1}
             paddingBlock={1}
             paddingInline={2}
-            backgroundColor={isOpen ? "whiteAlpha.300" : "whiteAlpha.100"}
+            backgroundColor={isOpen ? activebg : bgcolor}
+            _active={{ activebg }}
             textTransform="uppercase"
             borderRadius={5}
             border="2px solid"
@@ -45,7 +67,7 @@ const MenuDDropDown = () => {
             Daily Inventories
           </MenuButton>
           <MenuList
-            background={"gray.900"}
+            background={colorMode === "dark" ? "gray.900" : "gray.50"}
             padding={2}
             border={0}>
             <Stack
@@ -77,12 +99,19 @@ const MenuDDropDown = () => {
 };
 
 const NavBar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Box p={4}>
       <HStack
         wrap="wrap"
         gap={2}
         justifyContent={"center"}>
+        <Button
+          size="sm"
+          onClick={toggleColorMode}>
+          {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+        </Button>
         <MenuDDropDown />
         <NavItem
           to="steps"

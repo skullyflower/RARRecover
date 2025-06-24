@@ -1,5 +1,14 @@
 import { DeleteIcon } from "@chakra-ui/icons";
-import { Button, Card, HStack, Input, InputGroup, Stack, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Card,
+  HStack,
+  Input,
+  InputGroup,
+  Stack,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 import { useCallback, useRef, useState } from "react";
 import useKeyCapture from "../hooks/useKeyCapture";
 
@@ -12,6 +21,8 @@ interface DoubleListerInputProps {
 }
 
 const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps) => {
+  const { colorMode } = useColorMode();
+  const activeBG = colorMode === "dark" ? "pink.800" : "gray.50";
   const [oneItem, setOneItem] = useState<string>("");
   const [twoItem, setTwoItem] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -37,22 +48,28 @@ const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps) =>
         <InputGroup size="md">
           <HStack
             gap={2}
+            width={"100%"}
+            align={"center"}
             wrap={"wrap"}>
-            <Input
-              ref={inputRef}
-              pr="4.5rem"
-              type="text"
-              placeholder={labels ? `Add a ${labels[0]}...` : "Add a item..."}
-              onChange={(e) => setOneItem(e.target.value)}
-              value={oneItem}
-            />
-            <Input
-              pr="4.5rem"
-              type="text"
-              placeholder={labels ? `Add a ${labels[1]}...` : "Add a item..."}
-              onChange={(e) => setTwoItem(e.target.value)}
-              value={twoItem}
-            />
+            <Stack
+              gap={2}
+              flexGrow={2}>
+              <Input
+                ref={inputRef}
+                pr="4.5rem"
+                type="text"
+                placeholder={labels ? `Add a ${labels[0]}...` : "Add a item..."}
+                onChange={(e) => setOneItem(e.target.value)}
+                value={oneItem}
+              />
+              <Input
+                pr="4.5rem"
+                type="text"
+                placeholder={labels ? `Add a ${labels[1]}...` : "Add a item..."}
+                onChange={(e) => setTwoItem(e.target.value)}
+                value={twoItem}
+              />
+            </Stack>
             <Button
               h="1.75rem"
               size="sm"
@@ -72,7 +89,7 @@ const DoubleListerInput = ({ list, setList, labels }: DoubleListerInputProps) =>
           justifyContent={"space-between"}
           gap={2}
           wrap={"wrap"}
-          _hover={{ backgroundColor: "pink.800", borderColor: "purple.300" }}>
+          _hover={{ backgroundColor: activeBG, borderColor: "purple.300" }}>
           <Text>
             {labels && labels[0].toLocaleUpperCase()}: {value[0]}
           </Text>

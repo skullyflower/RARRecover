@@ -7,6 +7,7 @@ import {
   InputRightElement,
   Stack,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
 import { useCallback, useState } from "react";
 import useKeyCapture from "../hooks/useKeyCapture";
@@ -17,13 +18,16 @@ interface ListerInputProps {
   placeholder?: string;
 }
 const ListerInput = ({ list, setList, placeholder }: ListerInputProps) => {
+  const { colorMode } = useColorMode();
+  const activeBG = colorMode === "dark" ? "pink.800" : "gray.50";
+
   const [oneItem, setOneItem] = useState<string>("");
   const addItem = useCallback(() => {
     if (oneItem) {
       setList([...list, oneItem]);
       setOneItem("");
     }
-  }, [oneItem, list]);
+  }, [oneItem, list, setList]);
 
   useKeyCapture("Enter", addItem);
 
@@ -54,7 +58,7 @@ const ListerInput = ({ list, setList, placeholder }: ListerInputProps) => {
           borderColor="purple.700"
           borderRadius={6}
           justifyContent={"space-between"}
-          _hover={{ backgroundColor: "pink.800", borderColor: "purple.300" }}>
+          _hover={{ backgroundColor: activeBG, borderColor: "purple.300" }}>
           <Text
             key={index}
             overflowX={"auto"}>

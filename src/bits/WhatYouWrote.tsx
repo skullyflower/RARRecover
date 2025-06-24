@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Card,
   CardBody,
   CardFooter,
   CardHeader,
@@ -15,6 +14,8 @@ import {
 import CopyButton from "@/bits/form/copy-button";
 import { traitList } from "@/pages/acaTenthStep/aca-tenth-constants.ts";
 import { doubleListItem } from "./form/DoubleListerInput";
+import PageCard from "./layout/page-card";
+import ColorBox from "./layout/color-box";
 
 interface WhatYouWroteProps {
   reset: () => void;
@@ -93,30 +94,24 @@ function WhatYouWrote({
 
   const stringToWrite = toCopy();
   return (
-    <Card
-      bg="whiteAlpha.300"
-      border={["none", "1px solid"]}>
-      <CardBody>
-        <Card
-          bg="pink.900"
-          color="purple.300"
-          border="1px solid"
-          maxW={800}
-          marginInline="auto"
-          marginBlock={4}>
-          <CardHeader>
-            <HStack justifyContent="space-between">
-              <Heading
-                fontSize={"xl"}
-                fontWeight={700}>
-                Here is what you wrote.
-              </Heading>
-              <HStack gap={4}>
-                <CopyButton text={stringToWrite} />\{" "}
-              </HStack>
+    <Stack
+      gap={4}
+      width="100%">
+      <PageCard>
+        <CardHeader>
+          <HStack justifyContent="space-between">
+            <Heading
+              fontSize={"xl"}
+              fontWeight={700}>
+              Here is what you wrote.
+            </Heading>
+            <HStack gap={4}>
+              <CopyButton text={stringToWrite} />
             </HStack>
-          </CardHeader>
-          <CardBody border="1px solid">
+          </HStack>
+        </CardHeader>
+        <CardBody>
+          <ColorBox>
             <Stack
               gap={4}
               id="ToCopy">
@@ -233,13 +228,13 @@ function WhatYouWrote({
                 </Box>
               )}
             </Stack>
-          </CardBody>
-          <CardFooter textAlign="center">
-            <Button onClick={reset}>Start Over</Button>
-          </CardFooter>
-        </Card>
-      </CardBody>
-    </Card>
+          </ColorBox>
+        </CardBody>
+        <CardFooter textAlign="center">
+          <Button onClick={reset}>Start Over</Button>
+        </CardFooter>
+      </PageCard>
+    </Stack>
   );
 }
 export default WhatYouWrote;
