@@ -16,6 +16,7 @@ import { traitList } from "@/pages/acaTenthStep/aca-tenth-constants.ts";
 import { doubleListItem } from "./form/DoubleListerInput";
 import PageCard from "./layout/page-card";
 import ColorBox from "./layout/color-box";
+import SaveButton from "./form/save-button";
 
 interface WhatYouWroteProps {
   reset: () => void;
@@ -107,6 +108,7 @@ function WhatYouWrote({
             </Heading>
             <HStack gap={4}>
               <CopyButton text={stringToWrite} />
+              <SaveButton text={stringToWrite} />
             </HStack>
           </HStack>
         </CardHeader>
@@ -115,6 +117,20 @@ function WhatYouWrote({
             <Stack
               gap={4}
               id="ToCopy">
+              {llTraits && llTraits.length > 0 && (
+                <Box>
+                  <Text
+                    fontWeight={700}
+                    paddingBottom={4}>
+                    Laundry List and Other Laundry List traits I had today:
+                  </Text>
+                  <UnorderedList paddingInlineStart={4}>
+                    {llTraits.map((one, indx) => (
+                      <ListItem key={`lltraits${indx}`}>{one.replace("_", " ")}</ListItem>
+                    ))}
+                  </UnorderedList>
+                </Box>
+              )}
               {traitQs && traitQs.length > 0 && (
                 <Box>
                   <Text
