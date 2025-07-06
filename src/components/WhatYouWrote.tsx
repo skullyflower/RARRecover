@@ -11,8 +11,8 @@ import {
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
-import CopyButton from "@/bits/form/copy-button";
-import { traitList } from "@/pages/acaTenthStep/aca-tenth-constants.ts";
+import CopyButton from "@renderer/components/form/copy-button";
+import { traitList } from "@renderer/pages/acaTenthStep/aca-tenth-constants.ts";
 import { doubleListItem } from "./form/DoubleListerInput";
 import PageCard from "./layout/page-card";
 import ColorBox from "./layout/color-box";

@@ -4,12 +4,12 @@ import ChoiceSection from "./choice-section";
 import ToolsUsedToday from "./tools-today";
 import FeelingsStatement from "./feelings-statement";
 import AssetsSection from "./assets-section";
-import AccordionSection from "@/bits/layout/accordion-section";
+import AccordionSection from "@renderer/components/layout/accordion-section";
 import { useState } from "react";
-import WhatYouWrote from "@/bits/WhatYouWrote";
+import WhatYouWrote from "@renderer/components/WhatYouWrote";
 import LaundryListSection from "./laundry-list-section";
-import CollapsingText from "@/bits/layout/CollapsingText";
-import PageCard from "@/bits/layout/page-card";
+import CollapsingText from "@renderer/components/layout/CollapsingText";
+import PageCard from "@renderer/components/layout/page-card";
 
 const AcaTenthStep = () => {
   const [letGo, setLetGo] = useState(false);
@@ -58,7 +58,7 @@ const AcaTenthStep = () => {
         textAlign="center"
         as="h1"
         size="xl">
-        Emotional Sobriety Step 10{" "}
+        Spawn of Trouble: ACA style Step 10
       </Heading>
       <PageCard>
         <Stack gap={4}>

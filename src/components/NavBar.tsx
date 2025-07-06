@@ -98,6 +98,12 @@ const MenuDDropDown = () => {
   );
 };
 
+const toggleFontMode = () => {
+  const usePlainFonts = JSON.parse(window.localStorage.getItem("UseRegFonts") || "false");
+  window.localStorage.setItem("UseRegFonts", JSON.stringify(!usePlainFonts));
+  window.location.reload();
+};
+
 const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
@@ -107,6 +113,11 @@ const NavBar = () => {
         wrap="wrap"
         gap={2}
         justifyContent={"center"}>
+        <Button
+          size={"sm"}
+          onClick={toggleFontMode}>
+          Az
+        </Button>
         <Button
           size="sm"
           onClick={toggleColorMode}>

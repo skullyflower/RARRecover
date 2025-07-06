@@ -1,8 +1,8 @@
 import { Heading, HStack, ListItem, OrderedList, Stack } from "@chakra-ui/react";
 import { steps } from "./steps-constants";
-import useProgramDropDown from "@/bits/form/useProgramDropDown";
-import PageCard from "@/bits/layout/page-card";
-import ColorBox from "@/bits/layout/color-box";
+import useProgramDropDown from "@renderer/components/form/useProgramDropDown";
+import PageCard from "@renderer/components/layout/page-card";
+import ColorBox from "@renderer/components/layout/color-box";
 
 const programOptions = Object.keys(steps);
 const TheSteps = () => {

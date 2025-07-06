@@ -1,13 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./layout/Layout";
-import HomePage from "../pages/home";
-import ResentmentsForm from "../pages/resentments/resentmentForm";
-import SpotCheckForm from "../pages/principles/principles-form";
-import Stories from "@/pages/literature/stories";
-import TheSteps from "@/pages/steps/the-steps";
-import AcaTenthStep from "@/pages/acaTenthStep/aca-tenth-step-page";
-import SerenityCheckIn from "@/pages/serenityCheckIn/serenityCheckInPage";
-import Fears from "@/pages/fears/fears";
+import HomePage from "@renderer/pages/home";
+import ResentmentsForm from "@renderer/pages/resentments/resentmentForm";
+import SpotCheckForm from "@renderer/pages/principles/principles-form";
+import Stories from "@renderer/pages/literature/stories";
+import TheSteps from "@renderer/pages/steps/the-steps";
+import AcaTenthStep from "@renderer/pages/acaTenthStep/aca-tenth-step-page";
+import SerenityCheckIn from "@renderer/pages/serenityCheckIn/serenityCheckInPage";
+import Fears from "@renderer/pages/fears/fears";
+import InventoryJoural from "@renderer/pages/journal";
 
 export default function SiteRoutes() {
   return (
@@ -46,6 +47,10 @@ export default function SiteRoutes() {
         <Route
           path="/steps"
           element={<TheSteps />}
+        />
+        <Route
+          path="/log"
+          element={<InventoryJoural />}
         />
       </Route>
     </Routes>

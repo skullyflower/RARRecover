@@ -1,7 +1,7 @@
-import CheckboxGroupBox from "@/bits/form/CheckBoxGroupBox";
+import CheckboxGroupBox from "@renderer/components/form/CheckBoxGroupBox";
 import { HStack, Stack, Text } from "@chakra-ui/react";
 import { assets } from "./aca-tenth-constants";
-import CopyButton from "@/bits/form/copy-button";
+import CopyButton from "@renderer/components/form/copy-button";
 
 const AssetsSection = ({
   praise,

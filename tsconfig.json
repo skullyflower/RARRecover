@@ -15,7 +15,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/*": ["./src/*"],
+      "@renderer/*": ["./src/*"],
     },
     /* Linting */
     "strict": true,

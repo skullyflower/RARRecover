@@ -1,10 +1,10 @@
 import { Accordion, Box, Button, Heading, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import AccordionSection from "@/bits/layout/accordion-section";
-import DoubleListerInput, { doubleListItem } from "@/bits/form/DoubleListerInput";
-import WhatYouWrote from "@/bits/WhatYouWrote";
-import CollapsingText from "@/bits/layout/CollapsingText";
-import PageCard from "@/bits/layout/page-card";
+import AccordionSection from "@renderer/components/layout/accordion-section";
+import DoubleListerInput, { doubleListItem } from "@renderer/components/form/DoubleListerInput";
+import WhatYouWrote from "@renderer/components/WhatYouWrote";
+import CollapsingText from "@renderer/components/layout/CollapsingText";
+import PageCard from "@renderer/components/layout/page-card";
 
 function Fears(): JSX.Element {
   const [letGo, setLetGo] = useState(false);
@@ -33,7 +33,7 @@ function Fears(): JSX.Element {
         size="lg"
         textAlign={"center"}
         paddingInline={4}>
-        What Frightens You Today?
+        Fear : What Frightens You Today?
       </Heading>
       <PageCard>
         <Stack gap={4}>

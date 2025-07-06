@@ -1,7 +1,7 @@
-import CopyButton from "@/bits/form/copy-button";
+import CopyButton from "@renderer/components/form/copy-button";
 import { HStack, Stack, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import ListerInput from "@/bits/form/ListerInput";
+import ListerInput from "@renderer/components/form/ListerInput";
 
 const GratitudeList = () => {
   const [listOfGrats, setListOfGrats] = useState<string[]>([]);

@@ -1,7 +1,7 @@
 import { HStack, Input, Select, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { feelings } from "./aca-tenth-constants";
-import CopyButton from "@/bits/form/copy-button";
+import CopyButton from "@renderer/components/form/copy-button";
 
 const FeelingsStatement = ({
   setFeelingSentence,

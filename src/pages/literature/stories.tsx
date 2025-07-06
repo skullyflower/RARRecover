@@ -1,7 +1,7 @@
 import { Heading, Image, Stack } from "@chakra-ui/react";
 import images from "./list_file.json";
-import PageCard from "@/bits/layout/page-card";
-import ColorBox from "@/bits/layout/color-box";
+import PageCard from "@renderer/components/layout/page-card";
+import ColorBox from "@renderer/components/layout/color-box";
 
 const Stories = () => {
   const stories = Object.entries(images);

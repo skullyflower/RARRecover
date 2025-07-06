@@ -10,16 +10,21 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import StyledTextInput from "../../bits/form/styledTextInput/StyledTextInput";
-import CheckboxGroupBox from "../../bits/form/CheckBoxGroupBox";
+import StyledTextInput from "../../components/form/styledTextInput/StyledTextInput";
+import CheckboxGroupBox from "../../components/form/CheckBoxGroupBox";
 import { useState } from "react";
-import NeverLetGo from "@/bits/form/never-let-go";
-import { affects, myParts, successes, strings } from "@/pages/resentments/resentment-constants";
-import useProgramDropDown from "@/bits/form/useProgramDropDown";
+import NeverLetGo from "@renderer/components/form/never-let-go";
+import {
+  affects,
+  myParts,
+  successes,
+  strings,
+} from "@renderer/pages/resentments/resentment-constants";
+import useProgramDropDown from "@renderer/components/form/useProgramDropDown";
 import ResentBeGone from "./resentment-be-gone";
-import AccordionSection from "@/bits/layout/accordion-section";
-import CollapsingText from "@/bits/layout/CollapsingText";
-import PageCard from "@/bits/layout/page-card";
+import AccordionSection from "@renderer/components/layout/accordion-section";
+import CollapsingText from "@renderer/components/layout/CollapsingText";
+import PageCard from "@renderer/components/layout/page-card";
 const programOptions = Object.keys(affects);
 
 const ResentmentsForm = () => {
@@ -84,9 +89,14 @@ const ResentmentsForm = () => {
         <Heading
           as="h2"
           size="lg">
+          Trouble:
+        </Heading>{" "}
+        <ProgramDropDown />
+        <Heading
+          as="h2"
+          size="lg">
           {strings[selectedProgram as keyof typeof strings].title}
         </Heading>
-        <ProgramDropDown />
       </HStack>
       <PageCard>
         <Box padding={4}>

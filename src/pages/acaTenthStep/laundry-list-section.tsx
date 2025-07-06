@@ -1,7 +1,7 @@
-import CheckboxGroupBox from "@/bits/form/CheckBoxGroupBox";
+import CheckboxGroupBox from "@renderer/components/form/CheckBoxGroupBox";
 import { HStack, Link, Stack, Text } from "@chakra-ui/react";
-import { laundryLists } from "@/pages/acaTenthStep/aca-tenth-constants";
-import CopyButton from "@/bits/form/copy-button";
+import { laundryLists } from "@renderer/pages/acaTenthStep/aca-tenth-constants";
+import CopyButton from "@renderer/components/form/copy-button";
 const bothLaundryLists = laundryLists.flat();
 const LaundryListSection = ({
   llTraits,

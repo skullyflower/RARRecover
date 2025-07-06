@@ -17,10 +17,10 @@ import {
   CardFooter,
   SliderMark,
 } from "@chakra-ui/react";
-import { copyContents } from "@/pages/resentments/copyContents";
+import { copyContents } from "@renderer/pages/resentments/copyContents";
 import { OneStep, StepCheckList } from "./principles-constants";
 import { steps } from "../steps/steps-constants";
-import useProgramDropDown from "@/bits/form/useProgramDropDown";
+import useProgramDropDown from "@renderer/components/form/useProgramDropDown";
 
 interface stepValue {
   percent: number;

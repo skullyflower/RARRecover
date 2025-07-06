@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { choiceLevels } from "./aca-tenth-constants";
-import CopyButton from "@/bits/form/copy-button";
+import CopyButton from "@renderer/components/form/copy-button";
 
 const ChoiceSection = ({
   freedomText,

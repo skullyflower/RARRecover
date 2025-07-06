@@ -1,4 +1,4 @@
-import ColorBox from "@/bits/layout/color-box";
+import ColorBox from "@renderer/components/layout/color-box";
 import { Box, Heading, Image, Stack, Text } from "@chakra-ui/react";
 
 function HomePage() {

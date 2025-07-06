@@ -1,4 +1,4 @@
-import copyText from "@/bits/copyText";
+import copyText from "@renderer/components/copyText";
 
 export function getContents(): string {
   const contentsDiv = document.getElementById('ToCopy')
