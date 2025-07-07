@@ -1,8 +1,14 @@
-import { Icon } from '@chakra-ui/react'
+import { Icon, IconProps } from "@chakra-ui/react";
 
-const SaveIcon = (props): JSX.Element => (
-  <Icon viewBox="0 0 256 256" {...props}>
-    <rect width="256" height="256" fill="none" />
+const SaveIcon = (props: IconProps): JSX.Element => (
+  <Icon
+    viewBox="0 0 256 256"
+    {...props}>
+    <rect
+      width="256"
+      height="256"
+      fill="none"
+    />
     <path
       d="M216,83.31V208a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H172.69a8,8,0,0,1,5.65,2.34l35.32,35.32A8,8,0,0,1,216,83.31Z"
       fill="none"
@@ -31,6 +37,6 @@ const SaveIcon = (props): JSX.Element => (
       strokeWidth="16"
     />
   </Icon>
-)
+);
 
-export default SaveIcon
+export default SaveIcon;

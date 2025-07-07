@@ -1,25 +1,27 @@
-import { Button, IconButton, Tooltip } from '@chakra-ui/react'
-import { CheckIcon } from '@chakra-ui/icons'
-import { useState } from 'react'
-import PrintIcon from '../Icons/PrintIcon'
+import { Button, IconButton, Tooltip } from "@chakra-ui/react";
+import { CheckIcon } from "@chakra-ui/icons";
+import { useState } from "react";
+import PrintIcon from "../Icons/PrintIcon";
+import { printLog } from "@renderer/scripts/logsAPIs.mjs";
 
 interface PrintButtonProps {
-  fileName?: string
-  disabled?: boolean
-  bigbutton?: boolean
+  fileName?: string;
+  disabled?: boolean;
+  bigbutton?: boolean;
 }
 const PrintButton = ({ fileName, disabled, bigbutton }: PrintButtonProps): JSX.Element => {
-  const [printed, setPrinted] = useState(false)
+  const [printed, setPrinted] = useState(false);
 
   return (
-    <Tooltip hasArrow label={`Print this log`}>
+    <Tooltip
+      hasArrow
+      label={`Print this log`}>
       {bigbutton ? (
         <Button
           leftIcon={printed ? <CheckIcon /> : <PrintIcon />}
           disabled={disabled}
-          size={'sm'}
-          onClick={() => window.api.print(fileName).then((res) => setPrinted(res))}
-        >
+          size={"sm"}
+          onClick={() => printLog(fileName).then((res) => setPrinted(res))}>
           Print
         </Button>
       ) : (
@@ -27,11 +29,11 @@ const PrintButton = ({ fileName, disabled, bigbutton }: PrintButtonProps): JSX.E
           aria-label="Print this log"
           icon={printed ? <CheckIcon /> : <PrintIcon />}
           disabled={disabled}
-          size={'sm'}
-          onClick={() => window.api.print(fileName).then((res) => setPrinted(res))}
+          size={"sm"}
+          onClick={() => printLog(fileName).then((res) => setPrinted(res))}
         />
       )}
     </Tooltip>
-  )
-}
-export default PrintButton
+  );
+};
+export default PrintButton;
