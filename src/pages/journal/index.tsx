@@ -1,4 +1,4 @@
-import { CloseIcon, DeleteIcon } from "@chakra-ui/icons";
+import { CloseIcon, DeleteIcon } from '@chakra-ui/icons'
 import {
   Box,
   HStack,
@@ -7,85 +7,81 @@ import {
   Text,
   Tooltip,
   useColorMode,
-  useDisclosure,
-} from "@chakra-ui/react";
-import Confirm from "@renderer/components/Confirm";
-import PageCard from "@renderer/components/layout/page-card";
-import SemiSafeContent from "@renderer/components/SemiSafeContent";
-import { useEffect, useState } from "react";
-import { deleteLog, getLogs, getLogsContent } from "@renderer/components/copyText";
+  useDisclosure
+} from '@chakra-ui/react'
+import Confirm from '@renderer/components/Confirm'
+import PageCard from '@renderer/components/layout/page-card'
+import SemiSafeContent from '@renderer/components/SemiSafeContent'
+import { useEffect, useState } from 'react'
+import { deleteLog, getLogs, getLogsContent } from '@renderer/components/copyText'
 
 export interface oneEntry {
-  filename: string;
-  content: string;
+  filename: string
+  content: string
 }
 const InventoryJoural = (): JSX.Element => {
-  const { colorMode } = useColorMode();
+  const { colorMode } = useColorMode()
 
-  const [entries, setEntries] = useState<string[]>([]);
-  const [selectedEntry, setSelectedEntry] = useState<oneEntry | null>(null);
-  const [toDelete, setToDelete] = useState<string | null>(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [entries, setEntries] = useState<string[]>([])
+  const [selectedEntry, setSelectedEntry] = useState<oneEntry | null>(null)
+  const [toDelete, setToDelete] = useState<string | null>(null)
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const triggerDelete = (entry: string): void => {
-    setToDelete(entry);
-    onOpen();
-  };
+    setToDelete(entry)
+    onOpen()
+  }
   const handleDelete = (): void => {
-    if (!toDelete) return;
-    const deleted = deleteLog(toDelete);
+    if (!toDelete) return
+    const deleted = deleteLog(toDelete)
     if (deleted) {
-      setEntries((prev) => prev.filter((e) => e !== toDelete));
-      setToDelete(null);
-      setSelectedEntry(null);
-      onClose();
+      setEntries((prev) => prev.filter((e) => e !== toDelete))
+      setToDelete(null)
+      setSelectedEntry(null)
+      onClose()
     }
-  };
+  }
 
   useEffect(() => {
-    setEntries(getLogs());
-  }, []);
+    setEntries(getLogs())
+  }, [])
 
   const getContents = (filename: string): void => {
-    const content = getLogsContent(filename);
+    const content = getLogsContent(filename)
     if (content) {
-      setSelectedEntry({ filename: filename, content: content });
+      setSelectedEntry({ filename: filename, content: content })
     }
-  };
+  }
 
   const formatTitle = (title: string): string => {
-    const datePattern = /(\d{4})-(\d{1,2})-(\d{1,2})/;
+    const datePattern = /(\d{4})-(\d{1,2})-(\d{1,2})/
     if (datePattern.test(title)) {
-      return new Date(title).toDateString();
+      return new Date(title).toDateString()
     }
-    return title;
-  };
+    return title
+  }
 
   const LogHeader = (): JSX.Element => {
     return (
-      <HStack
-        width={"100%"}
-        justifyContent="start">
+      <HStack width={'100%'} justifyContent="start">
         <Text>Inventory Journal</Text>
       </HStack>
-    );
-  };
+    )
+  }
 
   const DeleteButton = ({ what }: { what: string }): JSX.Element => {
     return (
-      <Tooltip
-        hasArrow
-        label={`Delete ${formatTitle(what)}`}>
+      <Tooltip hasArrow label={`Delete ${formatTitle(what)}`}>
         <IconButton
-          variant={"ghost"}
-          size={"sm"}
+          variant={'ghost'}
+          size={'sm'}
           aria-label="Delete Entry"
           icon={<DeleteIcon />}
           onClick={() => triggerDelete(what)}
         />
       </Tooltip>
-    );
-  };
+    )
+  }
   const Confirmation = (): JSX.Element => {
     return (
       <Confirm
@@ -95,8 +91,8 @@ const InventoryJoural = (): JSX.Element => {
         message="Are you sure you want to delete this entry?"
         onConfirm={handleDelete}
       />
-    );
-  };
+    )
+  }
 
   if (selectedEntry) {
     return (
@@ -104,18 +100,16 @@ const InventoryJoural = (): JSX.Element => {
         <Stack>
           <HStack justifyContent="end">
             <IconButton
-              variant={"ghost"}
-              size={"sm"}
+              variant={'ghost'}
+              size={'sm'}
               aria-label="Go Back"
               icon={<CloseIcon />}
               onClick={() => setSelectedEntry(null)}
             />
           </HStack>
           <PageCard>
-            <HStack justifyContent={"space-between"}>
-              <Text
-                fontSize={"lg"}
-                fontWeight="bold">
+            <HStack justifyContent={'space-between'}>
+              <Text fontSize={'lg'} fontWeight="bold">
                 {formatTitle(selectedEntry.filename)}
               </Text>
               <DeleteButton what={selectedEntry.filename} />
@@ -125,7 +119,7 @@ const InventoryJoural = (): JSX.Element => {
         </Stack>
         <Confirmation />
       </Box>
-    );
+    )
   }
 
   return (
@@ -146,11 +140,13 @@ const InventoryJoural = (): JSX.Element => {
                 padding={2}
                 borderRadius={4}
                 justifyContent="space-between"
-                _hover={{ backgroundColor: colorMode === "dark" ? "whiteAlpha.400" : "gray.200" }}>
+                _hover={{ backgroundColor: colorMode === 'dark' ? 'whiteAlpha.400' : 'gray.200' }}
+              >
                 <Text
                   flexGrow={1}
-                  _hover={{ cursor: "pointer", fontWeight: "bold" }}
-                  onClick={() => getContents(entry)}>
+                  _hover={{ cursor: 'pointer', fontWeight: 'bold' }}
+                  onClick={() => getContents(entry)}
+                >
                   {formatTitle(entry)}
                 </Text>
                 <DeleteButton what={entry} />
@@ -161,6 +157,6 @@ const InventoryJoural = (): JSX.Element => {
       </Stack>
       <Confirmation />
     </Box>
-  );
-};
-export default InventoryJoural;
+  )
+}
+export default InventoryJoural

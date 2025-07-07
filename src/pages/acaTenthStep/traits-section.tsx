@@ -1,37 +1,34 @@
-import CheckboxGroupBox from "@renderer/components/form/CheckBoxGroupBox";
-import { HStack, Stack, Text } from "@chakra-ui/react";
-import { useMemo } from "react";
-import { traitList } from "./aca-tenth-constants";
-import CopyButton from "@renderer/components/form/copy-button";
+import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
+import { HStack, Stack, Text } from '@chakra-ui/react'
+import { useMemo } from 'react'
+import { traitList } from './aca-tenth-constants'
+import CopyButton from '@renderer/components/buttons/copy-button'
 
 const TraitsSection = ({
   traitQs,
-  setTraitQs,
+  setTraitQs
 }: {
-  traitQs: string[];
-  setTraitQs: (value: string[]) => void;
+  traitQs: string[]
+  setTraitQs: (value: string[]) => void
 }) => {
-  const allquestions = useMemo(() => traitList.map((trait) => trait.Q), []);
+  const allquestions = useMemo(() => traitList.map((trait) => trait.Q), [])
   const setAfromQ = (Qs: string[]) => {
-    const TraitAs: string[] = [];
+    const TraitAs: string[] = []
     Qs.forEach((Q) => {
-      const trait = traitList.find((trait) => trait.Q === Q);
-      const answer = trait ? trait.A : "";
-      TraitAs.push(answer);
-    });
-    return TraitAs.join("\n- ");
-  };
+      const trait = traitList.find((trait) => trait.Q === Q)
+      const answer = trait ? trait.A : ''
+      TraitAs.push(answer)
+    })
+    return TraitAs.join('\n- ')
+  }
 
-  const tocopy = `Traits I had today:\n - ${setAfromQ(traitQs)}`;
+  const tocopy = `Traits I had today:\n - ${setAfromQ(traitQs)}`
 
   return (
     <Stack gap={4}>
-      <HStack justifyContent={"space-between"}>
+      <HStack justifyContent={'space-between'}>
         <Text>Select the ones that apply today.</Text>
-        <CopyButton
-          text={tocopy}
-          disabled={traitQs.length === 0}
-        />
+        <CopyButton text={tocopy} disabled={traitQs.length === 0} />
       </HStack>
       <CheckboxGroupBox
         columns={1}
@@ -40,6 +37,6 @@ const TraitsSection = ({
         setter={setTraitQs}
       />
     </Stack>
-  );
-};
-export default TraitsSection;
+  )
+}
+export default TraitsSection

@@ -1,0 +1,24 @@
+@import url("//fonts.googleapis.com/css2?family=Creepster&family=Underdog&display=swap");
+body{
+  font-size: 20px;
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  box-shadow: none !important;
+  border-color: rgb(165, 151, 196) !important;
+}
+@media print {
+  /* All your print styles go here */
+  body{ position: relative; }
+    * {
+    height: auto !important;
+    font-size: 10pt;
+    max-height: 100% !important;
+    overflow: visible !important;
+    page-break-before: always;
+  }
+  header,
+  footer, 
+  button,[role='tooltip'] {
+    display: none !important;
+  }
+}

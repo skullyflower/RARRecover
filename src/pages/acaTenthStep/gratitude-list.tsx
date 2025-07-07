@@ -1,20 +1,17 @@
-import CopyButton from "@renderer/components/form/copy-button";
-import { HStack, Stack, Text } from "@chakra-ui/react";
-import { useState } from "react";
-import ListerInput from "@renderer/components/form/ListerInput";
+import CopyButton from '@renderer/components/buttons/copy-button'
+import { HStack, Stack, Text } from '@chakra-ui/react'
+import { useState } from 'react'
+import ListerInput from '@renderer/components/form/ListerInput'
 
 const GratitudeList = () => {
-  const [listOfGrats, setListOfGrats] = useState<string[]>([]);
-  const tocopy = `Today I am grateful for:\n- ${listOfGrats.join(", \n- ")}`;
+  const [listOfGrats, setListOfGrats] = useState<string[]>([])
+  const tocopy = `Today I am grateful for:\n- ${listOfGrats.join(', \n- ')}`
 
   return (
     <Stack gap={4}>
-      <HStack justifyContent={"space-between"}>
+      <HStack justifyContent={'space-between'}>
         <Text>What are you feeling grateful for today?</Text>
-        <CopyButton
-          text={tocopy}
-          disabled={listOfGrats.length === 0}
-        />
+        <CopyButton text={tocopy} disabled={listOfGrats.length === 0} />
       </HStack>
       <ListerInput
         list={listOfGrats}
@@ -22,6 +19,6 @@ const GratitudeList = () => {
         placeholder="Something you are grateful for ..."
       />
     </Stack>
-  );
-};
-export default GratitudeList;
+  )
+}
+export default GratitudeList

@@ -1,14 +1,8 @@
-import { Icon, IconProps } from "@chakra-ui/react";
+import { Icon, IconProps } from '@chakra-ui/react'
 
 const PrintIcon = (props: IconProps): JSX.Element => (
-  <Icon
-    viewBox="0 0 256 256"
-    {...props}>
-    <rect
-      width="256"
-      height="256"
-      fill="none"
-    />
+  <Icon viewBox="0 0 256 256" {...props}>
+    <rect width="256" height="256" fill="none" />
     <polyline
       points="64 80 64 40 192 40 192 80"
       fill="none"
@@ -36,12 +30,8 @@ const PrintIcon = (props: IconProps): JSX.Element => (
       strokeLinejoin="round"
       strokeWidth="16"
     />
-    <circle
-      cx="188"
-      cy="116"
-      r="12"
-    />
+    <circle cx="188" cy="116" r="12" />
   </Icon>
-);
+)
 
-export default PrintIcon;
+export default PrintIcon

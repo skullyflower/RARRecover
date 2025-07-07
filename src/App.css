@@ -2,16 +2,3 @@
 body{
   font-size: 20px;
 }
-.ql-editor{
-  font-size: 16px;
-}
-.ql-editor.ql-blank::before{
-  color: rgba(255,215,255,.5)
-}
-.ql-snow .ql-stroke{
-  stroke: #868 !important;
-}
-input:focus-visible, select:focus-visible, textarea:focus-visible {
-  box-shadow: none !important;
-  border-color: rgb(165, 151, 196) !important;
-}

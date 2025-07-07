@@ -1,5 +1,6 @@
 import { extendTheme, type ThemeConfig } from '@chakra-ui/react'
 import type { StyleFunctionProps } from '@chakra-ui/styled-system'
+
 const fontmode = JSON.parse(window.localStorage.getItem("UseRegFonts") || "false");
 const inputColorLight = 'purple.900'
 const inputColorDark = 'gray.50'

@@ -1,8 +1,7 @@
-import SiteRoutes from "./components/Routes";
-import "./App.css";
+import SiteRoutes from './components/Routes'
 
 function App() {
-  return <SiteRoutes />;
+  return <SiteRoutes />
 }
 
-export default App;
+export default App

@@ -7,25 +7,21 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-  useColorMode,
-} from "@chakra-ui/react";
+  useColorMode
+} from '@chakra-ui/react'
 
 const NeverLetGo = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
-  const { colorMode } = useColorMode();
+  const { colorMode } = useColorMode()
 
   return (
-    <Modal
-      variant={"error"}
-      isOpen={isOpen}
-      onClose={onClose}>
+    <Modal variant={'error'} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay>
         <ModalContent
-          color={colorMode === "dark" ? "pink.300" : "yellow.900"}
-          bgColor={colorMode === "dark" ? "yellow.900" : "pink.300"}
-          border="1px solid">
-          <ModalHeader
-            fontSize="lg"
-            fontWeight="bold">
+          color={colorMode === 'dark' ? 'pink.300' : 'yellow.900'}
+          bgColor={colorMode === 'dark' ? 'yellow.900' : 'pink.300'}
+          border="1px solid"
+        >
+          <ModalHeader fontSize="lg" fontWeight="bold">
             Won't you reconsider?
           </ModalHeader>
           <ModalBody>
@@ -37,6 +33,6 @@ const NeverLetGo = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
         </ModalContent>
       </ModalOverlay>
     </Modal>
-  );
-};
-export default NeverLetGo;
+  )
+}
+export default NeverLetGo

@@ -1,14 +1,8 @@
-import { Icon, IconProps } from "@chakra-ui/react";
+import { Icon, IconProps } from '@chakra-ui/react'
 
 const LockedIcon = (props: IconProps): JSX.Element => (
-  <Icon
-    viewBox="0 0 256 256"
-    {...props}>
-    <rect
-      width="256"
-      height="256"
-      fill="none"
-    />
+  <Icon viewBox="0 0 256 256" {...props}>
+    <rect width="256" height="256" fill="none" />
     <circle
       cx="128"
       cy="140"
@@ -51,5 +45,5 @@ const LockedIcon = (props: IconProps): JSX.Element => (
       strokeWidth="16"
     />
   </Icon>
-);
-export default LockedIcon;
+)
+export default LockedIcon

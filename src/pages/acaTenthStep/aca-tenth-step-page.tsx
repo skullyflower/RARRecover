@@ -1,24 +1,24 @@
-import { Accordion, Heading, Stack, Text, Button, Link } from "@chakra-ui/react";
-import TraitsSection from "./traits-section";
-import ChoiceSection from "./choice-section";
-import ToolsUsedToday from "./tools-today";
-import FeelingsStatement from "./feelings-statement";
-import AssetsSection from "./assets-section";
-import AccordionSection from "@renderer/components/layout/accordion-section";
-import { useState } from "react";
-import WhatYouWrote from "@renderer/components/WhatYouWrote";
-import LaundryListSection from "./laundry-list-section";
-import CollapsingText from "@renderer/components/layout/CollapsingText";
-import PageCard from "@renderer/components/layout/page-card";
+import { Accordion, Heading, Stack, Text, Button, Link } from '@chakra-ui/react'
+import TraitsSection from './traits-section'
+import ChoiceSection from './choice-section'
+import ToolsUsedToday from './tools-today'
+import FeelingsStatement from './feelings-statement'
+import AssetsSection from './assets-section'
+import AccordionSection from '@renderer/components/layout/accordion-section'
+import { useState } from 'react'
+import WhatYouWrote from '@renderer/components/WhatYouWrote'
+import LaundryListSection from './laundry-list-section'
+import CollapsingText from '@renderer/components/layout/CollapsingText'
+import PageCard from '@renderer/components/layout/page-card'
 
 const AcaTenthStep = () => {
-  const [letGo, setLetGo] = useState(false);
-  const [praise, setPraise] = useState<string[]>([]);
-  const [freedomText, setFreedomText] = useState<string>("");
-  const [feelingsSentence, setFeelingSentence] = useState<string>("");
-  const [listOfTools, setListOfTools] = useState<string[]>([]);
-  const [traitQs, setTraitQs] = useState<string[]>([]);
-  const [llTraits, setLLTraits] = useState<string[]>([]);
+  const [letGo, setLetGo] = useState(false)
+  const [praise, setPraise] = useState<string[]>([])
+  const [freedomText, setFreedomText] = useState<string>('')
+  const [feelingsSentence, setFeelingSentence] = useState<string>('')
+  const [listOfTools, setListOfTools] = useState<string[]>([])
+  const [traitQs, setTraitQs] = useState<string[]>([])
+  const [llTraits, setLLTraits] = useState<string[]>([])
 
   const incomplete =
     !praise.length &&
@@ -26,16 +26,16 @@ const AcaTenthStep = () => {
     !feelingsSentence &&
     !listOfTools.length &&
     !traitQs.length &&
-    !llTraits.length;
+    !llTraits.length
   const reset = (): void => {
-    setLetGo(false);
-    setPraise([]);
-    setFreedomText("");
-    setFeelingSentence("");
-    setListOfTools([]);
-    setTraitQs([]);
-    setLLTraits([]);
-  };
+    setLetGo(false)
+    setPraise([])
+    setFreedomText('')
+    setFeelingSentence('')
+    setListOfTools([])
+    setTraitQs([])
+    setLLTraits([])
+  }
   if (letGo) {
     return (
       <WhatYouWrote
@@ -47,29 +47,22 @@ const AcaTenthStep = () => {
         traitQs={traitQs}
         llTraits={llTraits}
       />
-    );
+    )
   }
 
   return (
-    <Stack
-      gap={4}
-      width="100%">
-      <Heading
-        textAlign="center"
-        as="h1"
-        size="xl">
+    <Stack gap={4} width="100%">
+      <Heading textAlign="center" as="h1" size="xl">
         Spawn of Trouble: ACA style Step 10
       </Heading>
       <PageCard>
         <Stack gap={4}>
-          <Text
-            textAlign={"center"}
-            fontWeight={"bold"}>
+          <Text textAlign={'center'} fontWeight={'bold'}>
             Spiritual Principles: Honesty and Discernment
           </Text>
           <CollapsingText>
             <Stack gap={4}>
-              <Text fontSize={"lg"}>
+              <Text fontSize={'lg'}>
                 &quot;Many of us found that we had several characteristics in common as a result of
                 being brought up in an alcoholic or dysfunctional household. &quot;
               </Text>
@@ -79,11 +72,12 @@ const AcaTenthStep = () => {
                 or just the ones that speak to you.
               </Text>
               <Text>
-                For more information visit:{" "}
+                For more information visit:{' '}
                 <Link
                   href="https://adultchildren.org/comline/tips-for-step-10/"
                   rel="no-follow"
-                  target="literature">
+                  target="literature"
+                >
                   Adult Children.org
                 </Link>
               </Text>
@@ -92,37 +86,22 @@ const AcaTenthStep = () => {
           <Accordion allowToggle={true}>
             <Stack gap={2}>
               <AccordionSection title="Exercise 1: Laundry List / Other Laundry List">
-                <LaundryListSection
-                  llTraits={llTraits}
-                  setLLTraits={setLLTraits}
-                />
+                <LaundryListSection llTraits={llTraits} setLLTraits={setLLTraits} />
               </AccordionSection>
               <AccordionSection title="Exercise 1.5: Traits">
-                <TraitsSection
-                  traitQs={traitQs}
-                  setTraitQs={setTraitQs}
-                />
+                <TraitsSection traitQs={traitQs} setTraitQs={setTraitQs} />
               </AccordionSection>
               <AccordionSection title="Exercise 2: Choice Continuum">
-                <ChoiceSection
-                  freedomText={freedomText}
-                  setFreedomText={setFreedomText}
-                />
+                <ChoiceSection freedomText={freedomText} setFreedomText={setFreedomText} />
               </AccordionSection>
               <AccordionSection title="Exercise 3: Tools">
-                <ToolsUsedToday
-                  listOfTools={listOfTools}
-                  setListOfTools={setListOfTools}
-                />
+                <ToolsUsedToday listOfTools={listOfTools} setListOfTools={setListOfTools} />
               </AccordionSection>
               <AccordionSection title="Exercise 4: Feelings">
                 <FeelingsStatement setFeelingSentence={setFeelingSentence} />
               </AccordionSection>
               <AccordionSection title="Exercise 5: Affirmation">
-                <AssetsSection
-                  praise={praise}
-                  setSetPraise={setPraise}
-                />
+                <AssetsSection praise={praise} setSetPraise={setPraise} />
               </AccordionSection>
             </Stack>
           </Accordion>
@@ -131,19 +110,21 @@ const AcaTenthStep = () => {
             direction="row"
             gap={4}
             justifyContent="center"
-            position={"sticky"}
-            bottom={2}>
+            position={'sticky'}
+            bottom={2}
+          >
             <Button
               isDisabled={incomplete}
               colorScheme="purple"
               name="letGo"
-              onClick={() => setLetGo(true)}>
+              onClick={() => setLetGo(true)}
+            >
               Be Free!
             </Button>
           </Stack>
         </Stack>
       </PageCard>
     </Stack>
-  );
-};
-export default AcaTenthStep;
+  )
+}
+export default AcaTenthStep

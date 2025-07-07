@@ -8,60 +8,60 @@ import {
   Input,
   Stack,
   Text,
-  useDisclosure,
-} from "@chakra-ui/react";
-import StyledTextInput from "../../components/form/styledTextInput/StyledTextInput";
-import CheckboxGroupBox from "../../components/form/CheckBoxGroupBox";
-import { useState } from "react";
-import NeverLetGo from "@renderer/components/form/never-let-go";
+  useDisclosure
+} from '@chakra-ui/react'
+import StyledTextInput from '../../components/form/styledTextInput/StyledTextInput'
+import CheckboxGroupBox from '../../components/form/CheckBoxGroupBox'
+import { useState } from 'react'
+import NeverLetGo from '@renderer/components/form/never-let-go'
 import {
   affects,
   myParts,
   successes,
-  strings,
-} from "@renderer/pages/resentments/resentment-constants";
-import useProgramDropDown from "@renderer/components/form/useProgramDropDown";
-import ResentBeGone from "./resentment-be-gone";
-import AccordionSection from "@renderer/components/layout/accordion-section";
-import CollapsingText from "@renderer/components/layout/CollapsingText";
-import PageCard from "@renderer/components/layout/page-card";
-const programOptions = Object.keys(affects);
+  strings
+} from '@renderer/pages/resentments/resentment-constants'
+import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
+import ResentBeGone from './resentment-be-gone'
+import AccordionSection from '@renderer/components/layout/accordion-section'
+import CollapsingText from '@renderer/components/layout/CollapsingText'
+import PageCard from '@renderer/components/layout/page-card'
+const programOptions = Object.keys(affects)
 
 const ResentmentsForm = () => {
-  const [Iresent, setIresent] = useState("");
-  const [because, setBecause] = useState("");
-  const [affectsMy, setAffectsMy] = useState<string[]>([]);
-  const [myPart, setMyPart] = useState<string[]>([]);
-  const [didWell, setDidWell] = useState<string[]>([]);
-  const [learned, setLearned] = useState("");
+  const [Iresent, setIresent] = useState('')
+  const [because, setBecause] = useState('')
+  const [affectsMy, setAffectsMy] = useState<string[]>([])
+  const [myPart, setMyPart] = useState<string[]>([])
+  const [didWell, setDidWell] = useState<string[]>([])
+  const [learned, setLearned] = useState('')
 
   const incomplete =
-    !Iresent || !because || !affectsMy.length || !myPart.length || !didWell.length || !learned;
-  const [letGo, setLetGo] = useState(false);
+    !Iresent || !because || !affectsMy.length || !myPart.length || !didWell.length || !learned
+  const [letGo, setLetGo] = useState(false)
 
   const reset = (): void => {
-    setLetGo(false);
-    setIresent("");
-    setBecause("");
-    setAffectsMy([]);
-    setMyPart([]);
-    setDidWell([]);
-    setLearned("");
-  };
+    setLetGo(false)
+    setIresent('')
+    setBecause('')
+    setAffectsMy([])
+    setMyPart([])
+    setDidWell([])
+    setLearned('')
+  }
 
-  const { isOpen: isLettingGo, onOpen: onLettingGo, onClose: onCloseLetGo } = useDisclosure();
-  const { isOpen: isNever, onOpen: onNever, onClose: onNeverMind } = useDisclosure();
+  const { isOpen: isLettingGo, onOpen: onLettingGo, onClose: onCloseLetGo } = useDisclosure()
+  const { isOpen: isNever, onOpen: onNever, onClose: onNeverMind } = useDisclosure()
 
-  const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions);
+  const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions)
 
   const letItGo = () => {
-    setLetGo(true);
-    onLettingGo();
-  };
+    setLetGo(true)
+    onLettingGo()
+  }
 
   const neverLetItGo = () => {
-    onNever();
-  };
+    onNever()
+  }
 
   if (letGo) {
     return (
@@ -77,24 +77,17 @@ const ResentmentsForm = () => {
         onCloseLetGo={onCloseLetGo}
         reset={reset}
       />
-    );
+    )
   }
 
   return (
     <Stack gap={4}>
-      <HStack
-        align="center"
-        justify={"center"}
-        gap={4}>
-        <Heading
-          as="h2"
-          size="lg">
+      <HStack align="center" justify={'center'} gap={4}>
+        <Heading as="h2" size="lg">
           Trouble:
-        </Heading>{" "}
+        </Heading>{' '}
         <ProgramDropDown />
-        <Heading
-          as="h2"
-          size="lg">
+        <Heading as="h2" size="lg">
           {strings[selectedProgram as keyof typeof strings].title}
         </Heading>
       </HStack>
@@ -107,18 +100,12 @@ const ResentmentsForm = () => {
               ))}
             </Stack>
           </CollapsingText>
-          <Text
-            textAlign={"center"}
-            fontWeight={"bold"}
-            fontSize="lg"
-            marginBlock={4}>
+          <Text textAlign={'center'} fontWeight={'bold'} fontSize="lg" marginBlock={4}>
             {`So, why don't you write about it?`}
           </Text>
         </Box>
         <Accordion allowToggle={true}>
-          <Stack
-            gap={2}
-            padding={4}>
+          <Stack gap={2} padding={4}>
             <AccordionSection title="Who or what is bothering you?">
               <Stack gap={4}>
                 <FormControl isRequired>
@@ -171,27 +158,14 @@ const ResentmentsForm = () => {
             </AccordionSection>
             <AccordionSection title="Do you see the situation differently now?">
               <FormControl isRequired>
-                <StyledTextInput
-                  value={learned}
-                  setter={setLearned}
-                />
+                <StyledTextInput value={learned} setter={setLearned} />
               </FormControl>
             </AccordionSection>
-            <Stack
-              width="100%"
-              direction="row"
-              gap={4}
-              justifyContent="center">
-              <Button
-                isDisabled={incomplete}
-                colorScheme="purple"
-                name="letGo"
-                onClick={letItGo}>
+            <Stack width="100%" direction="row" gap={4} justifyContent="center">
+              <Button isDisabled={incomplete} colorScheme="purple" name="letGo" onClick={letItGo}>
                 Be Free!
-              </Button>{" "}
-              <Button
-                colorScheme="purple"
-                onClick={neverLetItGo}>
+              </Button>{' '}
+              <Button colorScheme="purple" onClick={neverLetItGo}>
                 NEVER!!
               </Button>
             </Stack>
@@ -205,11 +179,8 @@ const ResentmentsForm = () => {
           you choose.
         </Text>
       </Box>
-      <NeverLetGo
-        isOpen={isNever}
-        onClose={onNeverMind}
-      />
+      <NeverLetGo isOpen={isNever} onClose={onNeverMind} />
     </Stack>
-  );
-};
-export default ResentmentsForm;
+  )
+}
+export default ResentmentsForm

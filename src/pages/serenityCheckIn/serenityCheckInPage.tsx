@@ -1,58 +1,42 @@
-import CopyButton from "@renderer/components/form/copy-button";
-import { Accordion, Box, Button, CardBody, Heading, HStack, Stack, Text } from "@chakra-ui/react";
-import { useState } from "react";
-import AccordionSection from "@renderer/components/layout/accordion-section";
-import DoubleListerInput, { doubleListItem } from "@renderer/components/form/DoubleListerInput";
-import WhatYouWrote from "@renderer/components/WhatYouWrote";
-import CollapsingText from "@renderer/components/layout/CollapsingText";
-import PageCard from "@renderer/components/layout/page-card";
+import CopyButton from '@renderer/components/buttons/copy-button'
+import { Accordion, Box, Button, CardBody, Heading, HStack, Stack, Text } from '@chakra-ui/react'
+import { useState } from 'react'
+import AccordionSection from '@renderer/components/layout/accordion-section'
+import DoubleListerInput, { doubleListItem } from '@renderer/components/form/DoubleListerInput'
+import WhatYouWrote from '@renderer/components/WhatYouWrote'
+import CollapsingText from '@renderer/components/layout/CollapsingText'
+import PageCard from '@renderer/components/layout/page-card'
 
 function SerenityCheckIn(): JSX.Element {
-  const [letGo, setLetGo] = useState(false);
-  const [canCannotControl, setCanCannotControl] = useState<doubleListItem[]>([]);
+  const [letGo, setLetGo] = useState(false)
+  const [canCannotControl, setCanCannotControl] = useState<doubleListItem[]>([])
 
   const tocopy = `Serenity Check-In:
 ${canCannotControl
   .map((pair) => {
-    return `• Today I want to control, but cannot control:\n\t ${pair[0]}\n   What I could do: \n\t ${pair[1]}`;
+    return `Today I want to control, but cannot control:\n\t ${pair[0]}\n   What I could do: \n\t ${pair[1]}`
   })
-  .join("\n\n")}`;
+  .join('\n\n')}`
 
   const reset = (): void => {
-    setLetGo(false);
-    setCanCannotControl([]);
-  };
+    setLetGo(false)
+    setCanCannotControl([])
+  }
 
   if (letGo) {
-    return (
-      <WhatYouWrote
-        reset={reset}
-        canCannotControl={canCannotControl}
-      />
-    );
+    return <WhatYouWrote reset={reset} canCannotControl={canCannotControl} />
   }
 
   return (
-    <Stack
-      gap={4}
-      width="100%">
-      <Heading
-        as="h2"
-        size="lg"
-        textAlign={"center"}
-        paddingInline={4}>
+    <Stack gap={4} width="100%">
+      <Heading as="h2" size="lg" textAlign={'center'} paddingInline={4}>
         Control : Let the Serentiy Prayer free you.
       </Heading>
       <PageCard>
         <CardBody>
           <Stack gap={4}>
-            <HStack
-              align="start"
-              justifyContent={"space-between"}>
-              <Stack
-                gap={4}
-                padding={4}
-                width={"100%"}>
+            <HStack align="start" justifyContent={'space-between'}>
+              <Stack gap={4} padding={4} width={'100%'}>
                 <Text paddingInlineStart={2}>
                   All too often, our efforts are directed in the wrong direction.
                 </Text>
@@ -75,21 +59,15 @@ ${canCannotControl
                   </Stack>
                 </CollapsingText>
               </Stack>
-              <CopyButton
-                text={tocopy}
-                disabled={!canCannotControl.length}
-              />
+              <CopyButton text={tocopy} disabled={!canCannotControl.length} />
             </HStack>
-            <Accordion
-              allowToggle={true}
-              allowMultiple={true}
-              defaultIndex={[0]}>
+            <Accordion allowToggle={true} allowMultiple={true} defaultIndex={[0]}>
               <Stack gap={2}>
                 <AccordionSection title="What are you trying to control that you cannot control?">
                   <DoubleListerInput
                     list={canCannotControl}
                     setList={setCanCannotControl}
-                    labels={["I cannot control", "But I could "]}
+                    labels={['I cannot control', 'But I could ']}
                   />
                 </AccordionSection>
               </Stack>
@@ -104,13 +82,15 @@ ${canCannotControl
               direction="row"
               gap={4}
               justifyContent="center"
-              position={"sticky"}
-              bottom={2}>
+              position={'sticky'}
+              bottom={2}
+            >
               <Button
                 isDisabled={canCannotControl.length === 0}
                 colorScheme="purple"
                 name="letGo"
-                onClick={() => setLetGo(true)}>
+                onClick={() => setLetGo(true)}
+              >
                 Be Free!
               </Button>
             </Stack>
@@ -118,6 +98,6 @@ ${canCannotControl
         </CardBody>
       </PageCard>
     </Stack>
-  );
+  )
 }
-export default SerenityCheckIn;
+export default SerenityCheckIn

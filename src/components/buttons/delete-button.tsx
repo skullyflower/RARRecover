@@ -1,39 +1,37 @@
-import { IconButton, Tooltip, useDisclosure } from "@chakra-ui/react";
-import { useState } from "react";
-import { formatTitle } from "@renderer/scripts/copyText.mjs";
-import Confirm from "../Confirm";
-import { DeleteIcon } from "@chakra-ui/icons";
-import { deleteLog } from "@renderer/scripts/logsAPIs.mjs";
+import { IconButton, Tooltip, useDisclosure } from '@chakra-ui/react'
+import { useState } from 'react'
+import { formatTitle } from '@renderer/scripts/copyText.mjs'
+import Confirm from '../Confirm'
+import { DeleteIcon } from '@chakra-ui/icons'
+import { deleteLog } from '@renderer/scripts/logsAPIs.mjs'
 
 interface DeleteButtonProps {
-  what: string;
-  callback: (what: string) => void;
+  what: string
+  callback: (what: string) => void
 }
 const DeleteButton = ({ what, callback }: DeleteButtonProps): JSX.Element => {
-  const [toDelete, setToDelete] = useState<string | null>(null);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [toDelete, setToDelete] = useState<string | null>(null)
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const triggerDelete = (entry: string): void => {
-    setToDelete(entry);
-    onOpen();
-  };
+    setToDelete(entry)
+    onOpen()
+  }
 
   const handleDelete = (): void => {
-    if (!toDelete) return;
+    if (!toDelete) return
     deleteLog(toDelete).then(() => {
-      callback(toDelete);
-      setToDelete(null);
-      onClose();
-    });
-  };
+      callback(toDelete)
+      setToDelete(null)
+      onClose()
+    })
+  }
   return (
     <>
-      <Tooltip
-        hasArrow
-        label={`Delete ${formatTitle(what)}`}>
+      <Tooltip hasArrow label={`Delete ${formatTitle(what)}`}>
         <IconButton
-          variant={"ghost"}
-          size={"sm"}
+          variant={'ghost'}
+          size={'sm'}
           aria-label="Delete Entry"
           icon={<DeleteIcon />}
           onClick={() => triggerDelete(what)}
@@ -47,6 +45,6 @@ const DeleteButton = ({ what, callback }: DeleteButtonProps): JSX.Element => {
         onConfirm={handleDelete}
       />
     </>
-  );
-};
-export default DeleteButton;
+  )
+}
+export default DeleteButton

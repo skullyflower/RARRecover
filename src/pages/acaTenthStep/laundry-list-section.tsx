@@ -1,33 +1,28 @@
-import CheckboxGroupBox from "@renderer/components/form/CheckBoxGroupBox";
-import { HStack, Link, Stack, Text } from "@chakra-ui/react";
-import { laundryLists } from "@renderer/pages/acaTenthStep/aca-tenth-constants";
-import CopyButton from "@renderer/components/form/copy-button";
-const bothLaundryLists = laundryLists.flat();
+import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
+import { HStack, Link, Stack, Text } from '@chakra-ui/react'
+import { laundryLists } from '@renderer/pages/acaTenthStep/aca-tenth-constants'
+import CopyButton from '@renderer/components/buttons/copy-button'
+const bothLaundryLists = laundryLists.flat()
 const LaundryListSection = ({
   llTraits,
-  setLLTraits,
+  setLLTraits
 }: {
-  llTraits: string[];
-  setLLTraits: (value: string[]) => void;
+  llTraits: string[]
+  setLLTraits: (value: string[]) => void
 }): JSX.Element => {
-  const toCopy = `Today I: \n\t• ${llTraits.join(",\n\t• I ")}`;
+  const toCopy = `Today I: \n\t• ${llTraits.join(',\n\t• I ')}`
 
   return (
     <Stack gap={4}>
-      <HStack justifyContent={"space-between"}>
+      <HStack justifyContent={'space-between'}>
         <Text>
-          Select the Laundry List and Other Laundry List traits that you experienced today.{" "}
-          <Link
-            href="https://adultchildren.org/literature/laundry-list/"
-            target="literature">
+          Select the Laundry List and Other Laundry List traits that you experienced today.{' '}
+          <Link href="https://adultchildren.org/literature/laundry-list/" target="literature">
             Go to adultchildren.org more information.
           </Link>
         </Text>
         <HStack gap={2}>
-          <CopyButton
-            text={toCopy}
-            disabled={llTraits.length === 0}
-          />
+          <CopyButton text={toCopy} disabled={llTraits.length === 0} />
         </HStack>
       </HStack>
       <CheckboxGroupBox
@@ -37,6 +32,6 @@ const LaundryListSection = ({
         setter={setLLTraits}
       />
     </Stack>
-  );
-};
-export default LaundryListSection;
+  )
+}
+export default LaundryListSection
