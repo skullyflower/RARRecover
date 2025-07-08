@@ -1,15 +1,17 @@
-import { Card, CardBody, useColorMode } from "@chakra-ui/react";
+import { Card, CardBody, useColorMode } from '@chakra-ui/react'
 
 const PageCard = ({ children }: { children: React.ReactNode }): JSX.Element => {
-  const { colorMode } = useColorMode();
+  const { colorMode } = useColorMode()
 
   return (
     <Card
-      color={colorMode === "dark" ? "gray.100" : "gray.900"}
-      background={colorMode === "dark" ? "whiteAlpha.300" : "whiteAlpha.800"}
-      overflowY="auto">
+      width={'100%'}
+      color={colorMode === 'dark' ? 'gray.100' : 'gray.900'}
+      background={colorMode === 'dark' ? 'whiteAlpha.300' : 'whiteAlpha.800'}
+      overflowY="auto"
+    >
       <CardBody>{children}</CardBody>
     </Card>
-  );
-};
-export default PageCard;
+  )
+}
+export default PageCard

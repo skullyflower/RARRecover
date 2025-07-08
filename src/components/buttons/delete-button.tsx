@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { formatTitle } from '@renderer/scripts/copyText.mjs'
 import Confirm from '../Confirm'
 import { DeleteIcon } from '@chakra-ui/icons'
-import { deleteLog } from '@renderer/scripts/logsAPIs.mjs'
+import { deleteLog } from '@renderer/scripts/logsAPI.mjs'
 
 interface DeleteButtonProps {
   what: string

@@ -1,9 +1,6 @@
 import {
   Box,
   Button,
-  CardBody,
-  CardFooter,
-  CardHeader,
   Heading,
   HStack,
   ListItem,
@@ -11,12 +8,12 @@ import {
   Text,
   UnorderedList
 } from '@chakra-ui/react'
+import SaveButton from '@renderer/components/buttons/save-button'
 import CopyButton from '@renderer/components/buttons/copy-button'
 import { traitList } from '@renderer/pages/acaTenthStep/aca-tenth-constants.ts'
 import { doubleListItem } from './form/DoubleListerInput'
 import PageCard from './layout/page-card'
 import ColorBox from './layout/color-box'
-import SaveButton from './buttons/save-button'
 
 interface WhatYouWroteProps {
   reset: () => void
@@ -54,7 +51,7 @@ function WhatYouWrote({
   const toCopy = (): string => {
     const toCopyStrings: string[] = []
     if (traitQs && traitQs.length > 0) {
-      toCopyStrings.push(`Traits I had today:\n\t• ${setAfromQ(traitQs)}`)
+      toCopyStrings.push(`Traits I had today:\n\t ${setAfromQ(traitQs)}`)
     }
     if (llTraits && llTraits.length > 0) {
       toCopyStrings.push(`Laundry List / Other Laundry List:\n\t• ${llTraits.join(',\n\t• ')}`)
@@ -94,129 +91,126 @@ function WhatYouWrote({
   }
 
   const stringToWrite = toCopy()
+
   return (
-    <Stack gap={4} width="100%">
-      <PageCard>
-        <CardHeader>
+    <PageCard>
+      <ColorBox>
+        <Stack gap={4}>
           <HStack justifyContent="space-between">
-            <Heading fontSize={'xl'} fontWeight={700}>
+            <Heading fontSize={'h3'} fontWeight={700}>
               Here is what you wrote.
             </Heading>
             <HStack gap={4}>
               <CopyButton text={stringToWrite} />
-              <SaveButton text={stringToWrite} />
+              <SaveButton text={stringToWrite} bigbutton={true} />
             </HStack>
           </HStack>
-        </CardHeader>
-        <CardBody>
-          <ColorBox>
-            <Stack gap={4} id="ToCopy">
-              {llTraits && llTraits.length > 0 && (
-                <Box>
-                  <Text fontWeight={700} paddingBottom={4}>
-                    Laundry List and Other Laundry List traits I had today:
-                  </Text>
-                  <UnorderedList paddingInlineStart={4}>
-                    {llTraits.map((one, indx) => (
-                      <ListItem key={`lltraits${indx}`}>{one.replace('_', ' ')}</ListItem>
-                    ))}
-                  </UnorderedList>
-                </Box>
-              )}
-              {traitQs && traitQs.length > 0 && (
-                <Box>
-                  <Text fontWeight={700} paddingBottom={4}>
-                    Traits I had today:
-                  </Text>
-                  <UnorderedList paddingInlineStart={4}>
-                    {traitQs.map((one, indx) => (
-                      <ListItem key={`traits${indx}`}>{one.replace('_', ' ')}</ListItem>
-                    ))}
-                  </UnorderedList>
-                </Box>
-              )}
-              {freedomText && (
-                <Box>
-                  <Text fontWeight={700} paddingBottom={4}>
-                    Today&apos;s Choice Level:
-                  </Text>
-                  <Text fontWeight={500} paddingBottom={4}>
-                    {freedomText}
-                  </Text>
-                </Box>
-              )}
-              {feelingsSentence && (
-                <Box>
-                  <Text fontWeight={700} paddingBottom={4}>
-                    Today&apos;s Feeling Statement:
-                  </Text>
-                  <Text fontWeight={500} paddingBottom={4}>
-                    {feelingsSentence}
-                  </Text>
-                </Box>
-              )}
-              {listOfTools && listOfTools.length > 0 && (
-                <Box>
-                  <Text fontWeight={700} paddingBottom={4}>
-                    Tools I used today:
-                  </Text>
-                  <UnorderedList paddingInlineStart={4}>
-                    {listOfTools.map((one, indx) => (
-                      <ListItem key={`tool${indx}`}>{one.replace('_', ' ')}</ListItem>
-                    ))}
-                  </UnorderedList>
-                </Box>
-              )}
-              {praise && praise.length > 0 && (
-                <Box>
-                  <Text fontWeight={700} paddingBottom={4}>
-                    Today&apos;s Affirmations:
-                  </Text>
-                  <UnorderedList paddingInlineStart={4}>
-                    {praise.map((one, indx) => (
-                      <ListItem key={`praise${indx}`}>{one.replace('_', ' ')}</ListItem>
-                    ))}
-                  </UnorderedList>
-                </Box>
-              )}
-              {canCannotControl && canCannotControl.length > 0 && (
-                <Box>
-                  <Text fontWeight={700} paddingBottom={4}>
-                    My (lack of) Serentity today:
-                  </Text>
-                  {canCannotControl.map(
-                    (value, index): JSX.Element => (
-                      <HStack key={index} justifyContent={'space-between'} gap={2} wrap={'wrap'}>
-                        <Text>I want to control but cannot: {value[0]}</Text>
-                        <Text>What I could do: {value[1]}</Text>
-                      </HStack>
-                    )
-                  )}
-                </Box>
-              )}
-              {fearsList && fearsList.length > 0 && (
-                <Box>
-                  <Text fontWeight={700} paddingBottom={4}>
-                    Today&apos;s fears:
-                  </Text>
-                  {fearsList.map(
-                    (value, index): JSX.Element => (
-                      <HStack key={index} justifyContent={'space-between'} gap={2} wrap={'wrap'}>
-                        <Text>I fear: {value[0]}</Text>
-                        <Text>but am grateful: {value[1]}</Text>
-                      </HStack>
-                    )
-                  )}
-                </Box>
-              )}
-            </Stack>
-          </ColorBox>
-        </CardBody>
-        <CardFooter textAlign="center">
-          <Button onClick={reset}>Start Over</Button>
-        </CardFooter>
-      </PageCard>
-    </Stack>
+          <Stack gap={4} id="ToCopy">
+            {llTraits && llTraits.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Laundry List and Other Laundry List traits I had today:
+                </Text>
+                <UnorderedList paddingInlineStart={4}>
+                  {llTraits.map((one, indx) => (
+                    <ListItem key={`lltraits${indx}`}>{one.replace('_', ' ')}</ListItem>
+                  ))}
+                </UnorderedList>
+              </Box>
+            )}
+            {traitQs && traitQs.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Traits I had today:
+                </Text>
+                <UnorderedList paddingInlineStart={4}>
+                  {traitQs.map((one, indx) => (
+                    <ListItem key={`traits${indx}`}>{one.replace('_', ' ')}</ListItem>
+                  ))}
+                </UnorderedList>
+              </Box>
+            )}
+            {freedomText && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Today&apos;s Choice Level:
+                </Text>
+                <Text fontWeight={500} paddingBottom={4}>
+                  {freedomText}
+                </Text>
+              </Box>
+            )}
+            {feelingsSentence && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Today&apos;s Feeling Statement:
+                </Text>
+                <Text fontWeight={500} paddingBottom={4}>
+                  {feelingsSentence}
+                </Text>
+              </Box>
+            )}
+            {listOfTools && listOfTools.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Tools I used today:
+                </Text>
+                <UnorderedList paddingInlineStart={4}>
+                  {listOfTools.map((one, indx) => (
+                    <ListItem key={`tool${indx}`}>{one.replace('_', ' ')}</ListItem>
+                  ))}
+                </UnorderedList>
+              </Box>
+            )}
+            {praise && praise.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Today&apos;s Affirmations:
+                </Text>
+                <UnorderedList paddingInlineStart={4}>
+                  {praise.map((one, indx) => (
+                    <ListItem key={`praise${indx}`}>{one.replace('_', ' ')}</ListItem>
+                  ))}
+                </UnorderedList>
+              </Box>
+            )}
+            {canCannotControl && canCannotControl.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  My (lack of) Serentity today:
+                </Text>
+                {canCannotControl.map(
+                  (value, index): JSX.Element => (
+                    <HStack key={index} justifyContent={'space-between'} gap={2} wrap={'wrap'}>
+                      <Text>I want to control but cannot: {value[0]}</Text>
+                      <Text>What I could do: {value[1]}</Text>
+                    </HStack>
+                  )
+                )}
+              </Box>
+            )}
+            {fearsList && fearsList.length > 0 && (
+              <Box>
+                <Text fontWeight={700} paddingBottom={4}>
+                  Today&apos;s fears:
+                </Text>
+                {fearsList.map(
+                  (value, index): JSX.Element => (
+                    <HStack key={index} justifyContent={'space-between'} gap={2} wrap={'wrap'}>
+                      <Text>I fear: {value[0]}</Text>
+                      <Text>but am grateful: {value[1]}</Text>
+                    </HStack>
+                  )
+                )}
+              </Box>
+            )}
+          </Stack>
+          <Box textAlign="center">
+            <Button onClick={reset}>Start Over</Button>
+          </Box>
+        </Stack>
+      </ColorBox>
+    </PageCard>
   )
 }
 export default WhatYouWrote

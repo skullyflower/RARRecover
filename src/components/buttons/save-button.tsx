@@ -2,7 +2,7 @@ import { Button, IconButton, Tooltip } from '@chakra-ui/react'
 import { CheckIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from 'react'
 import SaveIcon from '../Icons/SaveIcon'
-import { writeLog } from '@renderer/scripts/logsAPIs.mjs'
+import { writeLog } from '@renderer/scripts/logsAPI.mjs'
 
 interface SaveButtonProps {
   text: string

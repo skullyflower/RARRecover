@@ -2,7 +2,7 @@ import { Button, IconButton, Tooltip } from '@chakra-ui/react'
 import { CheckIcon } from '@chakra-ui/icons'
 import { useState } from 'react'
 import PrintIcon from '../Icons/PrintIcon'
-import { printLog } from '@renderer/scripts/logsAPIs.mjs'
+import { printLog } from '@renderer/scripts/logsAPI.mjs'
 
 interface PrintButtonProps {
   fileName?: string
