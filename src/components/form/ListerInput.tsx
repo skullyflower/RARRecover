@@ -10,26 +10,26 @@ import {
   useColorMode
 } from '@chakra-ui/react'
 import { useCallback, useState } from 'react'
-import useKeyCapture from '../hooks/useKeyCapture'
+import useKeyCapture from '../../hooks/useKeyCapture'
 
 interface ListerInputProps {
   list: string[]
   setList: (value: string[]) => void
   placeholder?: string
 }
-const ListerInput = ({ list, setList, placeholder }: ListerInputProps) => {
+const ListerInput = ({ list, setList, placeholder }: ListerInputProps): JSX.Element => {
   const { colorMode } = useColorMode()
   const activeBG = colorMode === 'dark' ? 'pink.800' : 'gray.50'
 
   const [oneItem, setOneItem] = useState<string>('')
   const addItem = useCallback(() => {
     if (oneItem) {
-      setList([...list, oneItem])
+      setList([oneItem, ...list])
       setOneItem('')
     }
   }, [oneItem, list, setList])
 
-  useKeyCapture('Enter', addItem)
+  useKeyCapture({ key: 'Enter', callback: addItem })
 
   return (
     <Stack gap={2}>

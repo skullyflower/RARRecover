@@ -35,7 +35,13 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
         border={'1px solid'}
       >
         <HStack width={'100%'} justifyContent={'space-between'}>
-          <Heading color="inherit" as="h3" fontWeight={'normal'} textAlign={'left'} size="lg">
+          <Heading
+            color="inherit"
+            as="h2"
+            fontWeight={'normal'}
+            size="lg"
+            textShadow={'1px 1px 2px rgba(0, 0, 0, 0.3)'}
+          >
             {title}
           </Heading>
           <AccordionIcon />

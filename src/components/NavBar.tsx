@@ -1,18 +1,23 @@
-import { ChevronDownIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { ChevronDownIcon, LockIcon, MoonIcon, SunIcon } from '@chakra-ui/icons'
 import {
   Box,
   Button,
+  FormControl,
+  FormLabel,
   HStack,
   LinkBox,
   Menu,
   MenuButton,
   MenuList,
   Stack,
+  Switch,
   useColorMode
 } from '@chakra-ui/react'
+import useToggleLock from '@renderer/hooks/useToggleLock'
+import { toggleFontMode } from '@renderer/scripts/logsAPI.mjs'
 import { Link, useMatch } from 'react-router-dom'
 
-const NavItem = ({ text, to }: { text: string; to: string }) => {
+const NavItem = ({ text, to }: { text: string; to: string }): JSX.Element => {
   const { colorMode } = useColorMode()
   const color = colorMode === 'dark' ? 'gray.100' : 'red.900'
   const bgcolor = colorMode === 'dark' ? '' : 'gray.100'
@@ -39,14 +44,13 @@ const NavItem = ({ text, to }: { text: string; to: string }) => {
   )
 }
 
-const MenuDDropDown = () => {
+const MenuDDropDown = (): JSX.Element => {
   const { colorMode } = useColorMode()
   const color = colorMode === 'dark' ? 'gray.100' : 'red.900'
   const bgcolor = colorMode === 'dark' ? '' : 'gray.100'
   const activebg = colorMode === 'dark' ? 'whiteAlpha.300' : 'purple.300'
-
   return (
-    <Menu defaultIsOpen>
+    <Menu>
       {({ isOpen }) => (
         <>
           <MenuButton
@@ -86,28 +90,38 @@ const MenuDDropDown = () => {
   )
 }
 
-const toggleFontMode = () => {
-  const usePlainFonts = JSON.parse(window.localStorage.getItem('UseRegFonts') || 'false')
-  window.localStorage.setItem('UseRegFonts', JSON.stringify(!usePlainFonts))
-  window.location.reload()
-}
-
-const NavBar = () => {
+const NavBar = (): JSX.Element => {
   const { colorMode, toggleColorMode } = useColorMode()
+  const { toggleLock, isLocked } = useToggleLock()
+  const isApp = Boolean(window.api)
 
   return (
-    <Box p={4}>
-      <HStack wrap="wrap" gap={2} justifyContent={'center'}>
-        <Button size={'sm'} onClick={toggleFontMode}>
-          Az
-        </Button>
-        <Button size="sm" onClick={toggleColorMode}>
-          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-        </Button>
-        <MenuDDropDown />
-        <NavItem to="steps" text="The Steps" />
-        <NavItem to="literature" text="literature" />
-      </HStack>
+    <Box p={4} minW={'65%'}>
+      <Stack gap={2}>
+        <HStack wrap="wrap" gap={2} justifyContent={'flex-end'}>
+          <Button size={'sm'} onClick={toggleFontMode}>
+            Az
+          </Button>
+          <Button size="sm" onClick={toggleColorMode}>
+            {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+          </Button>
+          {isApp && (
+            <FormControl width={'auto'} display="flex" alignItems="center">
+              <FormLabel htmlFor="lock" mb="0">
+                <LockIcon aria-label="Lock your log" />
+              </FormLabel>
+              <Switch isChecked={isLocked} id="lock" onChange={toggleLock} />
+            </FormControl>
+          )}
+        </HStack>
+
+        <HStack wrap="wrap" gap={2} justifyContent={'flex-start'}>
+          <MenuDDropDown />
+          <NavItem to="steps" text="The Steps" />
+          {!isApp && <NavItem to="literature" text="literature" />}
+          {isApp && <NavItem to="log" text="My Log" />}
+        </HStack>
+      </Stack>
     </Box>
   )
 }

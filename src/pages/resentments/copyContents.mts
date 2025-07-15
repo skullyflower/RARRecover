@@ -1,4 +1,4 @@
-import copyText from "@renderer/components/copyText";
+import copyText from '@renderer/scripts/copyText.mjs'
 
 export function getContents(): string {
   const contentsDiv = document.getElementById('ToCopy')
@@ -11,8 +11,9 @@ export function getContents(): string {
           if (n.childNodes.length) {
             n.childNodes.forEach(
               (n2) =>
-              (stringtocopy = `${stringtocopy} ${n2.parentNode?.nodeName === 'LI' ? '\t• ' : ''}  ${n2.textContent
-                } \n`)
+                (stringtocopy = `${stringtocopy} ${
+                  n2.parentNode?.nodeName === 'LI' ? '\t• ' : ''
+                }  ${n2.textContent} \n`)
             )
           } else {
             stringtocopy = `${stringtocopy} ${n.textContent} \n`
@@ -25,7 +26,6 @@ export function getContents(): string {
   }
   return stringtocopy
 }
-
 
 export function copyContents(): () => boolean {
   return () => {

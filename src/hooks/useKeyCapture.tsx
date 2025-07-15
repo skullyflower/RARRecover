@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
-const useKeyCapture = (key: string, callback: () => void) => {
-  const handleKeyDown = (event: KeyboardEvent) => {
+function useKeyCapture({ key, callback }: { key: string; callback: () => void }): void {
+  function handleKeyDown(event: KeyboardEvent): void {
     if (event.key === key) {
       callback()
     }
@@ -9,9 +9,10 @@ const useKeyCapture = (key: string, callback: () => void) => {
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown)
-    return () => {
+    return (): void => {
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [key, callback])
 }
+
 export default useKeyCapture

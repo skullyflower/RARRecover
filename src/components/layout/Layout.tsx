@@ -1,10 +1,14 @@
-import { Outlet } from 'react-router-dom'
-import { Box, Center, Image, LinkBox, Stack, useColorMode } from '@chakra-ui/react'
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { Box, Image, Stack, useColorMode, LinkBox } from '@chakra-ui/react'
 import NavBar from '../NavBar'
-const Layout = () => {
-  const { colorMode } = useColorMode()
+import rarrLogo from '@renderer/assets/RarrLogo.svg'
+import { Link as ReactRouterLink, Outlet } from 'react-router-dom'
+import useToggleLock from '@renderer/hooks/useToggleLock'
+import UnlockInventory from '@renderer/pages/UnlockInventory'
 
+function Layout(): JSX.Element {
+  const { isLocked } = useToggleLock()
+
+  const { colorMode } = useColorMode()
   return (
     <Box
       bg={colorMode === 'light' ? 'whiteAlpha.800' : undefined}
@@ -23,19 +27,25 @@ const Layout = () => {
         <header>
           <Stack
             direction={['column', 'row']}
+            width={'100%'}
             paddingInline={4}
             justifyContent="space-between"
             alignItems={['center', 'flex-start']}
           >
-            <LinkBox width="120px" as={ReactRouterLink} to="/" p={2}>
-              <Image src="/images/RARRLogo2.png" alt="Ragers and Rampagers, Recovering" />
+            <LinkBox
+              as={ReactRouterLink}
+              width="120px"
+              to={'/'}
+              _hover={{ cursor: 'pointer' }}
+              p={2}
+              title="Ragers and Rampagers, Recovering"
+            >
+              <Image src={rarrLogo} alt="Ragers and Rampagers, Recovering" />
             </LinkBox>
             <NavBar />
           </Stack>
         </header>
-        <Center>
-          <Outlet />
-        </Center>
+        <Box>{isLocked ? <UnlockInventory /> : <Outlet />}</Box>
         <footer id="pagefoot"></footer>
       </Stack>
     </Box>

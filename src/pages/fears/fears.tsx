@@ -1,10 +1,10 @@
 import { Accordion, Box, Button, Heading, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
+import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import DoubleListerInput, { doubleListItem } from '@renderer/components/form/DoubleListerInput'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
-import PageCard from '@renderer/components/layout/page-card'
 
 function Fears(): JSX.Element {
   const [letGo, setLetGo] = useState(false)

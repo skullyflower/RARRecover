@@ -1,16 +1,18 @@
 declare global {
   interface Window {
-    api: {
-      getLogList: () => Promise<string[]>,
-      readLog: (fileName: string) => Promise<string>,
-      writeLog: (text: string, fileName?: string) => Promise<boolean>,
-      print: (fileName?: string) => Promise<boolean>,
-      deleteLog: (toDelete: string) => Promise<boolean>,
-      isLocked: () => Promise<boolean>,
-      lockLog: () => Promise<boolean>,
-      unlockLog: (user: string, password: string) => Promise<boolean>,
+    api:
+    | {
+      getLogList: () => Promise<string[]>
+      readLog: (fileName: string) => Promise<string>
+      writeLog: (text: string, fileName?: string) => Promise<boolean>
+      print: (fileName?: string) => Promise<boolean>
+      deleteLog: (toDelete: string) => Promise<boolean>
+      isLocked: () => Promise<boolean>
+      lockLog: () => Promise<boolean>
+      unlockLog: (user: string, password: string) => Promise<boolean>
       reset: () => Promise<boolean>
-    } | undefined
+    }
+    | undefined
   }
 }
 
@@ -109,4 +111,10 @@ export const unlockLog = (user: string, password: string): Promise<boolean> => {
 export const resetLogs = (): Promise<boolean> => {
   if (window.api) return window.api.reset()
   return Promise.resolve(false)
+}
+
+export const toggleFontMode = (): void => {
+  const usePlainFonts = JSON.parse(window.localStorage.getItem('UseRegFonts') || 'false')
+  window.localStorage.setItem('UseRegFonts', JSON.stringify(!usePlainFonts))
+  window.location.reload()
 }

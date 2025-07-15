@@ -10,7 +10,13 @@ import {
   useColorMode
 } from '@chakra-ui/react'
 
-const ReadyToLetGo = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+const ReadyToLetGo = ({
+  isOpen,
+  onClose
+}: {
+  isOpen: boolean
+  onClose: () => void
+}): JSX.Element => {
   const { colorMode } = useColorMode()
 
   return (
@@ -26,8 +32,8 @@ const ReadyToLetGo = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => voi
           </ModalHeader>
           <ModalBody>
             <Text>
-              Now you might want to talk what you've discovered over with a trusted friend. It might
-              help you find a way to improve the situation.
+              Now you might want to talk what you&apos;ve discovered over with a trusted friend. It
+              might help you find a way to improve the situation.
             </Text>
           </ModalBody>
           <ModalFooter>

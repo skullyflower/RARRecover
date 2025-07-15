@@ -10,11 +10,11 @@ import {
   useColorMode
 } from '@chakra-ui/react'
 
-const NeverLetGo = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
+const NeverLetGo = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }): JSX.Element => {
   const { colorMode } = useColorMode()
 
   return (
-    <Modal variant={'error'} isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay>
         <ModalContent
           color={colorMode === 'dark' ? 'pink.300' : 'yellow.900'}
@@ -22,7 +22,7 @@ const NeverLetGo = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
           border="1px solid"
         >
           <ModalHeader fontSize="lg" fontWeight="bold">
-            Won't you reconsider?
+            {`Won't you reconsider?`}
           </ModalHeader>
           <ModalBody>
             <Text>This exercise is about learning to take better care of yourself.</Text>

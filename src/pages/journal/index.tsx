@@ -1,19 +1,11 @@
-import { CloseIcon, DeleteIcon } from '@chakra-ui/icons'
-import {
-  Box,
-  HStack,
-  IconButton,
-  Stack,
-  Text,
-  Tooltip,
-  useColorMode,
-  useDisclosure
-} from '@chakra-ui/react'
-import Confirm from '@renderer/components/Confirm'
+import { CloseIcon } from '@chakra-ui/icons'
+import { Box, HStack, IconButton, Stack, Text, useColorMode } from '@chakra-ui/react'
 import PageCard from '@renderer/components/layout/page-card'
 import SemiSafeContent from '@renderer/components/SemiSafeContent'
 import { useEffect, useState } from 'react'
-import { deleteLog, getLogs, getLogsContent } from '@renderer/components/copyText'
+import { formatTitle } from '@renderer/scripts/copyText.mjs'
+import DeleteButton from '@renderer/components/buttons/delete-button'
+import { getLogList, readLog } from '@renderer/scripts/logsAPI.mjs'
 
 export interface oneEntry {
   filename: string
@@ -24,41 +16,24 @@ const InventoryJoural = (): JSX.Element => {
 
   const [entries, setEntries] = useState<string[]>([])
   const [selectedEntry, setSelectedEntry] = useState<oneEntry | null>(null)
-  const [toDelete, setToDelete] = useState<string | null>(null)
-  const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const triggerDelete = (entry: string): void => {
-    setToDelete(entry)
-    onOpen()
-  }
-  const handleDelete = (): void => {
-    if (!toDelete) return
-    const deleted = deleteLog(toDelete)
-    if (deleted) {
+  const afterDelete =
+    (toDelete: string): (() => void) =>
+    () => {
       setEntries((prev) => prev.filter((e) => e !== toDelete))
-      setToDelete(null)
       setSelectedEntry(null)
-      onClose()
     }
-  }
 
   useEffect(() => {
-    setEntries(getLogs())
+    getLogList().then((res) => {
+      setEntries(res)
+    })
   }, [])
 
   const getContents = (filename: string): void => {
-    const content = getLogsContent(filename)
-    if (content) {
-      setSelectedEntry({ filename: filename, content: content })
-    }
-  }
-
-  const formatTitle = (title: string): string => {
-    const datePattern = /(\d{4})-(\d{1,2})-(\d{1,2})/
-    if (datePattern.test(title)) {
-      return new Date(title).toDateString()
-    }
-    return title
+    readLog(filename).then((res) => {
+      setSelectedEntry({ filename: filename, content: res })
+    })
   }
 
   const LogHeader = (): JSX.Element => {
@@ -66,31 +41,6 @@ const InventoryJoural = (): JSX.Element => {
       <HStack width={'100%'} justifyContent="start">
         <Text>Inventory Journal</Text>
       </HStack>
-    )
-  }
-
-  const DeleteButton = ({ what }: { what: string }): JSX.Element => {
-    return (
-      <Tooltip hasArrow label={`Delete ${formatTitle(what)}`}>
-        <IconButton
-          variant={'ghost'}
-          size={'sm'}
-          aria-label="Delete Entry"
-          icon={<DeleteIcon />}
-          onClick={() => triggerDelete(what)}
-        />
-      </Tooltip>
-    )
-  }
-  const Confirmation = (): JSX.Element => {
-    return (
-      <Confirm
-        isOpen={isOpen}
-        onClose={onClose}
-        title="Delete Entry"
-        message="Are you sure you want to delete this entry?"
-        onConfirm={handleDelete}
-      />
     )
   }
 
@@ -112,12 +62,13 @@ const InventoryJoural = (): JSX.Element => {
               <Text fontSize={'lg'} fontWeight="bold">
                 {formatTitle(selectedEntry.filename)}
               </Text>
-              <DeleteButton what={selectedEntry.filename} />
             </HStack>
-            <SemiSafeContent entry={selectedEntry} />
+            <SemiSafeContent
+              entry={selectedEntry}
+              afterdelete={afterDelete(selectedEntry.filename)}
+            />
           </PageCard>
         </Stack>
-        <Confirmation />
       </Box>
     )
   }
@@ -149,13 +100,12 @@ const InventoryJoural = (): JSX.Element => {
                 >
                   {formatTitle(entry)}
                 </Text>
-                <DeleteButton what={entry} />
+                <DeleteButton what={entry} callback={afterDelete(entry)} />
               </HStack>
             ))}
           </Stack>
         </PageCard>
       </Stack>
-      <Confirmation />
     </Box>
   )
 }

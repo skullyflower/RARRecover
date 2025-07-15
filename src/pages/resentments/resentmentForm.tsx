@@ -10,8 +10,8 @@ import {
   Text,
   useDisclosure
 } from '@chakra-ui/react'
-import StyledTextInput from '../../components/form/styledTextInput/StyledTextInput'
-import CheckboxGroupBox from '../../components/form/CheckBoxGroupBox'
+import StyledTextInput from '@renderer/components/form/styledTextInput/StyledTextInput'
+import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
 import { useState } from 'react'
 import NeverLetGo from '@renderer/components/form/never-let-go'
 import {
@@ -19,15 +19,16 @@ import {
   myParts,
   successes,
   strings
-} from '@renderer/pages/resentments/resentment-constants'
+} from '@renderer/pages/resentments/resentment-constants.mjs'
 import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
 import ResentBeGone from './resentment-be-gone'
+import PageCard from '@renderer/components/layout/page-card'
 import AccordionSection from '@renderer/components/layout/accordion-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
-import PageCard from '@renderer/components/layout/page-card'
+
 const programOptions = Object.keys(affects)
 
-const ResentmentsForm = () => {
+function ResentmentsForm(): JSX.Element {
   const [Iresent, setIresent] = useState('')
   const [because, setBecause] = useState('')
   const [affectsMy, setAffectsMy] = useState<string[]>([])
@@ -54,12 +55,12 @@ const ResentmentsForm = () => {
 
   const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions)
 
-  const letItGo = () => {
+  function letItGo(): void {
     setLetGo(true)
     onLettingGo()
   }
 
-  const neverLetItGo = () => {
+  function neverLetItGo(): void {
     onNever()
   }
 
@@ -161,6 +162,7 @@ const ResentmentsForm = () => {
                 <StyledTextInput value={learned} setter={setLearned} />
               </FormControl>
             </AccordionSection>
+            <Text textAlign={'center'}>Are you ready to let it go?</Text>
             <Stack width="100%" direction="row" gap={4} justifyContent="center">
               <Button isDisabled={incomplete} colorScheme="purple" name="letGo" onClick={letItGo}>
                 Be Free!
@@ -175,9 +177,14 @@ const ResentmentsForm = () => {
       <Box p={4}>
         <Text>
           <b>Your answers can NOT be viewed by anyone but you</b>. When you hit submit, your answers
-          will be formatted so that you can copy or print them if you like, and share them with whom
-          you choose.
+          will be formatted so that you can copy or print them if you like, and share them with
+          whomever you choose.
         </Text>
+        {Boolean(window.api) && (
+          <Text>
+            You can also save then to your inventory log, but they will not leave your computer.
+          </Text>
+        )}
       </Box>
       <NeverLetGo isOpen={isNever} onClose={onNeverMind} />
     </Stack>

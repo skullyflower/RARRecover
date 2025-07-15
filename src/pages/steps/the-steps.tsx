@@ -1,18 +1,19 @@
 import { Heading, HStack, ListItem, OrderedList, Stack } from '@chakra-ui/react'
-import { steps } from './steps-constants'
+import { steps } from './steps-constants.mjs'
 import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
 import PageCard from '@renderer/components/layout/page-card'
 import ColorBox from '@renderer/components/layout/color-box'
 
 const programOptions = Object.keys(steps)
-const TheSteps = () => {
+
+function TheStepsPage(): JSX.Element {
   const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions)
 
   return (
     <Stack gap={4} width="100%">
       <HStack align={'center'} justify={'center'} gap={4}>
         <Heading textAlign="center" as="h1" size="xl">
-          The 12 Steps of RARR
+          The 12 Steps of
         </Heading>
         <ProgramDropDown />
       </HStack>
@@ -32,4 +33,5 @@ const TheSteps = () => {
     </Stack>
   )
 }
-export default TheSteps
+
+export default TheStepsPage

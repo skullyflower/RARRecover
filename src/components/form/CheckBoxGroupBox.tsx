@@ -15,21 +15,30 @@ interface CheckboxGroupBoxProps {
   options: Record<string, string> | string[]
   setter: (newvalue: string[]) => void
 }
-const CheckboxGroupBox = ({ columns, valuesList, options, setter }: CheckboxGroupBoxProps) => {
+export default function CheckboxGroupBox({
+  columns,
+  valuesList,
+  options,
+  setter
+}: CheckboxGroupBoxProps): JSX.Element {
   const { colorMode } = useColorMode()
 
   const optionsList = Array.isArray(options) ? options : Object.entries(options)
 
-  const handleCBChange = (list: string[], value: string) => {
+  const handleCBChange = (list: string[], value: string): string[] => {
     return list.includes(value) ? list.filter((a) => a !== value) : [...list, value]
   }
 
-  const updateValueList = (oldValue: string[], newValue: string) => () => {
+  const updateValueList = (oldValue: string[], newValue: string) => (): void => {
     setter(handleCBChange(oldValue, newValue))
   }
-  useEffect(() => {
-    setter([])
-  }, [options, setter])
+
+  useEffect(
+    function () {
+      setter([])
+    },
+    [options, setter]
+  )
 
   return (
     <Box borderWidth={1} borderStyle="solid" borderRadius={5} p={15} gap={2} className="content">
@@ -74,4 +83,3 @@ const CheckboxGroupBox = ({ columns, valuesList, options, setter }: CheckboxGrou
     </Box>
   )
 }
-export default CheckboxGroupBox

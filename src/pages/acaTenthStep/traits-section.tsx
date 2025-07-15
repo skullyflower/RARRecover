@@ -1,8 +1,7 @@
 import CheckboxGroupBox from '@renderer/components/form/CheckBoxGroupBox'
-import { HStack, Stack, Text } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import { useMemo } from 'react'
-import { traitList } from './aca-tenth-constants'
-import CopyButton from '@renderer/components/buttons/copy-button'
+import { traitList } from './aca-tenth-constants.d'
 
 const TraitsSection = ({
   traitQs,
@@ -10,26 +9,12 @@ const TraitsSection = ({
 }: {
   traitQs: string[]
   setTraitQs: (value: string[]) => void
-}) => {
+}): JSX.Element => {
   const allquestions = useMemo(() => traitList.map((trait) => trait.Q), [])
-  const setAfromQ = (Qs: string[]) => {
-    const TraitAs: string[] = []
-    Qs.forEach((Q) => {
-      const trait = traitList.find((trait) => trait.Q === Q)
-      const answer = trait ? trait.A : ''
-      TraitAs.push(answer)
-    })
-    return TraitAs.join('\n- ')
-  }
-
-  const tocopy = `Traits I had today:\n - ${setAfromQ(traitQs)}`
 
   return (
     <Stack gap={4}>
-      <HStack justifyContent={'space-between'}>
-        <Text>Select the ones that apply today.</Text>
-        <CopyButton text={tocopy} disabled={traitQs.length === 0} />
-      </HStack>
+      <Text>Select the ones that apply today.</Text>
       <CheckboxGroupBox
         columns={1}
         valuesList={traitQs}

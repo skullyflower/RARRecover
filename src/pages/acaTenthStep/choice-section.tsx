@@ -1,6 +1,5 @@
 import {
   Box,
-  HStack,
   Slider,
   SliderFilledTrack,
   SliderMark,
@@ -10,8 +9,7 @@ import {
   Text
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import { choiceLevels } from './aca-tenth-constants'
-import CopyButton from '@renderer/components/buttons/copy-button'
+import { choiceLevels } from './aca-tenth-constants.d'
 
 const ChoiceSection = ({
   freedomText,
@@ -19,12 +17,10 @@ const ChoiceSection = ({
 }: {
   freedomText: string
   setFreedomText: (value: string) => void
-}) => {
+}): JSX.Element => {
   const [freedomValue, setFreedomValue] = useState<number>(50)
 
-  const toCopy = `Choice:\nToday I was capable of: ${freedomText}`
-
-  const handleSelected = (value: number) => {
+  const handleSelected = (value: number): void => {
     setFreedomValue(value)
     const combos = Object.entries(choiceLevels)
     const stringValue = combos.find(([, val]) => val === value)?.[0] || ''
@@ -32,13 +28,11 @@ const ChoiceSection = ({
   }
   return (
     <Stack gap={4}>
-      <HStack justifyContent={'space-between'}>
-        <Text>Where are you on the discernment scale, today?</Text>
-        <CopyButton text={toCopy} disabled={!freedomText} />
-      </HStack>
+      <Text>Where are you on the discernment scale, today?</Text>
       <Text fontWeight={'bold'} textAlign={'center'}>
         {freedomText}
       </Text>
+
       <Box bgColor={'blackAlpha.100'} borderRadius={6} padding={8}>
         <Stack gap={4}>
           <Slider
@@ -47,14 +41,14 @@ const ChoiceSection = ({
             value={freedomValue}
             onChange={(val) => handleSelected(val)}
           >
-            <SliderMark value={0} mt="3" fontSize="sm">
+            <SliderMark value={0} mt="3" ml="-1em" fontSize="sm">
               Denial
             </SliderMark>
             <SliderMark
               display={{ base: 'none', md: 'block' }}
               value={33}
               mt="3"
-              ml="-1em"
+              ml="-1.8em"
               fontSize="sm"
             >
               Some Choice
@@ -63,14 +57,14 @@ const ChoiceSection = ({
               display={{ base: 'none', md: 'block' }}
               value={66}
               mt="3"
-              ml="-1.5em"
+              ml="-2.5em"
               fontSize="sm"
             >
               Greater Choice
             </SliderMark>
             <SliderMark value={100} mt="3" ml="-3em" fontSize="sm">
               Discernment
-            </SliderMark>{' '}
+            </SliderMark>
             <SliderTrack backgroundColor="red.400" w={3}>
               <SliderFilledTrack backgroundColor="green.400" />
             </SliderTrack>

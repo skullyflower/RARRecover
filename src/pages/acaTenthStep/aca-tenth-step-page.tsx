@@ -1,17 +1,17 @@
-import { Accordion, Heading, Stack, Text, Button, Link } from '@chakra-ui/react'
+import { Accordion, Button, Heading, Link, Stack, Text } from '@chakra-ui/react'
 import TraitsSection from './traits-section'
 import ChoiceSection from './choice-section'
 import ToolsUsedToday from './tools-today'
 import FeelingsStatement from './feelings-statement'
 import AssetsSection from './assets-section'
 import AccordionSection from '@renderer/components/layout/accordion-section'
+import PageCard from '@renderer/components/layout/page-card'
 import { useState } from 'react'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
-import LaundryListSection from './laundry-list-section'
+import LaundryListSection from '@renderer/pages/acaTenthStep/laundry-list-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
-import PageCard from '@renderer/components/layout/page-card'
 
-const AcaTenthStep = () => {
+function AcaTenthStep(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
   const [praise, setPraise] = useState<string[]>([])
   const [freedomText, setFreedomText] = useState<string>('')
@@ -27,6 +27,7 @@ const AcaTenthStep = () => {
     !listOfTools.length &&
     !traitQs.length &&
     !llTraits.length
+
   const reset = (): void => {
     setLetGo(false)
     setPraise([])
@@ -36,6 +37,7 @@ const AcaTenthStep = () => {
     setTraitQs([])
     setLLTraits([])
   }
+
   if (letGo) {
     return (
       <WhatYouWrote
@@ -52,11 +54,11 @@ const AcaTenthStep = () => {
 
   return (
     <Stack gap={4} width="100%">
-      <Heading textAlign="center" as="h1" size="xl">
+      <Heading textAlign="center" as="h1" size="lg">
         Spawn of Trouble: ACA style Step 10
       </Heading>
       <PageCard>
-        <Stack gap={4}>
+        <Stack gap={4} width={'100%'}>
           <Text textAlign={'center'} fontWeight={'bold'}>
             Spiritual Principles: Honesty and Discernment
           </Text>

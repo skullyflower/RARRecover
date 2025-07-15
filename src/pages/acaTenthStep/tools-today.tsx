@@ -1,5 +1,4 @@
-import CopyButton from '@renderer/components/buttons/copy-button'
-import { HStack, Stack, Text } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import ListerInput from '@renderer/components/form/ListerInput'
 
 const ToolsUsedToday = ({
@@ -8,17 +7,10 @@ const ToolsUsedToday = ({
 }: {
   listOfTools: string[]
   setListOfTools: (value: string[]) => void
-}) => {
-  const tocopy = `Recovery Tools just for today:\n- ${listOfTools.join(', \n- ')}`
-
+}): JSX.Element => {
   return (
     <Stack gap={4}>
-      <HStack justifyContent={'space-between'}>
-        <Text>
-          What are the tools of recovery you are using to help you live life in the moment?
-        </Text>
-        <CopyButton text={tocopy} disabled={listOfTools.length === 0} />
-      </HStack>
+      <Text>What are the tools of recovery you are using to help you live life in the moment?</Text>
       <ListerInput
         list={listOfTools}
         setList={setListOfTools}
