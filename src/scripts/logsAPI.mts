@@ -1,18 +1,18 @@
 declare global {
   interface Window {
     api:
-    | {
-      getLogList: () => Promise<string[]>
-      readLog: (fileName: string) => Promise<string>
-      writeLog: (text: string, fileName?: string) => Promise<boolean>
-      print: (fileName?: string) => Promise<boolean>
-      deleteLog: (toDelete: string) => Promise<boolean>
-      isLocked: () => Promise<boolean>
-      lockLog: () => Promise<boolean>
-      unlockLog: (user: string, password: string) => Promise<boolean>
-      reset: () => Promise<boolean>
-    }
-    | undefined
+      | {
+          getLogList: () => Promise<string[]>
+          readLog: (fileName: string) => Promise<string>
+          writeLog: (text: string, fileName?: string) => Promise<boolean>
+          print: (fileName?: string) => Promise<boolean>
+          deleteLog: (toDelete: string) => Promise<boolean>
+          isLocked: () => Promise<boolean>
+          lockLog: () => Promise<boolean>
+          unlockLog: (user: string, password: string) => Promise<boolean>
+          reset: () => Promise<boolean>
+        }
+      | undefined
   }
 }
 

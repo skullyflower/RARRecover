@@ -3,7 +3,7 @@ import images from './list_file.json'
 import PageCard from '@renderer/components/layout/page-card'
 import ColorBox from '@renderer/components/layout/color-box'
 
-const Stories = () => {
+const Stories = (): JSX.Element => {
   const stories = Object.entries(images)
   const seenTitles: string[] = []
   return (

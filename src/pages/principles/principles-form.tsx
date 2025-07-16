@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react'
 import { copyContents } from '@renderer/pages/resentments/copyContents.mjs'
 import { OneStep, StepCheckList } from './principles-constants'
-import { steps } from '../steps/steps-constants.mts'
+import { steps } from '@renderer/pages/steps/steps-constants.mjs'
 import useProgramDropDown from '@renderer/components/form/useProgramDropDown'
 
 interface stepValue {
@@ -50,7 +50,14 @@ const initialState: Record<string, stepValue> = {
   '12': { percent: 50, more: '' }
 }
 
-const StepBox = ({ step, stepString, principle, opposite, value, onChange }: StepBoxProps) => {
+const StepBox = ({
+  step,
+  stepString,
+  principle,
+  opposite,
+  value,
+  onChange
+}: StepBoxProps): JSX.Element => {
   const { percent, more } = value
 
   return (
@@ -136,15 +143,16 @@ const StepBox = ({ step, stepString, principle, opposite, value, onChange }: Ste
   )
 }
 
-const SpotCheckForm = () => {
+const SpotCheckForm = (): JSX.Element => {
   const [values, setValues] = useState(initialState)
   const [done, setDone] = useState(false)
   const [copied, setCopied] = useState(false)
   const { ProgramDropDown, selectedProgram } = useProgramDropDown(programOptions)
   const stepText = steps[selectedProgram]
-  const updateOneStep = (step: number) => (newValue: { percent: number; more: string }) => () => {
-    setValues({ ...values, [`${step}`]: newValue })
-  }
+  const updateOneStep =
+    (step: number) => (newValue: { percent: number; more: string }) => (): void => {
+      setValues({ ...values, [`${step}`]: newValue })
+    }
 
   if (done) {
     return (
@@ -192,7 +200,7 @@ const SpotCheckForm = () => {
           The principles of the Steps
         </Heading>
         <ProgramDropDown />
-        <Text>So, how'd we do today?</Text>
+        <Text>{`So, how'd we do today?`}</Text>
       </HStack>
       <Box backgroundColor="blue.900" border={['none', '1px solid']} borderRadius={15} p={4}>
         <Stack gap={4}>
