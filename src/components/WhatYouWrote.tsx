@@ -51,7 +51,7 @@ function WhatYouWrote({
   const toCopy = (): string => {
     const toCopyStrings: string[] = []
     if (traitQs && traitQs.length > 0) {
-      toCopyStrings.push(`Traits I had today:\n\t ${setAfromQ(traitQs)}`)
+      toCopyStrings.push(`Traits I had today:\n\t• ${setAfromQ(traitQs)}`)
     }
     if (llTraits && llTraits.length > 0) {
       toCopyStrings.push(`Laundry List / Other Laundry List:\n\t• ${llTraits.join(',\n\t• ')}`)
@@ -70,16 +70,16 @@ function WhatYouWrote({
     }
     if (canCannotControl && canCannotControl.length > 0) {
       toCopyStrings.push(
-        `Today I want to control, but cannot control:\n\t• ${canCannotControl
+        `Control:\n\t ${canCannotControl
           .map((pair) => {
-            return `• Today I want to control, but cannot control:\n\t ${pair[0]}\n   While I could and probably should: \n\t ${pair[1]}`
+            return ` Today I want to control, but cannot control:\n\t ${pair[0]}\n   While I could and probably should: \n\t ${pair[1]}`
           })
           .join('\n\n')}`
       )
     }
     if (fearsList && fearsList.length > 0) {
       toCopyStrings.push(
-        `Today I fear, and am grateful for:\n\t• ${fearsList
+        `Today I fear, and am grateful for:\n\t ${fearsList
           .map((pair) => {
             return `• Today I fear:\n\t ${pair[0]}\n   But am grateful that: \n\t ${pair[1]}`
           })
@@ -169,7 +169,7 @@ function WhatYouWrote({
                 </Text>
                 <UnorderedList paddingInlineStart={4}>
                   {praise.map((one, indx) => (
-                    <ListItem key={`praise${indx}`}>{one.replace('_', ' ')}</ListItem>
+                    <ListItem key={`praise${indx}`}>{`I am ${one.replace('_', ' ')}`}</ListItem>
                   ))}
                 </UnorderedList>
               </Box>
