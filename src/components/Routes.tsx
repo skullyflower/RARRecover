@@ -8,6 +8,7 @@ import AcaTenthStep from '@renderer/pages/acaTenthStep/aca-tenth-step-page'
 import SerenityCheckIn from '@renderer/pages/serenityCheckIn/serenityCheckInPage'
 import Fears from '@renderer/pages/fears/fears'
 import InventoryJoural from '@renderer/pages/journal'
+import AboutRarr from '@renderer/pages/about/about-rarr'
 
 export default function SiteRoutes() {
   return (
@@ -21,6 +22,7 @@ export default function SiteRoutes() {
         <Route path="/literature" element={<Stories />} />
         <Route path="/steps" element={<TheSteps />} />
         <Route path="/log" element={<InventoryJoural />} />
+        <Route path="/about" element={<AboutRarr />} />
       </Route>
     </Routes>
   )

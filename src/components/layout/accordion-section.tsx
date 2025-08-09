@@ -33,6 +33,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
         }}
         borderRadius={6}
         border={'1px solid'}
+        textAlign={'left'}
       >
         <HStack width={'100%'} justifyContent={'space-between'}>
           <Heading

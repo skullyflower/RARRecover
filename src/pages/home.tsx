@@ -38,7 +38,7 @@ function HomePage(): JSX.Element {
             </Stack>
             <Text fontWeight={'bold'}>Real recovery for fictitious creatures.</Text>
             <Text>
-              If you are struggling with monsterous behaviors or feelings, RARR has the tenth step
+              If you are struggling with monstrous behaviors or feelings, RARR has the tenth step
               tools to help you shift your perspective and get back in balance.
             </Text>
           </Stack>
