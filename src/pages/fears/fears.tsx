@@ -5,18 +5,22 @@ import AccordionSection from '@renderer/components/layout/accordion-section'
 import DoubleListerInput, { doubleListItem } from '@renderer/components/form/DoubleListerInput'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
+import ListerInput from '@renderer/components/form/ListerInput'
+import Privacy from '@renderer/components/Privacy'
 
 function Fears(): JSX.Element {
   const [letGo, setLetGo] = useState(false)
   const [fearsList, setFearsList] = useState<doubleListItem[]>([])
+  const [grateful, setGrateful] = useState<string[]>([])
 
   const reset = (): void => {
     setLetGo(false)
     setFearsList([])
+    setGrateful([])
   }
 
   if (letGo) {
-    return <WhatYouWrote reset={reset} fearsList={fearsList} />
+    return <WhatYouWrote reset={reset} fearsList={fearsList} gradteful={grateful} />
   }
 
   return (
@@ -57,6 +61,11 @@ function Fears(): JSX.Element {
                   labels={['I am afraid of', 'but gradteful that']}
                   setList={setFearsList}
                 />
+                <ListerInput
+                  list={grateful}
+                  placeholder={'...and grateful'}
+                  setList={setGrateful}
+                />
               </AccordionSection>
             </Stack>
           </Accordion>
@@ -79,6 +88,7 @@ function Fears(): JSX.Element {
           </Stack>
         </Stack>
       </PageCard>
+      <Privacy />
     </Stack>
   )
 }
