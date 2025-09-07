@@ -33,15 +33,16 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
         }}
         borderRadius={6}
         border={'1px solid'}
-        textAlign={'left'}
       >
         <HStack width={'100%'} justifyContent={'space-between'}>
           <Heading
             color="inherit"
-            as="h2"
+            as="h3"
             fontWeight={'normal'}
             size="lg"
+            fontSize={'24px'}
             textShadow={'1px 1px 2px rgba(0, 0, 0, 0.3)'}
+            textAlign={'left'}
           >
             {title}
           </Heading>
@@ -50,7 +51,7 @@ const AccordionSection: React.FC<AccordionSectionProps> = ({ title, children }) 
       </AccordionButton>
       <AccordionPanel>
         <Card
-          color={colorMode === 'dark' ? 'purple.300' : 'purple:700'}
+          color={'inherit'}
           bg={colorMode === 'dark' ? 'pink.900' : 'gray.200'}
           borderStyle={'solid'}
           borderWidth={1}
