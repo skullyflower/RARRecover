@@ -1,5 +1,5 @@
 import { Accordion, Button, Heading, Link, Stack, Text } from '@chakra-ui/react'
-import TraitsSection from './traits-section'
+import TraitsSection from './traits-sectionCopy'
 import ChoiceSection from './choice-section'
 import ToolsUsedToday from './tools-today'
 import FeelingsStatement from './feelings-statement'
@@ -21,12 +21,14 @@ function AcaTenthStep(): JSX.Element {
   const [listOfTools, setListOfTools] = useState<string[]>([])
   const [traitQs, setTraitQs] = useState<string[]>([])
   const [llTraits, setLLTraits] = useState<string[]>([])
+  const [selectedTraits, setSelectedTraits] = useState<Record<string, string | undefined>>({})
 
   const incomplete =
     !praise.length &&
     !freedomText &&
     !feelingsSentence &&
     !listOfTools.length &&
+    !Object.values(selectedTraits).filter((v) => v !== undefined).length &&
     !traitQs.length &&
     !llTraits.length
 
@@ -37,6 +39,7 @@ function AcaTenthStep(): JSX.Element {
     setFeelingSentence('')
     setListOfTools([])
     setTraitQs([])
+    setSelectedTraits({})
     setLLTraits([])
   }
 
@@ -49,6 +52,7 @@ function AcaTenthStep(): JSX.Element {
         feelingsSentence={feelingsSentence}
         listOfTools={listOfTools}
         traitQs={traitQs}
+        selectedTraits={selectedTraits}
         llTraits={llTraits}
       />
     )
@@ -82,11 +86,14 @@ function AcaTenthStep(): JSX.Element {
           </CollapsingText>
           <Accordion allowToggle={true}>
             <Stack gap={2}>
-              <AccordionSection title="Exercise 1: Laundry List / Other Laundry List">
-                <LaundryListSection llTraits={llTraits} setLLTraits={setLLTraits} />
+              <AccordionSection title="Exercise 1: Traits ">
+                <TraitsSection
+                  selectedTraits={selectedTraits}
+                  setSelectedTraits={setSelectedTraits}
+                />
               </AccordionSection>
-              <AccordionSection title="Exercise 1.5: Traits">
-                <TraitsSection traitQs={traitQs} setTraitQs={setTraitQs} />
+              <AccordionSection title="Exercise 1.5: The Laundry Lists ">
+                <LaundryListSection llTraits={llTraits} setLLTraits={setLLTraits} />
               </AccordionSection>
               <AccordionSection title="Exercise 2: Choice Continuum">
                 <ChoiceSection freedomText={freedomText} setFreedomText={setFreedomText} />
