@@ -1,4 +1,4 @@
-import { Box, Image, Stack, useColorMode, LinkBox } from '@chakra-ui/react'
+import { Box, Center, Image, Stack, useColorMode, LinkBox } from '@chakra-ui/react'
 import NavBar from '../NavBar'
 import rarrLogo from '@renderer/assets/RarrLogo.svg'
 import { Link as ReactRouterLink, Outlet } from 'react-router-dom'
@@ -30,19 +30,24 @@ function Layout(): JSX.Element {
             width={'100%'}
             paddingInline={4}
             justifyContent="space-between"
-            alignItems={['center', 'flex-start']}
+            alignItems={['stretch', 'flex-start']}
           >
-            <LinkBox
-              as={ReactRouterLink}
-              width="120px"
-              to={'/'}
-              _hover={{ cursor: 'pointer' }}
-              p={2}
-              title="Ragers and Rampagers, Recovering"
-            >
-              <Image src={rarrLogo} alt="Ragers and Rampagers, Recovering" />
-            </LinkBox>
-            <NavBar />
+            <Center>
+              <LinkBox
+                as={ReactRouterLink}
+                width="120px"
+                to={'/'}
+                _hover={{ cursor: 'pointer' }}
+                p={2}
+                title="Ragers and Rampagers, Recovering"
+              >
+                <Image src={rarrLogo} alt="Ragers and Rampagers, Recovering" />
+              </LinkBox>
+            </Center>
+
+            <Box minW={{ xs: 7, md: 12 }}>
+              <NavBar />
+            </Box>
           </Stack>
         </header>
         <Box>{isLocked ? <UnlockInventory /> : <Outlet />}</Box>
