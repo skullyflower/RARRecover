@@ -10,6 +10,7 @@ import Fears from '@renderer/pages/fears/fears'
 import InventoryJoural from '@renderer/pages/journal'
 import AboutRarr from '@renderer/pages/about/about-rarr'
 import UnlockInventory from '@renderer/pages/UnlockInventory'
+import AlanonTenthStep from '@renderer/pages/alanonTenthStep/alanon-tenth-step-page'
 
 export default function SiteRoutes() {
   return (
@@ -18,6 +19,7 @@ export default function SiteRoutes() {
         <Route index element={<HomePage />} />
         <Route path="/inventory" element={<ResentmentsForm />} />
         <Route path="/aca-tenth-step" element={<AcaTenthStep />} />
+        <Route path="/alanon-tenth-step" element={<AlanonTenthStep />} />
         <Route path="/serenity" element={<SerenityCheckIn />} />
         <Route path="/fears" element={<Fears />} />
         <Route path="/literature" element={<Stories />} />

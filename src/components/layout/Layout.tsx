@@ -1,6 +1,6 @@
 import { Box, Center, Image, Stack, useColorMode, LinkBox } from '@chakra-ui/react'
 import NavBar from '../NavBar'
-import rarrLogo from '@renderer/assets/RarrLogo.svg'
+import rarrLogo from '@renderer/assets/RarrLogo.png'
 import { Link as ReactRouterLink, Outlet } from 'react-router-dom'
 import useToggleLock from '@renderer/hooks/useToggleLock'
 import UnlockInventory from '@renderer/pages/UnlockInventory'
@@ -29,7 +29,7 @@ function Layout(): JSX.Element {
             direction={['column', 'row']}
             width={'100%'}
             paddingInline={4}
-            justifyContent="space-between"
+            justifyContent="start"
             alignItems={['stretch', 'flex-start']}
           >
             <Center>

@@ -94,7 +94,13 @@ const MenuDDropDown = ({
             padding={2}
             border={0}
           >
-            <Stack direction={['column', 'row']} gap={2} justifyContent={'center'}>
+            <Stack
+              direction={['column', 'row']}
+              gap={2}
+              justifyContent={'center'}
+              wrap="wrap"
+              maxWidth={'80vw'}
+            >
               {children}
             </Stack>
           </MenuList>
@@ -157,6 +163,7 @@ const NavBar = (): JSX.Element => {
           <HStack wrap="wrap" gap={2} justifyContent={'flex-start'}>
             <MenuDDropDown buttonText="Daily Inventories" size={'md'}>
               <NavItem to="inventory" text="Trouble" />
+              <NavItem to="alanon-tenth-step" text="Bride of Trouble" />
               <NavItem to="aca-tenth-step" text="Spawn of Trouble" />
               <NavItem to="serenity" text="Control" />
               <NavItem to="fears" text="Fear" />
