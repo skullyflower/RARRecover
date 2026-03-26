@@ -60,7 +60,7 @@ function AlanonTenthStep(): JSX.Element {
               </Text>
             </Stack>
           </CollapsingText>
-          <Accordion allowToggle={true} defaultIndex={[0]}>
+          <Accordion allowToggle={true}>
             <Stack gap={2}>
               <AccordionSection title="Exercise 1: Questions ">
                 <QuestionsSection

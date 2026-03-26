@@ -1,5 +1,5 @@
 import { Box, Checkbox, Stack, useColorMode } from '@chakra-ui/react'
-import StyledTextInput from './styledTextInput/StyledTextInput'
+import StyledTextInput from '@renderer/components/form/styledTextInput/StyledTextInput'
 
 const CheckBoxAndText = ({
   q,
@@ -9,7 +9,7 @@ const CheckBoxAndText = ({
   q: string
   selected: Record<string, string | undefined>
   setSelected: (newval: Record<string, string | undefined>) => void
-}) => {
+}): JSX.Element => {
   const { colorMode } = useColorMode()
 
   return (
