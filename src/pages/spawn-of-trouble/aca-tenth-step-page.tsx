@@ -1,4 +1,4 @@
-import { Accordion, Button, Heading, Link, Stack, Text } from '@chakra-ui/react'
+import { Accordion, Button, Link, Stack, Text } from '@chakra-ui/react'
 import TraitsSection from './traits-section'
 import ChoiceSection from './choice-section'
 import ToolsUsedToday from './tools-today'
@@ -8,7 +8,7 @@ import AccordionSection from '@renderer/components/layout/accordion-section'
 import PageCard from '@renderer/components/layout/page-card'
 import { useState } from 'react'
 import WhatYouWrote from '@renderer/components/WhatYouWrote'
-import LaundryListSection from '@renderer/pages/acaTenthStep/laundry-list-section'
+import LaundryListSection from '@renderer/pages/spawn-of-trouble/laundry-list-section'
 import CollapsingText from '@renderer/components/layout/CollapsingText'
 import Privacy from '@renderer/components/Privacy'
 import strings from '@renderer/data/aca-tenth.json'
@@ -60,10 +60,7 @@ function AcaTenthStep(): JSX.Element {
 
   return (
     <Stack gap={4} width="100%">
-      <Heading textAlign="center" as="h1" size="lg">
-        {strings.pageText.title}
-      </Heading>
-      <PageCard>
+      <PageCard header={strings.pageText.title}>
         <Stack gap={4} width={'100%'}>
           <Text textAlign={'center'} fontWeight={'bold'}>
             {strings.pageText.subTitle}
@@ -115,7 +112,7 @@ function AcaTenthStep(): JSX.Element {
             gap={4}
             justifyContent="center"
             position={'sticky'}
-            bottom={2}
+            bottom={-2}
           >
             <Button
               isDisabled={incomplete}

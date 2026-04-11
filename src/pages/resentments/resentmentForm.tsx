@@ -72,7 +72,6 @@ function ResentmentsForm(): JSX.Element {
         didWell={didWell}
         learned={learned}
         isLettingGo={isLettingGo}
-        onLettingGo={onLettingGo}
         onCloseLetGo={onCloseLetGo}
         reset={reset}
       />
@@ -81,16 +80,16 @@ function ResentmentsForm(): JSX.Element {
 
   return (
     <Stack gap={4}>
-      <HStack align="center" justify={'center'} gap={4}>
-        <Heading as="h2" size="lg">
-          Trouble:
-        </Heading>{' '}
-        <ProgramDropDown />
-        <Heading as="h2" size="lg">
-          {strings[selectedProgram as ProgKey].title}
-        </Heading>
-      </HStack>
       <PageCard>
+        <HStack align="center" justify={'center'} gap={4}>
+          <Heading as="h2" size="lg">
+            Trouble:
+          </Heading>{' '}
+          <ProgramDropDown />
+          <Heading as="h2" size="lg">
+            {strings[selectedProgram as ProgKey].title}
+          </Heading>
+        </HStack>
         <Box padding={4}>
           <CollapsingText>
             <Stack gap={4}>
