@@ -162,7 +162,7 @@ const NavBar = (): JSX.Element => {
           <HStack wrap="wrap" justifyContent={'flex-start'} columnGap={2}>
             <MenuDDropDown buttonText="Daily Inventories" size={'md'}>
               <NavItem to="trouble" text="Trouble" />
-              <NavItem to="bride-of-trouble" text="Bride of Trouble" />
+              <NavItem to="drawn-to-trouble" text="Drawn to Trouble" />
               <NavItem to="spawn-of-trouble" text="Spawn of Trouble" />
               <NavItem to="resentments" text="Resentments" />
               <NavItem to="serenity" text="Control Issues" />
