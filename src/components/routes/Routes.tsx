@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from '../layout/Layout'
-import HomePage from '@renderer/pages/home'
+import HomePage from '@renderer/pages/home/home'
 import { rarrRouteList } from './rarr-routes'
 import React from 'react'
 

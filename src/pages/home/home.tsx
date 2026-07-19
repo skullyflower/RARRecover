@@ -34,7 +34,9 @@ function HomePage(): JSX.Element {
                 fontSize={['lg', 'xl']}
               >
                 {strings.boxText.map((line, i) => (
-                  <Text key={`line-${i}`}>{line}</Text>
+                  <Text fontWeight={'bold'} key={`line-${i}`}>
+                    {line}
+                  </Text>
                 ))}
               </Box>
               <Image

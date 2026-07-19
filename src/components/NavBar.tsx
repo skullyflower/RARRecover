@@ -125,13 +125,12 @@ const NavBar = (): JSX.Element => {
   return (
     <Box p={4} w={'100%'}>
       <Stack alignItems={'stretch'} gap={2} width={'100%'}>
-        <HStack width={'inherit'} justifyContent={'space-between'}>
-          <Show breakpoint="(max-width: 450px)">
-            <Button size={'sm'} onClick={onToggle}>
-              menu
-            </Button>
-          </Show>
-          <HStack wrap="wrap" gap={2} justifyContent={'flex-end'}>
+        <HStack
+          width={'inherit'}
+          justifyContent={isLargerThan450 ? 'end' : 'space-between'}
+          wrap="wrap"
+        >
+          <HStack gap={2} justifyContent={'flex-end'}>
             <Tooltip hasArrow label={`Switch Font Mode`}>
               <Button size={'sm'} onClick={toggleFontMode}>
                 <span
@@ -157,6 +156,11 @@ const NavBar = (): JSX.Element => {
               </Tooltip>
             )}
           </HStack>
+          <Show breakpoint="(max-width: 450px)">
+            <Button size={'sm'} onClick={onToggle}>
+              menu
+            </Button>
+          </Show>
         </HStack>
         <Collapse startingHeight={isLargerThan450 ? 'auto' : 0} in={isOpen}>
           <HStack wrap="wrap" justifyContent={'flex-start'} columnGap={2}>
